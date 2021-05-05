@@ -3,14 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="25dp">
+
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+android:padding="15dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvAndroid"
         android:layout_width="160dp"
-        android:layout_height="190dp"
+        android:layout_height="160dp"
         android:layout_margin="10dp"
         android:clickable="true"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,10 +61,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvIPhone"
         android:layout_width="160dp"
-        android:layout_height="190dp"
+        android:layout_height="160dp"
         android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cvAndroid"
         app:layout_constraintTop_toBottomOf="@id/cvAndroid">
 
         <LinearLayout
@@ -89,9 +104,12 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvBackend"
         android:layout_width="160dp"
-        android:layout_height="190dp"
+        android:layout_height="160dp"
         android:layout_margin="10dp"
         android:clickable="true"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cvIPhone">
@@ -125,5 +143,7 @@
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
