@@ -5,11 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.login.LoginActivity">
-<EditText
-    android:id="@+id/edt_name"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_width="0dp"
-    android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAppTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="SKUAD TALENT"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textStyle="bold"
+      android:textColor="@color/black"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/edtUserName"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAppTitle"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/user_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/edtUserPassword"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/edtUserName"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="LOGIN"
+        android:textSize="15sp"
+        android:background="@drawable/rounded_shape"
+        app:layout_constraintTop_toBottomOf="@id/edtUserPassword"
+        app:layout_constraintStart_toStartOf="@id/edtUserName"
+        app:layout_constraintEnd_toEndOf="@id/edtUserName"
+       android:layout_marginTop="25dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
