@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.TalentSearch">
-        <activity android:name=".ui.main.login.LoginActivity"></activity>
+        <activity android:name=".ui.main.login.LoginActivity"/>
+        <activity android:name=".ui.main.dashboard.DashboardActivity"/>
         <activity android:name=".ui.main.splash.SplashActivity"  android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

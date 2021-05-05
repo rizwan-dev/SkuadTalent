@@ -19,7 +19,7 @@ class SplashActivity : BaseActivityVB<ActivitySplashBinding>() {
     }
 
     private fun navigateToNextActivity() {
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(LoginActivity.newInstance(this))
         finish()
     }
 
