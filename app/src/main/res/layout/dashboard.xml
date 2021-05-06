@@ -4,6 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="Welcome to SKUAD TALENT"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_main"
         android:layout_width="@dimen/dimen_0dp"
@@ -18,7 +32,7 @@
             android:id="@+id/cvAndroid"
             android:layout_width="@dimen/dimen_0dp"
             android:layout_height="@dimen/dimen_160dp"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_margin="@dimen/dimen_20dp"
             android:clickable="true"
             app:cardCornerRadius="@dimen/dimen_20dp"
             app:cardElevation="@dimen/dimen_20dp"
@@ -54,7 +68,7 @@
                     android:gravity="center"
                     android:padding="@dimen/dimen_5dp"
                     android:text="Active 20"
-                    android:textColor="@android:color/holo_red_dark" />
+                    android:textColor="@android:color/holo_green_dark" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -62,7 +76,7 @@
             android:id="@+id/cvIPhone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_160dp"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_margin="@dimen/dimen_20dp"
             app:cardCornerRadius="@dimen/dimen_20dp"
             app:cardElevation="@dimen/dimen_20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,13 +121,13 @@
             android:id="@+id/cvBackend"
             android:layout_width="@dimen/dimen_0dp"
             android:layout_height="@dimen/dimen_160dp"
-            android:layout_margin="@dimen/dimen_10dp"
-            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_margin="@dimen/dimen_20dp"
             android:clickable="true"
             app:cardCornerRadius="@dimen/dimen_20dp"
             app:cardElevation="@dimen/dimen_20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvIPhone">
 
             <LinearLayout
@@ -144,7 +158,7 @@
                     android:gravity="center"
                     android:padding="@dimen/dimen_5dp"
                     android:text="Active 60"
-                    android:textColor="@android:color/holo_red_dark" />
+                    android:textColor="@android:color/holo_green_dark" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
