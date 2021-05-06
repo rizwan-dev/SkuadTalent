@@ -7,4 +7,9 @@
     <dimen name="dimen_160dp">160dp</dimen>
     <dimen name="dimen_20dp">20dp</dimen>
     <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="dimen_15sp">15sp</dimen>
+    <dimen name="dimen_20sp">20sp</dimen>
+    <dimen name="dimen_120dp">120dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
 </resources>

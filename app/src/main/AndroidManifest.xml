@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.main.android.AndroidCandidateListActivity" />
+        <activity android:name=".ui.main.backend.BackendCandidateListActivity"/>
+        <activity android:name=".ui.main.ios.IosCandidateListActivity"/>
     </application>
 
 </manifest>
