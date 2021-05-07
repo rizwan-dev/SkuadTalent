@@ -12,4 +12,5 @@
     <dimen name="dimen_20sp">20sp</dimen>
     <dimen name="dimen_120dp">120dp</dimen>
     <dimen name="dimen_2dp">2dp</dimen>
+    <dimen name="dimen_1">1dp</dimen>
 </resources>
