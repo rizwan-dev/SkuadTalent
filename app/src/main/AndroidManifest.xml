@@ -19,9 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.android.AndroidCandidateListActivity" />
-        <activity android:name=".ui.main.backend.BackendCandidateListActivity"/>
-        <activity android:name=".ui.main.ios.IosCandidateListActivity"/>
+        <activity android:name=".ui.main.candidatelist.CandidateListActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.skuad.talent.ui.main.android
+package com.skuad.talent.ui.main.candidatelist
 
 import android.content.Context
 import android.content.Intent
@@ -7,18 +7,18 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skuad.talent.R
 import com.skuad.talent.data.model.Candidate
-import com.skuad.talent.databinding.ActivityAndroidCandidateListBinding
-import com.skuad.talent.databinding.DashboardBinding
+import com.skuad.talent.databinding.ActivityCandidateListBinding
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.login.LoginActivity
 
-class AndroidCandidateListActivity : BaseActivityVB<ActivityAndroidCandidateListBinding>() {
+class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
+
+    private lateinit var skillName: String
 
     override fun attachBinding(
-        list: MutableList<ActivityAndroidCandidateListBinding>,
+        list: MutableList<ActivityCandidateListBinding>,
         inflater: LayoutInflater
     ) {
-        list.add(ActivityAndroidCandidateListBinding.inflate(layoutInflater))
+        list.add(ActivityCandidateListBinding.inflate(layoutInflater))
     }
 
     override fun setup() {
@@ -27,13 +27,23 @@ class AndroidCandidateListActivity : BaseActivityVB<ActivityAndroidCandidateList
     }
 
     private fun setToolBar() {
+
         withBinding {
             setSupportActionBar(toolbar)
             supportActionBar?.setHomeButtonEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
-            supportActionBar?.title = "ANDROID"
+            val title = when(skillName){
 
+                ANDROID -> "ANDROID"
+
+                IOS -> "iOS"
+
+                BACKEND -> "BACKEND"
+
+                else -> ""
+            }
+            supportActionBar?.title = title
         }
 
     }
@@ -46,15 +56,16 @@ class AndroidCandidateListActivity : BaseActivityVB<ActivityAndroidCandidateList
     }
 
     private fun setUpView() {
+        skillName = intent.getStringExtra(SKILL_NAME) ?: ""
         withBinding {
             val candidateList = getCandidateList()
-            rvAndroid.layoutManager = LinearLayoutManager(this@AndroidCandidateListActivity)
-            rvAndroid.adapter = AndroidCandidateListAdapter(candidateList=candidateList)
+            rvAndroid.layoutManager = LinearLayoutManager(this@CandidateListActivity)
+            rvAndroid.adapter = CandidateListAdapter(candidateList=candidateList)
         }
     }
 
 
-    fun getCandidateList() = listOf<Candidate>(
+    private fun getCandidateList() = listOf(
         Candidate(
             candidateName = "Shailee Sharma",
             experience = "3 years",
@@ -88,7 +99,13 @@ class AndroidCandidateListActivity : BaseActivityVB<ActivityAndroidCandidateList
     )
 
     companion object {
-        fun newInstance(context: Context) =
-            Intent(context, AndroidCandidateListActivity::class.java)
+        const val SKILL_NAME = "skill_name"
+        const val ANDROID = "android"
+        const val IOS = "ios"
+        const val BACKEND = "backend"
+        fun newInstance(context: Context, skillName: String) =
+            Intent(context, CandidateListActivity::class.java).apply {
+                putExtra(SKILL_NAME, skillName)
+            }
     }
 }

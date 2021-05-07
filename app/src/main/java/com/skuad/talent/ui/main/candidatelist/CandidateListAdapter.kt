@@ -1,4 +1,4 @@
-package com.skuad.talent.ui.main.android
+package com.skuad.talent.ui.main.candidatelist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.R
 import com.skuad.talent.data.model.Candidate
 
-class AndroidCandidateListAdapter(private val candidateList: List<Candidate>) :
-    RecyclerView.Adapter<AndroidCandidateListAdapter.ViewHolder>() {
+class CandidateListAdapter(private val candidateList: List<Candidate>) :
+    RecyclerView.Adapter<CandidateListAdapter.ViewHolder>() {
     class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val candidateName = itemView.findViewById<TextView>(R.id.tvCandidateName)
         val experience = itemView.findViewById<TextView>(R.id.tvYearsOfExperience)
@@ -25,14 +25,14 @@ class AndroidCandidateListAdapter(private val candidateList: List<Candidate>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AndroidCandidateListAdapter.ViewHolder {
+    ): CandidateListAdapter.ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val candidateView = inflater.inflate(R.layout.item_candidate_list, parent, false)
         return ViewHolder(candidateView)
     }
 
-    override fun onBindViewHolder(holder: AndroidCandidateListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CandidateListAdapter.ViewHolder, position: Int) {
         val candidate = candidateList.get(position)
         holder.bind(candidate)
     }
