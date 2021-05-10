@@ -26,6 +26,9 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
 
                 startActivity(DashboardActivity.newInstance(this@LoginActivity))
             }
+            tvSignupInstruction.setSafeOnClickListener {
+                startActivity(SignUpActivity.newInstance(this@LoginActivity))
+            }
         }
     }
 
