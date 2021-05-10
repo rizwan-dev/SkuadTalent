@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.widget.Toast
-import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
@@ -19,14 +18,6 @@ fun Context.showShortToast(str: String) = Toast.makeText(this, str, Toast.LENGTH
 fun Context.getColorFromRes(@ColorRes colorRes: Int) = ContextCompat.getColor(this, colorRes)
 
 fun Context.getDrawableFromRes(@DrawableRes drawableRes: Int) = ContextCompat.getDrawable(this, drawableRes)
-
-// Guneet - Custom Quantity string API which works with all locales
-fun Context.getQuantityString(@ArrayRes id: Int, quantity: Int, vararg args: Any): String {
-    val pos = if (quantity > 1) 1 else 0
-    return resources.getStringArray(id)[pos].let {
-        java.lang.String.format(it, *args)
-    }
-}
 
 
 fun Context.createAlertDialog(
@@ -76,6 +67,3 @@ fun Context.createAlertDialog(
         }
     }.create()
 }
-
-fun Context.dpToPixel(dp: Int): Int =
-        (dp * applicationContext.resources.displayMetrics.density).toInt()

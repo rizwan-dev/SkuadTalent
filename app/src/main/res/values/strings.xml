@@ -2,4 +2,14 @@
     <string name="app_name">Skuad Talent</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
+    <string name="welcome_to_skuad">Welcome to Skuad</string>
+    <string name="sign_in_instruction">Enter your Email Id to sign in to skuad platform</string>
+    <string name="sign_in">Sign in</string>
+    <string name="create_your_skuad_profile">Create your Skuad profile</string>
+    <string name="sign_up_instruction">Create your profile in few easy steps and get matched to amazing global opportunities</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="create_account">Create Account</string>
+    <string name="check_conditions"><![CDATA[By clicking Create Account,you agree to our Terms & Privacy Policy.]]></string>
 </resources>

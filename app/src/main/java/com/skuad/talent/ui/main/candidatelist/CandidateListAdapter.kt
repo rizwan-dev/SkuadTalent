@@ -1,5 +1,6 @@
 package com.skuad.talent.ui.main.candidatelist
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +8,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.R
 import com.skuad.talent.data.model.Candidate
+import com.skuad.talent.databinding.ActivityCandidateListBinding
 
-class CandidateListAdapter(private val candidateList: List<Candidate>) :
+class CandidateListAdapter(
+    private val context: Context,
+    private val candidateList: List<Candidate>,
+    private val listener: (Candidate) -> Unit
+) :
     RecyclerView.Adapter<CandidateListAdapter.ViewHolder>() {
-    class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
+    class ViewHolder(
+        listItemView: View
+    ) :
+        RecyclerView.ViewHolder(listItemView) {
         val candidateName = itemView.findViewById<TextView>(R.id.tvCandidateName)
         val experience = itemView.findViewById<TextView>(R.id.tvYearsOfExperience)
         val skills = itemView.findViewById<TextView>(R.id.tvSkills)
@@ -26,7 +35,6 @@ class CandidateListAdapter(private val candidateList: List<Candidate>) :
         parent: ViewGroup,
         viewType: Int
     ): CandidateListAdapter.ViewHolder {
-        val context = parent.context
         val inflater = LayoutInflater.from(context)
         val candidateView = inflater.inflate(R.layout.item_candidate_list, parent, false)
         return ViewHolder(candidateView)
@@ -35,6 +43,8 @@ class CandidateListAdapter(private val candidateList: List<Candidate>) :
     override fun onBindViewHolder(holder: CandidateListAdapter.ViewHolder, position: Int) {
         val candidate = candidateList.get(position)
         holder.bind(candidate)
+        holder.itemView.setOnClickListener { listener(candidate) }
+
     }
 
     override fun getItemCount(): Int {
