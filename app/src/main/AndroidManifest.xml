@@ -13,6 +13,7 @@
         <activity android:name=".ui.main.login.LoginActivity"/>
         <activity android:name=".ui.main.login.SignUpActivity"/>
         <activity android:name=".ui.main.dashboard.DashboardActivity"/>
+        <activity android:name=".ui.main.dashboard.NewDashboardActivity"/>
         <activity android:name=".ui.main.candidatelist.CandidateListActivity" />
         <activity android:name=".ui.main.candidatelist.CandidateDetailActivity"/>
         <activity android:name=".ui.main.splash.SplashActivity"  android:theme="@style/SplashScreenTheme">

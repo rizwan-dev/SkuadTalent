@@ -10,6 +10,7 @@ import com.skuad.talent.databinding.NewActivityLoginBinding
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.dashboard.DashboardActivity
+import com.skuad.talent.ui.main.dashboard.NewDashboardActivity
 
 class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
     override fun attachBinding(list: MutableList<NewActivityLoginBinding>, inflater: LayoutInflater) {
@@ -24,7 +25,8 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
         withBinding {
             btnLogin.setSafeOnClickListener {
 
-                startActivity(DashboardActivity.newInstance(this@LoginActivity))
+//                startActivity(DashboardActivity.newInstance(this@LoginActivity))
+                startActivity(NewDashboardActivity.newInstance(this@LoginActivity))
             }
             tvSignupInstruction.setSafeOnClickListener {
                 startActivity(SignUpActivity.newInstance(this@LoginActivity))
