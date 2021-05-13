@@ -2,46 +2,46 @@ package com.skuad.talent.utils
 
 import com.skuad.talent.R
 import com.skuad.talent.data.model.Candidate
-import com.skuad.talent.data.model.Cards
+import com.skuad.talent.data.model.Card
 
 object DataUtil {
 
     fun getCardsList() = listOf(
-        Cards(
-            titleCard = "Android",
-            activeCard = "50 Profile",
-            imageCard = R.drawable.android
+        Card(
+            title = "Android",
+            active = "50 Profile",
+            image = R.drawable.android
         ),
-        Cards(
-            titleCard = "iOS",
-            activeCard = "30 Profile",
-            imageCard = R.drawable.apple_logo
+        Card(
+            title = "iOS",
+            active = "30 Profile",
+            image = R.drawable.apple_logo
         ),
-        Cards(
-            titleCard = "Backend",
-            activeCard = "40 Profile",
-            imageCard = R.drawable.backend
-        ), Cards(
-            titleCard = "Java",
-            activeCard = "120 Profile",
-            imageCard = R.drawable.java_logo
-        ), Cards(
-            titleCard = "PHP",
-            activeCard = "65 Profile",
-            imageCard = R.drawable.php_logo
-        ), Cards(
-            titleCard = "FullStack",
-            activeCard = "95 Profile",
-            imageCard = R.drawable.android
+        Card(
+            title = "Backend",
+            active = "40 Profile",
+            image = R.drawable.backend
+        ), Card(
+            title = "Java",
+            active = "120 Profile",
+            image = R.drawable.java_logo
+        ), Card(
+            title = "PHP",
+            active = "65 Profile",
+            image = R.drawable.php_logo
+        ), Card(
+            title = "FullStack",
+            active = "95 Profile",
+            image = R.drawable.android
         ),
-        Cards(
-            titleCard = "Frontend",
-            activeCard = "70 Profile",
-            imageCard = R.drawable.android
-        ), Cards(
-            titleCard = "Android",
-            activeCard = "50 Profile",
-            imageCard = R.drawable.android
+        Card(
+            title = "Frontend",
+            active = "70 Profile",
+            image = R.drawable.android
+        ), Card(
+            title = "Android",
+            active = "50 Profile",
+            image = R.drawable.android
         )
     )
 

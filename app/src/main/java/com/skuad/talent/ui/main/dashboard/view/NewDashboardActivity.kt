@@ -1,15 +1,17 @@
-package com.skuad.talent.ui.main.dashboard
+package com.skuad.talent.ui.main.dashboard.view
 
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import com.skuad.talent.databinding.DashboardBinding
+import com.skuad.talent.R
 import com.skuad.talent.databinding.NewDashboardActivityBinding
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.candidatelist.CandidateListActivity
+import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
+import com.skuad.talent.ui.main.dashboard.adapter.DashboardAdapter
 import com.skuad.talent.utils.DataUtil
+import com.skuad.talent.utils.GridSpacingItemDecoration
+
 
 class NewDashboardActivity : BaseActivityVB<NewDashboardActivityBinding>() {
 
@@ -28,6 +30,8 @@ class NewDashboardActivity : BaseActivityVB<NewDashboardActivityBinding>() {
         withBinding {
             val cardList = DataUtil.getCardsList()
             rvDashboard.layoutManager = GridLayoutManager(this@NewDashboardActivity, 2)
+            val spacingInPixels = resources.getDimensionPixelSize(R.dimen.dimen_20dp)
+            rvDashboard.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, false))
             rvDashboard.adapter = DashboardAdapter(this@NewDashboardActivity, cardList) {
                 startActivity(
                     CandidateListActivity.newInstance(this@NewDashboardActivity,

@@ -1,4 +1,4 @@
-package com.skuad.talent.ui.main.candidatelist
+package com.skuad.talent.ui.main.candidatelist.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.R
 import com.skuad.talent.data.model.Candidate
-import com.skuad.talent.databinding.ActivityCandidateListBinding
 
 class CandidateListAdapter(
     private val context: Context,
@@ -34,13 +33,13 @@ class CandidateListAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CandidateListAdapter.ViewHolder {
+    ): ViewHolder {
         val inflater = LayoutInflater.from(context)
         val candidateView = inflater.inflate(R.layout.item_candidate_list, parent, false)
         return ViewHolder(candidateView)
     }
 
-    override fun onBindViewHolder(holder: CandidateListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val candidate = candidateList.get(position)
         holder.bind(candidate)
         holder.itemView.setOnClickListener { listener(candidate) }

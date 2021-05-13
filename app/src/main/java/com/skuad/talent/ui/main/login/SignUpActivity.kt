@@ -4,10 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import com.skuad.talent.databinding.ActivitySignUpBinding
-import com.skuad.talent.databinding.NewActivityLoginBinding
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.dashboard.DashboardActivity
+import com.skuad.talent.ui.main.dashboard.view.DashboardActivity
 
 class SignUpActivity : BaseActivityVB<ActivitySignUpBinding>() {
     override fun attachBinding(list: MutableList<ActivitySignUpBinding>, inflater: LayoutInflater) {

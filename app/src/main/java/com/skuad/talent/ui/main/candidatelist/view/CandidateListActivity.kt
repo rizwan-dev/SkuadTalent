@@ -1,4 +1,4 @@
-package com.skuad.talent.ui.main.candidatelist
+package com.skuad.talent.ui.main.candidatelist.view
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skuad.talent.R
 import com.skuad.talent.databinding.ActivityCandidateListBinding
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.candidatelist.CandidateDetailActivity.Companion.INTENT_PARCELABLE
+import com.skuad.talent.ui.main.candiatedetails.CandidateDetailActivity
+import com.skuad.talent.ui.main.candidatelist.adapter.CandidateListAdapter
 import com.skuad.talent.utils.DataUtil
 
 
@@ -60,7 +61,6 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
     private fun setUpView() {
         skillName = intent.getStringExtra(SKILL_NAME) ?: ""
         withBinding {
-
             val candidateList = when (skillName) {
                 ANDROID -> DataUtil.getAndroidCandidates()
                 IOS -> DataUtil.getIosCandidates()
@@ -68,14 +68,12 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
                 else -> emptyList()
             }
             rvAndroid.layoutManager = LinearLayoutManager(this@CandidateListActivity)
-            rvAndroid.adapter = CandidateListAdapter(this@CandidateListActivity,candidateList) {
-
-                startActivity(
-                    CandidateDetailActivity.newInstance(
-                        this@CandidateListActivity, INTENT_PARCELABLE
+            rvAndroid.adapter =
+                CandidateListAdapter(this@CandidateListActivity, candidateList) { candidate ->
+                    startActivity(
+                        CandidateDetailActivity.newInstance(this@CandidateListActivity, candidate)
                     )
-                )
-            }
+                }
         }
     }
 
@@ -90,7 +88,6 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
         fun newInstance(context: Context, skillName: String) =
             Intent(context, CandidateListActivity::class.java).apply {
                 putExtra(SKILL_NAME, skillName)
-
             }
     }
 }

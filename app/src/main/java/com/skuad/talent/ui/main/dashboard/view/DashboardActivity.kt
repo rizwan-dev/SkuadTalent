@@ -1,4 +1,4 @@
-package com.skuad.talent.ui.main.dashboard
+package com.skuad.talent.ui.main.dashboard.view
 
 import android.content.Context
 import android.content.Intent
@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import com.skuad.talent.databinding.DashboardBinding
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.candidatelist.CandidateListActivity
-import com.skuad.talent.ui.main.candidatelist.CandidateListActivity.Companion.ANDROID
-import com.skuad.talent.ui.main.candidatelist.CandidateListActivity.Companion.BACKEND
-import com.skuad.talent.ui.main.candidatelist.CandidateListActivity.Companion.IOS
+import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
+import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity.Companion.ANDROID
+import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity.Companion.BACKEND
+import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity.Companion.IOS
 
 class DashboardActivity : BaseActivityVB<DashboardBinding>() {
 

@@ -1,8 +1,7 @@
-package com.skuad.talent.ui.main.candidatelist
+package com.skuad.talent.ui.main.candiatedetails
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import com.skuad.talent.R
@@ -43,21 +42,24 @@ lateinit var candidateData: String
     }
 
     private fun setUpView() {
-        val candidateData =
-            intent.getParcelableExtra<Candidate>(INTENT_PARCELABLE)
-        Log.e("Check", "Candidate data is =======" + candidateData)
-        withBinding {
+        val candidateData = intent.getParcelableExtra<Candidate>(CANDIDATE_DETAILS)
 
+        candidateData?.let {
+            withBinding {
+                tvCandidateName.text = it.candidateName
+            }
         }
+
+
 
     }
 
     companion object {
         //to pass data
-        const val INTENT_PARCELABLE = "OBJECT_INTENT"
-        fun newInstance(context: Context, candidateData: String) =
+        const val CANDIDATE_DETAILS  = "CANDIDATE_DETAILS"
+        fun newInstance(context: Context, candidateData: Candidate) =
             Intent(context, CandidateDetailActivity::class.java).apply {
-                putExtra(CandidateDetailActivity.INTENT_PARCELABLE,candidateData)
+                putExtra(CANDIDATE_DETAILS,candidateData)
             }
     }
 }

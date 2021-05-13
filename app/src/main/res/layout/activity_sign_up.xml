@@ -133,7 +133,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
        android:layout_marginVertical="@dimen/dimen_20dp"
-        android:background="@drawable/rounded_shape"
+        android:background="@drawable/rounded_red_shape"
         android:text="@string/create_account"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@id/edtFullName"

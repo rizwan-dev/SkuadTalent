@@ -106,7 +106,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:background="@drawable/rounded_shape"
+        android:background="@drawable/rounded_red_shape"
         android:text="@string/sign_in"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@id/edtUserName"

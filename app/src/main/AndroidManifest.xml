@@ -12,10 +12,10 @@
         android:theme="@style/Theme.TalentSearch">
         <activity android:name=".ui.main.login.LoginActivity"/>
         <activity android:name=".ui.main.login.SignUpActivity"/>
-        <activity android:name=".ui.main.dashboard.DashboardActivity"/>
-        <activity android:name=".ui.main.dashboard.NewDashboardActivity"/>
-        <activity android:name=".ui.main.candidatelist.CandidateListActivity" />
-        <activity android:name=".ui.main.candidatelist.CandidateDetailActivity"/>
+        <activity android:name=".ui.main.dashboard.view.DashboardActivity"/>
+        <activity android:name=".ui.main.dashboard.view.NewDashboardActivity"/>
+        <activity android:name=".ui.main.candidatelist.view.CandidateListActivity" />
+        <activity android:name=".ui.main.candiatedetails.CandidateDetailActivity"/>
         <activity android:name=".ui.main.splash.SplashActivity"  android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
