@@ -1,0 +1,9 @@
+query GetDashBoardData(){
+  getDashboardRoleswithCount(){
+    _id
+    name
+    stageCount{
+      registered
+    }
+  }
+}
