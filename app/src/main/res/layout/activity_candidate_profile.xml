@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="@dimen/dimen_10dp"
-    android:layout_marginHorizontal="@dimen/dimen_20dp"
-    android:layout_marginVertical="@dimen/dimen_20dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -29,6 +27,7 @@
         android:id="@+id/ivProfileImage"
         android:layout_width="@dimen/dimen_60dp"
         android:layout_height="@dimen/dimen_60dp"
+        android:layout_margin="@dimen/dimen_20dp"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:src="@drawable/ellipse_profile_pic"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,16 +80,15 @@
         android:id="@+id/btnSelected"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_20dp"
-        android:background="@drawable/rounded_shape_button"
-        android:drawableLeft="@drawable/ic_arrow_back"
-        android:padding="@dimen/dimen_10dp"
         android:layout_margin="@dimen/dimen_10dp"
+        android:background="@drawable/rounded_shape_selected_button"
+        android:drawableLeft="@drawable/ic_arrow_back"
+        android:gravity="center"
+        android:padding="@dimen/dimen_10dp"
         android:text="SELECTED"
         android:textColor="@color/teal_700"
         android:textSize="@dimen/dimen_15sp"
         android:textStyle="normal"
-        android:gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnRejected"
         app:layout_constraintTop_toBottomOf="@id/tvSkills" />
@@ -100,21 +98,24 @@
         android:id="@+id/btnRejected"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_shape_button"
+        android:background="@drawable/rounded_shape_rejected_button"
+        android:layout_margin="@dimen/dimen_10dp"
         android:drawableLeft="@drawable/ic_arrow_back"
+        android:gravity="center"
         android:padding="@dimen/dimen_10dp"
         android:text="REJECTED"
-        android:gravity="center"
         android:textColor="@color/red"
         android:textSize="@dimen/dimen_15sp"
         app:layout_constraintLeft_toRightOf="@id/btnSelected"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/btnSelected"
         app:layout_constraintTop_toTopOf="@id/btnSelected" />
 
     <View
         android:id="@+id/divider2"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="@dimen/dimen_10dp"
+        android:layout_margin="@dimen/dimen_20dp"
         android:layout_marginTop="@dimen/dimen_20dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,22 +124,24 @@
 
     <TextView
         android:id="@+id/tvResumeHeading"
-        android:text="Resume"
-        android:gravity="center_vertical"
-        android:textSize="@dimen/dimen_20sp"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:gravity="center_vertical"
+        android:text="Resume"
+        android:textSize="@dimen/dimen_20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
 
     <WebView
         android:id="@+id/webView"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvResumeHeading"
         android:layout_width="@dimen/dimen_0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResumeHeading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

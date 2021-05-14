@@ -132,7 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/dimen_20dp"
         android:gravity="center"
-        android:text="Don't have an account? Signup"
+        android:text="@string/don_t_have_an_account_signup"
         android:textColor="@color/black"
         android:textSize="@dimen/dimen_15sp"
         android:textStyle="normal"

@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@id/checkBox" />
 <TextView
     android:id="@+id/tvAlreadySigup"
-    android:text="Already have an account? Signin"
+    android:text="@string/already_have_an_account_signin"
     android:textColor="@color/black"
     android:gravity="center"
     android:layout_marginVertical="@dimen/dimen_20dp"

@@ -15,6 +15,7 @@
         <activity android:name=".ui.main.dashboard.view.DashboardActivity"/>
         <activity android:name=".ui.main.dashboard.view.NewDashboardActivity"/>
         <activity android:name=".ui.main.candidatelist.view.CandidateListActivity" />
+        <activity android:name=".ui.main.candidatelist.view.NewCandidateListActivity"/>
         <activity android:name=".ui.main.candiatedetails.CandidateDetailActivity"/>
         <activity android:name=".ui.main.splash.SplashActivity"  android:theme="@style/SplashScreenTheme">
             <intent-filter>
