@@ -10,7 +10,7 @@ import com.skuad.talent.databinding.ActivityCandidateProfileBinding
 import com.skuad.talent.ui.base.BaseActivityVB
 
 class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>() {
-lateinit var candidateData: String
+    lateinit var candidateData: String
     override fun attachBinding(
         list: MutableList<ActivityCandidateProfileBinding>,
         inflater: LayoutInflater
@@ -47,19 +47,20 @@ lateinit var candidateData: String
         candidateData?.let {
             withBinding {
                 tvCandidateName.text = it.candidateName
+                tvDesignation.text = it.experience
+                tvSkills.text = it.skills
             }
         }
-
 
 
     }
 
     companion object {
         //to pass data
-        const val CANDIDATE_DETAILS  = "CANDIDATE_DETAILS"
+        const val CANDIDATE_DETAILS = "CANDIDATE_DETAILS"
         fun newInstance(context: Context, candidateData: Candidate) =
             Intent(context, CandidateDetailActivity::class.java).apply {
-                putExtra(CANDIDATE_DETAILS,candidateData)
+                putExtra(CANDIDATE_DETAILS, candidateData)
             }
     }
 }
