@@ -3,7 +3,9 @@ package com.skuad.talent.di
 import android.app.Application
 import com.skuad.talent.SkuadApp
 import com.skuad.talent.di.module.ActivityBinder
+import com.skuad.talent.di.module.DatabaseBinder
 import com.skuad.talent.di.module.NetworkBinder
+import com.skuad.talent.di.module.ViewModelBinder
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,7 +18,8 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         ActivityBinder::class,
         NetworkBinder::class,
-
+        DatabaseBinder::class,
+        ViewModelBinder::class,
     ]
 )
 interface AppComponent : AndroidInjector<SkuadApp> {

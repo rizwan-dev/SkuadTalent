@@ -1,9 +1,12 @@
 query GetDashBoardData(){
-  getDashboardRoleswithCount(){
+  getDashboardRoleswithCount{
     _id
     name
     stageCount{
       registered
+      sourced
+      hired
+      offered
     }
   }
 }

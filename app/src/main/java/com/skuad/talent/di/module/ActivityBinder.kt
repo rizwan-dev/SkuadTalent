@@ -5,11 +5,15 @@ import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
 import com.skuad.talent.ui.main.dashboard.view.NewDashboardActivity
 import com.skuad.talent.ui.main.login.LoginActivity
 import com.skuad.talent.ui.main.login.SignUpActivity
+import com.skuad.talent.ui.main.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityBinder {
+
+    @ContributesAndroidInjector
+    abstract fun bindSplashActivity(): SplashActivity
 
     @ContributesAndroidInjector
     abstract fun bindLoginActivity(): LoginActivity

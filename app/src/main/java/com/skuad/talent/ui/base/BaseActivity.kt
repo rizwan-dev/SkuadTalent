@@ -10,9 +10,11 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.skuad.talent.ui.base.vb.VBHelpersImpl
 import com.skuad.talent.ui.base.widget.PageLoadingProgress
+import dagger.android.DaggerActivity
+import dagger.android.support.DaggerAppCompatActivity
 import java.util.*
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : DaggerAppCompatActivity() {
 
     abstract val contentView: Int
         @LayoutRes

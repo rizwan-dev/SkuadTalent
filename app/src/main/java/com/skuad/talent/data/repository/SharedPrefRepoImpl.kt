@@ -2,9 +2,11 @@ package com.skuad.talent.data.repository
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import com.skuad.talent.data.base.*
+import com.skuad.talent.base.*
+import com.skuad.talent.domain.repository.SharedPrefRepo
+import javax.inject.Inject
 
-class SharedPrefRepoImpl(private val context: Context) : SharedPrefRepo, BaseRepo {
+class SharedPrefRepoImpl (private val context: Context) : SharedPrefRepo, BaseRepo {
 
     companion object {
         private const val TALENT_PREF_NAME = "TalentPrefs"
