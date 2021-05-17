@@ -1,4 +1,4 @@
-query GetDashBoardData(){
+query getDashboardRoleswithCount{
   getDashboardRoleswithCount{
     _id
     name
@@ -9,4 +9,23 @@ query GetDashBoardData(){
       offered
     }
   }
+}
+
+query getDashboardCategoriesCount{
+getDashboardCategoriesCount {
+
+            sourced
+            disqualified
+            offered
+            hired
+            registered
+            passive
+            mao
+            network
+            est
+            archive
+            mcq_test
+            coding_test
+
+        }
 }

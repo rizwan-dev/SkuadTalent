@@ -17,8 +17,12 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
+import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
+import java.net.CookieManager
+import java.net.CookiePolicy
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -46,6 +50,21 @@ class NetworkBinder {
             .build()
     }
 
+    @Singleton
+    @Provides
+    @Named("okHttpCookie")
+    fun provideOkHttpCookieClient(okHttpClient: OkHttpClient): OkHttpClient {
+        return okHttpClient
+            .newBuilder()
+            .cookieJar(
+                JavaNetCookieJar(
+                    CookieManager().apply {
+                        setCookiePolicy(CookiePolicy.ACCEPT_ALL)
+                    }
+                ))
+            .build()
+    }
+
 
     /*@Provides
     @Singleton
@@ -65,8 +84,8 @@ class NetworkBinder {
 
         return ApolloClient
             .builder()
-            .normalizedCache(memoryFirstThenSqlCacheFactory)
-            .defaultHttpCachePolicy(HttpCachePolicy.NETWORK_FIRST)
+//            .normalizedCache(memoryFirstThenSqlCacheFactory)
+//            .defaultHttpCachePolicy(HttpCachePolicy.NETWORK_ONLY)
             .defaultResponseFetcher(ApolloResponseFetchers.NETWORK_FIRST)
             .serverUrl("https://gql-dev.skuad.in/graphql")
             .okHttpClient(okHttpClient)

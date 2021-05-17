@@ -9,14 +9,15 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-class HeaderInterceptor @Inject constructor(
+class HeaderInterceptor (
 //    private val firebaseAuth:FirebaseAuth,
     private val prefs: SharedPrefRepoImpl
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         return synchronized(this) {
             val originalRequest = chain.request()
-            val requestBuilder = originalRequest.newBuilder().header("Content-Type", "application/json")
+            val requestBuilder = originalRequest.newBuilder()
+                .header("Cookie", COOKIE)
             chain.proceed(requestBuilder.build())
         }
     }
