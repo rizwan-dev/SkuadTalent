@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.data.model.Card
 import com.skuad.talent.databinding.ItemDashbordCardsBinding
+import com.skuad.talent.domain.entities.SkillsInfo
 import com.skuad.talent.ui.main.dashboard.vh.DashboardViewHolder
 
 class DashboardAdapter(
     private val context: Context,
-    private val cardList: List<Card>,
-    private val onItemClick: (Card) -> Unit
+    private val cardList: List<SkillsInfo>,
+    private val onItemClick: (SkillsInfo) -> Unit
 ) :
     RecyclerView.Adapter<DashboardViewHolder>() {
 
@@ -34,5 +35,7 @@ class DashboardAdapter(
     override fun getItemCount(): Int {
         return cardList.size
     }
+
+
 
 }

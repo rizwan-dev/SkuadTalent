@@ -12,6 +12,7 @@ import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.adapter.CandidateListAdapter
 import com.skuad.talent.utils.DataUtil
+import timber.log.Timber
 
 class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
 
@@ -25,7 +26,6 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     }
 
     override fun setup() {
-        setUpView()
         setToolBar()
     }
 
@@ -37,8 +37,9 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
             cardTitle = intent.getStringExtra(CARD_TITLE) ?: ""
-            Log.e("title of card", "cardTitle------------" + cardTitle)
+          Timber.e("cardTitle------------" + cardTitle)
             supportActionBar?.title = cardTitle
+
         }
 
     }
@@ -53,12 +54,15 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     private fun setUpView() {
 
         withBinding {
-            val candidateList =DataUtil.getAndroidCandidates()
+            val candidateList = DataUtil.getBackendCandidates()
             rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
             rvAndroid.adapter =
                 CandidateListAdapter(this@NewCandidateListActivity, candidateList) { candidate ->
                     startActivity(
-                        CandidateDetailActivity.newInstance(this@NewCandidateListActivity, candidate)
+                        CandidateDetailActivity.newInstance(
+                            this@NewCandidateListActivity,
+                            candidate
+                        )
                     )
                 }
         }
@@ -70,9 +74,9 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
         const val CARD_TITLE = "card_title"
 
 
-        fun newInstance(context: Context, cardTitle: String) =
+        fun newInstance(context: Context, name: String) =
             Intent(context, NewCandidateListActivity::class.java).apply {
-                putExtra(CARD_TITLE, cardTitle)
+                putExtra(CARD_TITLE, name)
             }
     }
 
