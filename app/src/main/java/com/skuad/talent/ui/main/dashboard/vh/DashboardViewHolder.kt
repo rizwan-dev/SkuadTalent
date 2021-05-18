@@ -1,9 +1,8 @@
 package com.skuad.talent.ui.main.dashboard.vh
 
 import androidx.recyclerview.widget.RecyclerView
-import com.skuad.talent.data.model.Card
 import com.skuad.talent.databinding.ItemDashbordCardsBinding
-import com.skuad.talent.domain.entities.SkillsInfo
+import com.skuad.talent.domain.entities.dashboard.SkillsInfo
 
 class DashboardViewHolder(
     private val binding: ItemDashbordCardsBinding,
@@ -22,6 +21,10 @@ class DashboardViewHolder(
         with(binding) {
             tvCardName.text = card.name
             tvActiveProfiles.text = card.stageCount.registered.toString()
+
+            when(card.name){
+
+            }
             // ivCardLogo.setImageResource(card.image)
         }
     }

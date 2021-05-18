@@ -1,6 +1,6 @@
 package com.skuad.talent.di.module
 
-import com.skuad.talent.ui.main.candiatedetails.CandidateDetailActivity
+import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
 import com.skuad.talent.ui.main.candidatelist.view.NewCandidateListActivity
 import com.skuad.talent.ui.main.dashboard.view.NewDashboardActivity

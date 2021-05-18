@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skuad.talent.base.entities.ResourceState
-import com.skuad.talent.domain.entities.DashboardCategoriesCount
-import com.skuad.talent.domain.entities.SkillsInfo
+import com.skuad.talent.domain.entities.dashboard.DashboardCategoriesCount
+import com.skuad.talent.domain.entities.dashboard.SkillsInfo
 import com.skuad.talent.domain.repository.DashboardRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -3,8 +3,8 @@ package com.skuad.talent.data.mapper.dashboard
 import com.skuad.talent.GetDashboardRoleswithCountQuery
 import com.skuad.talent.data.mapper.ResponseMapper
 
-import com.skuad.talent.domain.entities.SkillsInfo
-import com.skuad.talent.domain.entities.StageCount
+import com.skuad.talent.domain.entities.dashboard.SkillsInfo
+import com.skuad.talent.domain.entities.dashboard.StageCount
 
 class DashboardDataMapper: ResponseMapper<GetDashboardRoleswithCountQuery.Data, List<SkillsInfo>> {
 

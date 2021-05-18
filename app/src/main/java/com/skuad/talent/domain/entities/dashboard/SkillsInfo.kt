@@ -1,4 +1,4 @@
-package com.skuad.talent.domain.entities
+package com.skuad.talent.domain.entities.dashboard
 
 import com.squareup.moshi.Json
 

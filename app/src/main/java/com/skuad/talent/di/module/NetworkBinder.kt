@@ -9,9 +9,11 @@ import com.apollographql.apollo.cache.normalized.sql.SqlNormalizedCacheFactory
 import com.apollographql.apollo.fetcher.ApolloResponseFetchers
 import com.google.firebase.auth.FirebaseAuth
 import com.skuad.talent.data.api.HeaderInterceptor
+import com.skuad.talent.data.repository.CandidateRepoImpl
 import com.skuad.talent.data.repository.DashboardRepoImpl
 import com.skuad.talent.domain.repository.SharedPrefRepo
 import com.skuad.talent.data.repository.SharedPrefRepoImpl
+import com.skuad.talent.domain.repository.CandidateRepo
 import com.skuad.talent.domain.repository.DashboardRepo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -95,4 +97,8 @@ class NetworkBinder {
     @Singleton
     @Provides
     fun provideDashboardRepo(apolloClient: ApolloClient): DashboardRepo = DashboardRepoImpl(apolloClient)
+
+    @Singleton
+    @Provides
+    fun provideCandidateRepo(apolloClient: ApolloClient): CandidateRepo = CandidateRepoImpl(apolloClient)
 }

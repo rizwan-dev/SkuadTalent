@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.data.model.Card
 import com.skuad.talent.databinding.ItemDashbordCardsBinding
-import com.skuad.talent.domain.entities.SkillsInfo
+import com.skuad.talent.domain.entities.dashboard.SkillsInfo
 import com.skuad.talent.ui.main.dashboard.vh.DashboardViewHolder
 
 class DashboardAdapter(

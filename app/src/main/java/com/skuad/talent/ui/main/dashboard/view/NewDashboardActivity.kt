@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.NewDashboardActivityBinding
-import com.skuad.talent.domain.entities.SkillsInfo
+import com.skuad.talent.domain.entities.dashboard.SkillsInfo
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candidatelist.view.NewCandidateListActivity
 import com.skuad.talent.ui.main.dashboard.adapter.DashboardAdapter

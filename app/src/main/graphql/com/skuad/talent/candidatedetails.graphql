@@ -1,0 +1,68 @@
+query getCandidateByAdmin($id: String!, $requirement_id: String) {
+    getCandidateByAdmin(candidateUId: $id, requirement_id: $requirement_id) {
+            contact_info {
+                name
+                phone
+                address
+                email
+                whatsapp_no
+            }
+            resume
+            linkedin_profile
+            uid
+            stage
+            skills
+            ctags
+            metaInfo
+            role_id {
+                    name
+                    __typename
+            }
+            experience {
+                    role
+                    experience
+                    salary {
+                            amount
+                            currency
+                            __typename
+                    }
+                    location
+                    company_id
+                    freelancer
+                    from_date
+                    to_date
+                    current
+            }
+            preferences {
+                    job_type
+                    location_type
+                    locations
+                    hourly_rate {
+                            amount
+                            currency
+                            __typename
+                    }
+                    notice_period
+                    expected_salary
+                    expected_hike
+                    expected_salary_currency
+            }
+            education {
+                    degree
+                    course
+                    from_year
+                    end_year
+                    college
+                    __typename
+            }    timeline
+            assessments {
+                    report_link
+                    test_link
+                    test_id
+                    test_score
+                    __typename
+            }    talent_advisor {      sourcer_id {        name        _id              }
+            recruiter_id {        name        _id             }
+            }
+            applications {      id      status     }
+            attribution {      source      content      term      medium      campaign      }     }}

@@ -2,14 +2,13 @@ package com.skuad.talent.ui.main.candidatelist.view
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skuad.talent.R
 import com.skuad.talent.databinding.ActivityCandidateListBinding
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.candiatedetails.CandidateDetailActivity
+import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.adapter.CandidateListAdapter
 import com.skuad.talent.utils.DataUtil
 import timber.log.Timber

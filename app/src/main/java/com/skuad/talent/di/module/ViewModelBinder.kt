@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.skuad.talent.di.ViewModelProviderFactory
 import com.skuad.talent.di.scope.ViewModelKey
+import com.skuad.talent.ui.main.candiatedetails.viewmodel.CandidateDetailsViewModel
 import com.skuad.talent.ui.main.dashboard.vewmodel.DashboardViewModel
 import dagger.Binds
 import dagger.Module
@@ -22,4 +23,9 @@ abstract class ViewModelBinder {
     @IntoMap
     @ViewModelKey(DashboardViewModel::class)
     abstract fun providesDashboardViewModel(dashboardViewModel: DashboardViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CandidateDetailsViewModel::class)
+    abstract fun providesCandidateDetailsViewModel(candidateDetailsViewModel: CandidateDetailsViewModel): ViewModel
 }
