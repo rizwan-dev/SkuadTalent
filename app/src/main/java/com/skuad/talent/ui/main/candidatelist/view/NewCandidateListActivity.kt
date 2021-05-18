@@ -26,6 +26,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
     override fun setup() {
         setToolBar()
+        setUpView()
     }
 
     private fun setToolBar() {
@@ -36,7 +37,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
             cardTitle = intent.getStringExtra(CARD_TITLE) ?: ""
-          Timber.e("cardTitle------------" + cardTitle)
+            Timber.e("cardTitle------------" + cardTitle)
             supportActionBar?.title = cardTitle
 
         }
@@ -53,7 +54,8 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     private fun setUpView() {
 
         withBinding {
-            val candidateList = DataUtil.getBackendCandidates()
+            val candidateList = DataUtil.getAndroidCandidates()
+            Timber.e("candidate list from DataUtil---->> " + candidateList)
             rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
             rvAndroid.adapter =
                 CandidateListAdapter(this@NewCandidateListActivity, candidateList) { candidate ->

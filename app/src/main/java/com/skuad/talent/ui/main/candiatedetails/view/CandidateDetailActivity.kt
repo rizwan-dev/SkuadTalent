@@ -40,6 +40,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             when(it){
                 is ResourceState.Success -> {
                     Timber.d("Candidate details is ${it.body}")
+                    val candidateData= it.body
                 }
 
                 is ResourceState.Failure -> {

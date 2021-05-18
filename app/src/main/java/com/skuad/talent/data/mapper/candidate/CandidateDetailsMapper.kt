@@ -10,8 +10,13 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
         return mapToCandidate(input.candidateByAdmin)
     }
 
-    private fun mapToCandidate(candidateByAdmin: GetCandidateByAdminQuery.GetCandidateByAdmin): GetCandidateByAdmin {
-        TODO("Not yet implemented")
+    private fun mapToCandidate(candidateByAdmin: GetCandidateByAdminQuery.GetCandidateByAdmin?): GetCandidateByAdmin {
+        return candidateByAdmin.run {
+            GetCandidateByAdmin(
+                experience = candidateByAdmin?.experience(),
+                resume = candidateByAdmin?.resume()
+            )
+        }
     }
 
 
