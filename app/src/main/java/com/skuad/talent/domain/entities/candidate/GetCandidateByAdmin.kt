@@ -4,10 +4,10 @@ import org.jetbrains.annotations.Nullable
 
 data class GetCandidateByAdmin(
 //    val attribution: Attribution,
-//    val contact_info: ContactInfo,
+    val contact_info: ContactInfo? = null,
 //    val ctags: List<String>,
 //    val education: List<Any>,
-    val experience: List<Any>? = null,
+    val experience: List<Experience>? = null,
 //    val linkedin_profile: String,
 //    val metaInfo: MetaInfo,
 //    val preferences: Preferences,

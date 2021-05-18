@@ -34,9 +34,11 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     private fun setupObserver() {
-        viewModel.getCandidateDetails("", "")
+        showLoading(true)
+        viewModel.getCandidateDetails("67af0db0-bf93-4053-9d33-4a685f5ba97a", "")
 
         viewModel.candidateLiveData.observe(this, {
+            showLoading(false)
             when(it){
                 is ResourceState.Success -> {
                     Timber.d("Candidate details is ${it.body}")

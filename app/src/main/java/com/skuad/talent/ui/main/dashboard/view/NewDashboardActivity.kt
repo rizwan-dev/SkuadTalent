@@ -36,9 +36,11 @@ class NewDashboardActivity : BaseActivityVB<NewDashboardActivityBinding>() {
     }
 
     private fun setupObserver() {
+        showLoading(true)
         viewModel.getDashboardData()
-        viewModel.getDashboardCategoriesData()
+//        viewModel.getDashboardCategoriesData()
         viewModel.dashBoardListLiveData.observe(this, Observer {
+            showLoading(false)
             when (it) {
                 is ResourceState.Success -> {
                     Timber.d("Data is ${it.body}")
