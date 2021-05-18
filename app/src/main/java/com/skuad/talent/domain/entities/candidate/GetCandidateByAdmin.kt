@@ -17,5 +17,5 @@ data class GetCandidateByAdmin(
 //    val stage: String,
 //    val talent_advisor: TalentAdvisor,
 //    val timeline: String,
-//    val uid: String
+    val uid: String = ""
 )
