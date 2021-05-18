@@ -18,10 +18,13 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
                 experience = getExperience(experience()),
                 resume = resume(),
                 contact_info = getContactInfo(contact_info()),
-                uid = uid() ?: ""
+                uid = uid() ?: "",
+                skills = skills().toString()
+
             )
         } ?: kotlin.run { GetCandidateByAdmin() }
     }
+
 
     private fun getContactInfo(contactInfo: GetCandidateByAdminQuery.Contact_info?): ContactInfo? {
         return contactInfo?.run {

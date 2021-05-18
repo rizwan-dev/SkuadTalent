@@ -35,14 +35,14 @@ class DashboardViewHolder(
                 "Backend developer" -> R.drawable.backend
                 "PPC Analyst" -> R.drawable.ic_php
                 "DevOps" -> R.drawable.devops
-                "Hybrid App Developer"-> R.drawable.fullstack
-                "Quality Assurance Engineer"-> R.drawable.quality
-                "Sales Professional"-> R.drawable.sales
+                "Hybrid App Developer" -> R.drawable.fullstack
+                "Quality Assurance Engineer" -> R.drawable.quality
+                "Sales Professional" -> R.drawable.sales
                 "Graphic Designer" -> R.drawable.designer
-                "UI/UX Designer"->R.drawable.ic_uidesigner
+                "UI/UX Designer" -> R.drawable.ic_uidesigner
                 else -> R.drawable.backend
             }
-            Timber.e("selected image resource --->"+skillImage)
+            Timber.e("selected image resource --->" + skillImage)
             ivCardLogo.setImageResource(skillImage)
         }
     }

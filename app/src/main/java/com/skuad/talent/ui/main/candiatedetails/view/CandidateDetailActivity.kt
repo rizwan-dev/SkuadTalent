@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MenuItem
-import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.data.model.Candidate
 import com.skuad.talent.databinding.ActivityCandidateProfileBinding
+import com.skuad.talent.domain.entities.candidate.GetCandidateByAdmin
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.viewmodel.CandidateDetailsViewModel
 import timber.log.Timber
@@ -29,7 +29,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
     override fun setup() {
         setToolBar()
-        setUpView()
+        //   setUpView()
         setupObserver()
     }
 
@@ -39,10 +39,11 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
         viewModel.candidateLiveData.observe(this, {
             showLoading(false)
-            when(it){
+            when (it) {
                 is ResourceState.Success -> {
                     Timber.d("Candidate details is ${it.body}")
-                    val candidateData= it.body
+                    val candidateData = it.body
+                    setUpView(candidateData)
                 }
 
                 is ResourceState.Failure -> {
@@ -70,16 +71,16 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         return true
     }
 
-    private fun setUpView() {
-        val candidateData = intent.getParcelableExtra<Candidate>(CANDIDATE_DETAILS)
+    private fun setUpView(candidateData: GetCandidateByAdmin) {
+        // val candidateData = intent.getParcelableExtra<Candidate>(CANDIDATE_DETAILS)
 
-        candidateData?.let {
-            withBinding {
-                tvCandidateName.text = it.candidateName
-                tvDesignation.text = it.experience
-                tvSkills.text = it.skills
-            }
+        //  this.candidateData?.let {
+        withBinding {
+            tvCandidateName.text = candidateData.contact_info?.name
+            tvDesignation.text = candidateData.experience.toString()
+            tvSkills.text = candidateData.skills
         }
+        //  }
 
 
     }
