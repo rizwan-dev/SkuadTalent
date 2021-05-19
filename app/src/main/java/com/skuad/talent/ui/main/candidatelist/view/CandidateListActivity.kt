@@ -68,12 +68,12 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
                 else -> emptyList()
             }
             rvAndroid.layoutManager = LinearLayoutManager(this@CandidateListActivity)
-            rvAndroid.adapter =
-                CandidateListAdapter(this@CandidateListActivity, candidateList) { candidate ->
-                    startActivity(
-                        CandidateDetailActivity.newInstance(this@CandidateListActivity, candidate)
-                    )
-                }
+//            rvAndroid.adapter =
+//                CandidateListAdapter(this@CandidateListActivity, candidateList) { candidate ->
+//                    startActivity(
+//                        CandidateDetailActivity.newInstance(this@CandidateListActivity, candidate)
+//                    )
+//                }
         }
     }
 

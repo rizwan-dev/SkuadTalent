@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.ActivityCandidateListBinding
+import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import com.skuad.talent.domain.entities.candidatelist.CandidateListRequest
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.adapter.CandidateListAdapter
 import com.skuad.talent.ui.main.candidatelist.viewmodel.CandidateListViewModel
-import com.skuad.talent.utils.DataUtil
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -34,7 +34,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
     override fun setup() {
         setToolBar()
-        setUpView()
+//        setUpView()
         setupObserver()
     }
 
@@ -48,7 +48,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
                 is ResourceState.Success -> {
                     val candidateList = it.body
                     Timber.d("Candidate list is $candidateList")
-
+                    setUpView(candidateList)
 
                 }
 
@@ -81,10 +81,10 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
         return true
     }
 
-    private fun setUpView() {
+    private fun setUpView(candidateList: List<CandidateInfo>) {
 
         withBinding {
-            val candidateList = DataUtil.getAndroidCandidates()
+           // val candidateList = DataUtil.getAndroidCandidates()
             Timber.e("candidate list from DataUtil---->> " + candidateList)
             rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
             rvAndroid.adapter =
@@ -92,7 +92,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
                     startActivity(
                         CandidateDetailActivity.newInstance(
                             this@NewCandidateListActivity,
-                            candidate
+                            candidate.uid
                         )
                     )
                 }

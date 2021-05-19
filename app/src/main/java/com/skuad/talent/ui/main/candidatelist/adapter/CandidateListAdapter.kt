@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.data.model.Candidate
 import com.skuad.talent.databinding.ItemCandidateListBinding
+import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import com.skuad.talent.ui.main.candidatelist.vh.CandidateListViewHolder
 
 class CandidateListAdapter(
     private val context: Context,
-    private val candidateList: List<Candidate>,
-    private val onItemClick: (Candidate) -> Unit
+    private val candidateList: List<CandidateInfo>,
+    private val onItemClick: (CandidateInfo) -> Unit
 ) :
     RecyclerView.Adapter<CandidateListViewHolder>() {
 
@@ -25,8 +26,8 @@ class CandidateListAdapter(
     }
 
     override fun onBindViewHolder(holder: CandidateListViewHolder, position: Int) {
-        val candidate = candidateList[position]
-        holder.bind(candidate)
+        val candidateInfo = candidateList[position]
+        holder.bind(candidateInfo)
 
     }
 

@@ -1,14 +1,15 @@
 package com.skuad.talent.ui.main.candidatelist.vh
 
 import androidx.recyclerview.widget.RecyclerView
-import com.skuad.talent.data.model.Candidate
 import com.skuad.talent.databinding.ItemCandidateListBinding
+import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
+import com.skuad.talent.domain.entities.candidatelist.Skills
 
 class CandidateListViewHolder(
     private val binding: ItemCandidateListBinding,
-    private val onItemClick: (Candidate) -> Unit
+    private val onItemClick: (CandidateInfo) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    lateinit var candidate: Candidate
+    lateinit var candidate: CandidateInfo
 
     init {
         binding.root.setOnClickListener {
@@ -16,12 +17,19 @@ class CandidateListViewHolder(
         }
     }
 
-    fun bind(candidate: Candidate) {
+    fun bind(candidate: CandidateInfo) {
         this.candidate = candidate
         with(binding) {
-            tvCandidateName.text = candidate.candidateName
-            tvYearsOfExperience.text = candidate.experience
-            tvSkills.text = candidate.skills
+            tvCandidateName.text = candidate.contact_info?.name
+            tvYearsOfExperience.text = candidate.experience?.toString()
+
+            val builder = StringBuilder()
+            for (details in candidate.skills) {
+                builder.append(details)
+            }
+
+          tvSkills.setText(builder.toString())
+            //tvSkills.text = builder.toString()
         }
     }
 

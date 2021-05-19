@@ -2,40 +2,73 @@ query getCandidatesByRole($role_id: String!,$stage: String!) {
         getCandidatesByRole(role_id: $role_id, stage: $stage) {
                 contact_info {
                         name
-                        phone      address      email      whatsapp_no      __typename
+                        phone
+                        address
+                        email
+                        whatsapp_no
                 }
-                resume    linkedin_profile    uid    stage    skills    ctags    metaInfo
+                resume
+                linkedin_profile
+                uid
+                stage
+                skills
+                ctags
+                metaInfo
                 role_id {
-                        name      __typename
+                        name
                 }
                 experience {
                         role
                         experience
                         salary {
-                                amount        currency        __typename
+                             amount
+                             currency
                         }
-                        location      company_id      freelancer      from_date      to_date      current      __typename
+                        location
+                        company_id
+                        freelancer
+                        from_date
+                        to_date
+                        current
                 }
                 preferences {
-                        job_type      location_type      locations
+                        job_type
+                        location_type
+                        locations
                         hourly_rate {
-                                amount        currency        __typename
+                                amount
+                                currency
+                                __typename
                         }
-                        notice_period      expected_salary      expected_hike      expected_salary_currency      __typename
+                        notice_period
+                        expected_salary
+                        expected_hike
+                        expected_salary_currency
                 }
                 education {
-                        degree      course      from_year      end_year      college      __typename
+                        degree
+                        course
+                        from_year
+                        end_year
+                        college
                 }
                 timeline
                 assessments {
-                        report_link      test_link      test_id      test_score      __typename
+                        report_link
+                        test_link
+                        test_id
+                        test_score
                 }
                 talent_advisor {
                         sourcer_id {
-                                name        _id        __typename
+                                name
+                                _id
+                                __typename
                         }
                         recruiter_id {
-                                name        _id        __typename
+                                name
+                                _id
+                                __typename
                         }
                 }
         }

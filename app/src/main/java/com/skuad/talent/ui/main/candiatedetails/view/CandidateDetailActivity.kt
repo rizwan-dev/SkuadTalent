@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
-import com.skuad.talent.data.model.Candidate
 import com.skuad.talent.databinding.ActivityCandidateProfileBinding
 import com.skuad.talent.domain.entities.candidate.GetCandidateByAdmin
 import com.skuad.talent.ui.base.BaseActivityVB
@@ -14,12 +13,13 @@ import com.skuad.talent.ui.main.candiatedetails.viewmodel.CandidateDetailsViewMo
 import timber.log.Timber
 import javax.inject.Inject
 
+
 class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>() {
 
     @Inject
     lateinit var viewModel: CandidateDetailsViewModel
 
-    lateinit var candidateData: String
+
     override fun attachBinding(
         list: MutableList<ActivityCandidateProfileBinding>,
         inflater: LayoutInflater
@@ -34,9 +34,11 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     private fun setupObserver() {
+        val candidateId = intent.getStringExtra(CANDIDATE_ID)
+        Timber.e("uid of Selected candidate ----> " + candidateId)
         showLoading(true)
-        viewModel.getCandidateDetails("67af0db0-bf93-4053-9d33-4a685f5ba97a", "")
-
+//        viewModel.getCandidateDetails("67af0db0-bf93-4053-9d33-4a685f5ba97a", "")
+        candidateId?.let { viewModel.getCandidateDetails(it, "") }
         viewModel.candidateLiveData.observe(this, {
             showLoading(false)
             when (it) {
@@ -76,21 +78,28 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
         //  this.candidateData?.let {
         withBinding {
+
             tvCandidateName.text = candidateData.contact_info?.name
             tvDesignation.text = candidateData.experience.toString()
+            Timber.e("value of candidateData.skills" + candidateData.skills)
             tvSkills.text = candidateData.skills
+
+
+//            val separator = ","
+//            val sb = StringBuilder()
+//            candidateData.skills.forEach { sb.append(it).append(separator) }
+//            val string = sb.removeSuffix(separator).toString()
+//            println(string)
         }
         //  }
-
-
     }
 
     companion object {
         //to pass data
-        const val CANDIDATE_DETAILS = "CANDIDATE_DETAILS"
-        fun newInstance(context: Context, candidateData: Candidate) =
+        const val CANDIDATE_ID = "candidate_id"
+        fun newInstance(context: Context, uid: String?) =
             Intent(context, CandidateDetailActivity::class.java).apply {
-                putExtra(CANDIDATE_DETAILS, candidateData)
+                putExtra(CANDIDATE_ID, uid)
             }
     }
 }

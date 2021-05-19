@@ -54,15 +54,35 @@ query getCandidateByAdmin($id: String!, $requirement_id: String) {
                     end_year
                     college
                     __typename
-            }    timeline
+            }
+            timeline
             assessments {
                     report_link
                     test_link
                     test_id
                     test_score
                     __typename
-            }    talent_advisor {      sourcer_id {        name        _id              }
-            recruiter_id {        name        _id             }
             }
-            applications {      id      status     }
-            attribution {      source      content      term      medium      campaign      }     }}
+            talent_advisor {
+                     sourcer_id {
+                         name
+                         _id
+                     }
+            recruiter_id {
+                   name
+                   _id
+                   }
+            }
+            applications {
+                    id
+                    status
+                    }
+            attribution {
+                    source
+                    content
+                    term
+                    medium
+                    campaign
+                    }
+            }
+    }
