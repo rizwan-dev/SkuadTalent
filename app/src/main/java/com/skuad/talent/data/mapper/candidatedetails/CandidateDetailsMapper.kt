@@ -1,4 +1,4 @@
-package com.skuad.talent.data.mapper.candidate
+package com.skuad.talent.data.mapper.candidatedetails
 
 import com.skuad.talent.GetCandidateByAdminQuery
 import com.skuad.talent.data.mapper.ResponseMapper

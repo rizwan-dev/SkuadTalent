@@ -4,16 +4,24 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MenuItem
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skuad.talent.R
+import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.ActivityCandidateListBinding
+import com.skuad.talent.domain.entities.candidatelist.CandidateListRequest
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.adapter.CandidateListAdapter
+import com.skuad.talent.ui.main.candidatelist.viewmodel.CandidateListViewModel
 import com.skuad.talent.utils.DataUtil
 import timber.log.Timber
+import javax.inject.Inject
 
 class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
+
+    @Inject
+    lateinit var viewModel: CandidateListViewModel
 
     private lateinit var cardTitle: String
 
@@ -27,6 +35,28 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     override fun setup() {
         setToolBar()
         setUpView()
+        setupObserver()
+    }
+
+    private fun setupObserver() {
+        showLoading(true)
+        viewModel.getCandidateInfo(CandidateListRequest(roleId = "5f9acb20130c9adc79c2e48d"))
+
+        viewModel.candidateListLiveData.observe(this, Observer {
+            showLoading(false)
+            when (it) {
+                is ResourceState.Success -> {
+                    val candidateList = it.body
+                    Timber.d("Candidate list is $candidateList")
+
+
+                }
+
+                is ResourceState.Failure -> {
+                    Timber.e(it.exception)
+                }
+            }
+        })
     }
 
     private fun setToolBar() {
