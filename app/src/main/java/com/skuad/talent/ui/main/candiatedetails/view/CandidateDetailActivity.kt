@@ -83,13 +83,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             tvDesignation.text = candidateData.experience.toString()
             Timber.e("value of candidateData.skills" + candidateData.skills)
             tvSkills.text = candidateData.skills
+           
 
-
-//            val separator = ","
-//            val sb = StringBuilder()
-//            candidateData.skills.forEach { sb.append(it).append(separator) }
-//            val string = sb.removeSuffix(separator).toString()
-//            println(string)
         }
         //  }
     }

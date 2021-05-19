@@ -21,15 +21,9 @@ class CandidateListViewHolder(
         this.candidate = candidate
         with(binding) {
             tvCandidateName.text = candidate.contact_info?.name
-            tvYearsOfExperience.text = candidate.experience?.toString()
+            tvYearsOfExperience.text = candidate.experience.toString()
+            //tvSkills.text = candidate.skills.toString()
 
-            val builder = StringBuilder()
-            for (details in candidate.skills) {
-                builder.append(details)
-            }
-
-          tvSkills.setText(builder.toString())
-            //tvSkills.text = builder.toString()
         }
     }
 

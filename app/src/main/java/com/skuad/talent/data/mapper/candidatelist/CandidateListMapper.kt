@@ -5,6 +5,7 @@ import com.skuad.talent.data.mapper.ResponseMapper
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import com.skuad.talent.domain.entities.candidatelist.ContactInfo
 import com.skuad.talent.domain.entities.candidatelist.Experience
+import com.skuad.talent.domain.entities.candidatelist.Skills
 
 
 class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<CandidateInfo>> {
@@ -16,20 +17,26 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
             CandidateInfo(
                 uid = it.uid() ?: "",
                 contact_info = getContactInfo(it.contact_info()),
-                skills = it.skills().toString(),
-//                experience = getExperience(it.experience())
+                // skills = getSkills(it.skills()),
+                experience = getExperience(it.experience())
             )
         }
 
     }
 
-//    private fun getExperience(experience: List<GetCandidatesByRoleQuery.Experience>?): Experience? {
-//        return experience?.run {
-//            Experience(
-//                experience = experience() ?: "",
-//            role = role()?:"") }
+//    private fun getSkills(skills: GetCandidatesByRoleQuery.Skills?): Skills? {
+//        return skills?.run {
+//            Skills(skills = skills() ?: "")
+//        }
 //    }
 
+    private fun getExperience(experience: List<GetCandidatesByRoleQuery.Experience>?): List<Experience>? {
+
+        return experience?.map {
+            Experience(it.experience())
+
+        }
+    }
 
     private fun getContactInfo(contactInfo: GetCandidatesByRoleQuery.Contact_info?): ContactInfo? {
         return contactInfo?.run { ContactInfo(name = name() ?: "") }

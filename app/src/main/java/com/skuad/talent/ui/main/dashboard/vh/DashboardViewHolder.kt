@@ -23,7 +23,7 @@ class DashboardViewHolder(
         this.card = card
         with(binding) {
             tvCardName.text = card.name
-            tvActiveProfiles.text = card.stageCount.registered.toString()
+            tvActiveProfiles.text = card.stageCount.sourced.toString()
 
             val skillImage = when (card.name) {
                 "Android Developer" -> R.drawable.android_128
