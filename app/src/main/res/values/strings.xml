@@ -14,5 +14,8 @@
     <string name="check_conditions"><![CDATA[By clicking Create Account,you agree to our Terms & Privacy Policy.]]></string>
     <string name="don_t_have_an_account_signup">Don\'t have an account?<font color='#FF0000'> Signup</font></string>
     <string name="already_have_an_account_signin">Already have an account? <font color='#FF0000'>Signin</font></string>
+    <string name="skills">Skills like Java, Android, Kotlin</string>
+    <string name="experience_not_available">Experience NA</string>
+    <string name="skills_not_available">Skills NA</string>
 
 </resources>

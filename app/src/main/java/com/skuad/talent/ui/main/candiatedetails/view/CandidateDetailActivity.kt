@@ -50,7 +50,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     private fun changeState(stage: String) {
-        viewModel.userId?.let{ uId ->
+        viewModel.userId?.let { uId ->
             showLoading(true)
             viewModel.changeCandidateState(uId, stage)
         }
@@ -120,14 +120,20 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         withBinding {
 
             tvCandidateName.text = candidateData.contact_info?.name
-            if(!candidateData.experience.isNullOrEmpty()){
-                tvDesignation.text = candidateData.experience[0].experience ?: ""
+            if (!candidateData.experience.isNullOrEmpty()) {
+                //string concatenation using a.plus(b) format
+                tvDesignation.text = (candidateData.experience[0].experience ?: "") .plus(" years")
+            }else{
+                tvDesignation.text=getString(R.string.experience_not_available)
             }
 
             Timber.e("value of candidateData.skills" + candidateData.skills)
+            if (!candidateData.skills.isNullOrEmpty()) {
+                tvSkills.text = candidateData.skills.joinToString(", ")
+            } else {
+                tvSkills.text = getString(R.string.skills_not_available)
+            }
 
-            tvSkills.text = candidateData.skills.joinToString(", ")
-           
 
         }
         //  }

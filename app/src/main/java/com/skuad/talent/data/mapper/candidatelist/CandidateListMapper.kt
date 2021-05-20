@@ -5,6 +5,7 @@ import com.skuad.talent.data.mapper.ResponseMapper
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import com.skuad.talent.domain.entities.candidatelist.ContactInfo
 import com.skuad.talent.domain.entities.candidatelist.Experience
+import com.skuad.talent.domain.entities.candidatelist.RoleId
 
 
 class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<CandidateInfo>> {
@@ -16,13 +17,11 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
             CandidateInfo(
                 uid = it.uid() ?: "",
                 contact_info = getContactInfo(it.contact_info()),
-                skills = it.skills(),
+                skills = it.skills() ?: emptyList(),
                 experience = getExperience(it.experience())
             )
         }
-
     }
-
 
 
     private fun getExperience(experience: List<GetCandidatesByRoleQuery.Experience>?): List<Experience>? {

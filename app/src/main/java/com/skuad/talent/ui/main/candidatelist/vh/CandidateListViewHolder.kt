@@ -3,6 +3,7 @@ package com.skuad.talent.ui.main.candidatelist.vh
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.databinding.ItemCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
+import timber.log.Timber
 
 class CandidateListViewHolder(
     private val binding: ItemCandidateListBinding,
@@ -20,11 +21,19 @@ class CandidateListViewHolder(
         this.candidate = candidate
         with(binding) {
             tvCandidateName.text = candidate.contact_info?.name
-            tvYearsOfExperience.text = candidate.experience.toString()
-//            tvSkills.text = candidate.skills.toString()
+            // tvYearsOfExperience.text = candidate.experience.toString()
 
+            if (!candidate.experience.isNullOrEmpty()) {
+                tvYearsOfExperience.text = (candidate.experience[0].experience ?: "").plus(" years")
+
+            } else {
+                tvYearsOfExperience.text = "Experience NA"
+            }
+            if (!candidate.skills.isNullOrEmpty()) {
+                tvSkills.text = candidate.skills.joinToString(", ")
+            } else {
+                tvSkills.text = "Skills NA"
+            }
         }
     }
-
 }
-

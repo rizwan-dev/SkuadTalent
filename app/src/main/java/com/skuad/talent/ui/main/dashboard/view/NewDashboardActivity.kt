@@ -77,7 +77,7 @@ class NewDashboardActivity : BaseActivityVB<NewDashboardActivityBinding>() {
                 startActivity(
                     NewCandidateListActivity.newInstance(
                         this@NewDashboardActivity,
-                        it.name
+                        it.name,it.id
                     )
                 )
             }

@@ -24,7 +24,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     lateinit var viewModel: CandidateListViewModel
 
     private lateinit var cardTitle: String
-
+    private lateinit var cardId: String
     override fun attachBinding(
         list: MutableList<ActivityCandidateListBinding>,
         inflater: LayoutInflater
@@ -61,7 +61,10 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
     private fun getCandidateList() {
         showLoading(true)
-        viewModel.getCandidateInfo(CandidateListRequest(roleId = "5f9acb20130c9adc79c2e48d"))
+        cardId = intent.getStringExtra(CARD_ID) ?: ""
+        Timber.e("card id from dashboard ----%s", cardId)
+        //(roleId = "5f9acb20130c9adc79c2e48d")
+        viewModel.getCandidateInfo(CandidateListRequest(roleId = cardId))
     }
 
     private fun setToolBar() {
@@ -89,7 +92,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     private fun setUpView(candidateList: List<CandidateInfo>) {
 
         withBinding {
-           // val candidateList = DataUtil.getAndroidCandidates()
+            // val candidateList = DataUtil.getAndroidCandidates()
             Timber.e("candidate list from DataUtil---->> %s", candidateList)
             rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
             rvAndroid.adapter =
@@ -108,19 +111,20 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     companion object {
         //to pass data from dashbord to list
         const val CARD_TITLE = "card_title"
-
+        const val CARD_ID = "card_id"
         private const val REQUEST_CHANGE_STATE = 10001
 
 
-        fun newInstance(context: Context, name: String) =
+        fun newInstance(context: Context, name: String, id: String) =
             Intent(context, NewCandidateListActivity::class.java).apply {
                 putExtra(CARD_TITLE, name)
+                putExtra(CARD_ID, id)
             }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == RESULT_OK && requestCode == REQUEST_CHANGE_STATE){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CHANGE_STATE) {
             getCandidateList()
         }
     }
