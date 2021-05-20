@@ -13,7 +13,8 @@ import com.skuad.talent.ui.main.candidatelist.adapter.CandidateListAdapter
 import com.skuad.talent.utils.DataUtil
 
 
-class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
+class
+CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
 
     private lateinit var skillName: String
 

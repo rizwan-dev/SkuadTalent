@@ -39,8 +39,8 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     }
 
     private fun setupObserver() {
-        showLoading(true)
-        viewModel.getCandidateInfo(CandidateListRequest(roleId = "5f9acb20130c9adc79c2e48d"))
+
+        getCandidateList()
 
         viewModel.candidateListLiveData.observe(this, Observer {
             showLoading(false)
@@ -59,6 +59,11 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
         })
     }
 
+    private fun getCandidateList() {
+        showLoading(true)
+        viewModel.getCandidateInfo(CandidateListRequest(roleId = "5f9acb20130c9adc79c2e48d"))
+    }
+
     private fun setToolBar() {
 
         withBinding {
@@ -67,7 +72,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
             cardTitle = intent.getStringExtra(CARD_TITLE) ?: ""
-            Timber.e("cardTitle------------" + cardTitle)
+            Timber.e("cardTitle------------%s", cardTitle)
             supportActionBar?.title = cardTitle
 
         }
@@ -85,15 +90,15 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
         withBinding {
            // val candidateList = DataUtil.getAndroidCandidates()
-            Timber.e("candidate list from DataUtil---->> " + candidateList)
+            Timber.e("candidate list from DataUtil---->> %s", candidateList)
             rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
             rvAndroid.adapter =
                 CandidateListAdapter(this@NewCandidateListActivity, candidateList) { candidate ->
-                    startActivity(
+                    startActivityForResult(
                         CandidateDetailActivity.newInstance(
                             this@NewCandidateListActivity,
                             candidate.uid
-                        )
+                        ), REQUEST_CHANGE_STATE
                     )
                 }
         }
@@ -104,11 +109,20 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
         //to pass data from dashbord to list
         const val CARD_TITLE = "card_title"
 
+        private const val REQUEST_CHANGE_STATE = 10001
+
 
         fun newInstance(context: Context, name: String) =
             Intent(context, NewCandidateListActivity::class.java).apply {
                 putExtra(CARD_TITLE, name)
             }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == RESULT_OK && requestCode == REQUEST_CHANGE_STATE){
+            getCandidateList()
+        }
     }
 
 }

@@ -9,7 +9,7 @@ data class CandidateInfo(
 //    val preferences: Preferences,
 //    val resume: String?,
 //    val role_id: RoleId,
- //   val skills: Skills?,
+    val skills: List<String>? = null,
 //    val stage: String,
 //    val talent_advisor: TalentAdvisor,
 //    val timeline: String,

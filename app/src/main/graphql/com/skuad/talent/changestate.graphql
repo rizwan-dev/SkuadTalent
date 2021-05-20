@@ -1,0 +1,6 @@
+mutation changeStateCandidate($candidate_uid: String!, $stage: String!) {
+        changeStateCandidate(candidate: {candidate_uid: $candidate_uid, stage: $stage}) {
+                candidate_uid
+                stage
+        }
+}
