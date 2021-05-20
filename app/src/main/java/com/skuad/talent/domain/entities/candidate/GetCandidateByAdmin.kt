@@ -11,7 +11,7 @@ data class GetCandidateByAdmin(
 //    val preferences: Preferences,
     val resume: String? = null,
 //    val role_id: RoleId,
-    val skills: String = "",
+    val skills: List<String> = emptyList(),
 //    val stage: String,
 //    val talent_advisor: TalentAdvisor,
 //    val timeline: String,

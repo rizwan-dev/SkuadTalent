@@ -120,18 +120,13 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         withBinding {
 
             tvCandidateName.text = candidateData.contact_info?.name
-            tvDesignation.text = candidateData.experience.toString()
-            Timber.e("value of candidateData.skills" + candidateData.skills)
-
-            val builder = StringBuilder()
-
-            candidateData.skills.forEach { builder.append(it).append(" ,") }
-
-            if(builder.isNotEmpty()){
-                builder.deleteCharAt(builder.length - 1)
+            if(!candidateData.experience.isNullOrEmpty()){
+                tvDesignation.text = candidateData.experience[0].experience ?: ""
             }
 
-            tvSkills.text = builder.toString().trim()
+            Timber.e("value of candidateData.skills" + candidateData.skills)
+
+            tvSkills.text = candidateData.skills.joinToString(", ")
            
 
         }
