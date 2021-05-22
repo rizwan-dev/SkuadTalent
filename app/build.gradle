@@ -114,5 +114,9 @@ dependencies {
     //Play Core
     implementation "com.google.android.play:core:$play_core_version"
 
+    //PDF Viewer
+    implementation 'es.voghdev.pdfviewpager:library:1.1.2'
+
+
 
 }

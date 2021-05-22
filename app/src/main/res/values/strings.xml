@@ -17,5 +17,6 @@
     <string name="skills">Skills like Java, Android, Kotlin</string>
     <string name="experience_not_available">Experience NA</string>
     <string name="skills_not_available">Skills NA</string>
+    <string name="resume_not_available">Resume not available</string>
 
 </resources>

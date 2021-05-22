@@ -4,23 +4,32 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.ActivityCandidateProfileBinding
 import com.skuad.talent.domain.entities.candidate.GetCandidateByAdmin
 import com.skuad.talent.extension.setSafeOnClickListener
+import com.skuad.talent.extension.setVisibility
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.viewmodel.CandidateDetailsViewModel
+import es.voghdev.pdfviewpager.library.RemotePDFViewPager
+import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter
+import es.voghdev.pdfviewpager.library.remote.DownloadFile
+import es.voghdev.pdfviewpager.library.util.FileUtil
 import timber.log.Timber
 import javax.inject.Inject
 
 
-class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>() {
+class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(), DownloadFile.Listener {
 
     @Inject
     lateinit var viewModel: CandidateDetailsViewModel
 
+    var adapter: PDFPagerAdapter? = null
+
+    var remotePDFViewPager: RemotePDFViewPager? = null
 
     override fun attachBinding(
         list: MutableList<ActivityCandidateProfileBinding>,
@@ -101,7 +110,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             supportActionBar?.setHomeButtonEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
-            supportActionBar?.title = "Profile Detail"
+            supportActionBar?.title = "Profile Details"
         }
 
     }
@@ -114,20 +123,27 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     private fun setUpView(candidateData: GetCandidateByAdmin) {
-        // val candidateData = intent.getParcelableExtra<Candidate>(CANDIDATE_DETAILS)
+        val resumeUrl = "https://firebasestorage.googleapis.com/v0/b/fir-test-f324a.appspot.com/o/Pavan%20Bilagi_Halodoc.pdf?alt=media&token=178c0ed0-e012-4e6d-a237-d86c8c72d670"
 
-        //  this.candidateData?.let {
         withBinding {
 
+            if(resumeUrl==null){
+                tvNoResume.setVisibility(true)
+            } else {
+                tvNoResume.setVisibility(false)
+                showLoading(true)
+                 remotePDFViewPager = RemotePDFViewPager(this@CandidateDetailActivity, resumeUrl, this@CandidateDetailActivity)
+                 updateLayout()
+
+            }
             tvCandidateName.text = candidateData.contact_info?.name
             if (!candidateData.experience.isNullOrEmpty()) {
-                //string concatenation using a.plus(b) format
                 tvDesignation.text = (candidateData.experience[0].experience ?: "") .plus(" years")
             }else{
                 tvDesignation.text=getString(R.string.experience_not_available)
             }
 
-            Timber.e("value of candidateData.skills" + candidateData.skills)
+            Timber.e("value of candidateData.skills %s", candidateData.skills)
             if (!candidateData.skills.isNullOrEmpty()) {
                 tvSkills.text = candidateData.skills.joinToString(", ")
             } else {
@@ -136,7 +152,11 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
 
         }
-        //  }
+    }
+
+    private fun updateLayout() {
+        getBinding().webView.addView(remotePDFViewPager,
+            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
     }
 
     companion object {
@@ -151,5 +171,24 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             Intent(context, CandidateDetailActivity::class.java).apply {
                 putExtra(CANDIDATE_ID, uid)
             }
+    }
+
+    override fun onSuccess(url: String?, destinationPath: String?) {
+        adapter = PDFPagerAdapter(this, FileUtil.extractFileNameFromURL(url))
+        remotePDFViewPager?.adapter = adapter
+        showLoading(false)
+    }
+
+    override fun onFailure(e: Exception?) {
+       showLoading(false)
+    }
+
+    override fun onProgressUpdate(progress: Int, total: Int) {
+
+    }
+
+    override fun onDestroy() {
+        adapter?.let { it.close() }
+        super.onDestroy()
     }
 }
