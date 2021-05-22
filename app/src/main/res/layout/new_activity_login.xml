@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/dimen_25dp"
-    android:padding="@dimen/dimen_20dp">
+    android:layout_margin="@dimen/dimen_25"
+    android:padding="@dimen/dimen_20">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_skuadLogo"
-        android:layout_width="@dimen/dimen_120dp"
-        android:layout_height="@dimen/dimen_60dp"
+        android:layout_width="@dimen/dimen_120"
+        android:layout_height="@dimen/dimen_60"
         android:src="@drawable/skuad_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_welcome"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:text="@string/welcome_to_skuad"
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_25sp"
+        android:textSize="@dimen/font_25"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,11 +28,11 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_loginInstruction"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:text="@string/sign_in_instruction"
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_20sp"
+        android:textSize="@dimen/font_20"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,16 +40,16 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/btnSignInwithGoogle"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20dp"
+        android:layout_marginVertical="@dimen/dimen_20"
         android:background="@drawable/rounded_shape_white"
         android:drawableLeft="@drawable/google_1"
         android:gravity="center"
-        android:padding="@dimen/dimen_15dp"
-        android:text="Continue with Google"
+        android:padding="@dimen/dimen_15"
+        android:text="@string/continue_with_google"
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_20sp"
+        android:textSize="@dimen/font_20"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,11 +57,11 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvOr"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20dp"
+        android:layout_marginVertical="@dimen/dimen_20"
         android:gravity="center"
-        android:text="or"
+        android:text="@string/or"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,9 +70,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtUserName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20dp"
+        android:layout_marginVertical="@dimen/dimen_20"
         android:hint="@string/user_name"
         app:layout_constraintEnd_toEndOf="@id/tv_welcome"
         app:layout_constraintStart_toStartOf="@id/tv_welcome"
@@ -86,9 +86,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtUserPassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20dp"
+        android:layout_marginVertical="@dimen/dimen_20"
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="@id/tv_welcome"
         app:layout_constraintStart_toStartOf="@id/tv_welcome"
@@ -103,23 +103,23 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/dimen_25"
         android:background="@drawable/rounded_red_shape"
         android:text="@string/sign_in"
-        android:textSize="15sp"
+        android:textSize="@dimen/font_15"
         app:layout_constraintEnd_toEndOf="@id/edtUserName"
         app:layout_constraintStart_toStartOf="@id/edtUserName"
         app:layout_constraintTop_toBottomOf="@id/edtUserPassword" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvForgotPassword"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20dp"
+        android:layout_marginVertical="@dimen/dimen_20"
         android:gravity="center"
-        android:text="Forgot Password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/red"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,13 +128,13 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvSignupInstruction"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20dp"
+        android:layout_marginVertical="@dimen/dimen_20"
         android:gravity="center"
         android:text="@string/don_t_have_an_account_signup"
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_15sp"
+        android:textSize="@dimen/font_15"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

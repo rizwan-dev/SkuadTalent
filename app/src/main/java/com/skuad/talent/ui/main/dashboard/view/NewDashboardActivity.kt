@@ -31,20 +31,17 @@ class NewDashboardActivity : BaseActivityVB<NewDashboardActivityBinding>() {
     }
 
     override fun setup() {
-       // setUpView()
         setupObserver()
     }
 
     private fun setupObserver() {
         showLoading(true)
         viewModel.getDashboardData()
-//        viewModel.getDashboardCategoriesData()
         viewModel.dashBoardListLiveData.observe(this, Observer {
             showLoading(false)
             when (it) {
                 is ResourceState.Success -> {
                     Timber.d("Data is ${it.body}")
-                    //get list and set to adapter
                     val cardList = it.body
                     setUpView(cardList)
 
@@ -71,13 +68,13 @@ class NewDashboardActivity : BaseActivityVB<NewDashboardActivityBinding>() {
     private fun setUpView(cardList: List<SkillsInfo>) {
         withBinding {
             rvDashboard.layoutManager = GridLayoutManager(this@NewDashboardActivity, 2)
-            val spacingInPixels = resources.getDimensionPixelSize(R.dimen.dimen_20dp)
+            val spacingInPixels = resources.getDimensionPixelSize(R.dimen.dimen_20)
             rvDashboard.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, false))
             rvDashboard.adapter = DashboardAdapter(this@NewDashboardActivity, cardList) {
                 startActivity(
                     NewCandidateListActivity.newInstance(
                         this@NewDashboardActivity,
-                        it.name,it.id
+                        it.name, it.id
                     )
                 )
             }

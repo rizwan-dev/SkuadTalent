@@ -15,8 +15,24 @@
     <string name="don_t_have_an_account_signup">Don\'t have an account?<font color='#FF0000'> Signup</font></string>
     <string name="already_have_an_account_signin">Already have an account? <font color='#FF0000'>Signin</font></string>
     <string name="skills">Skills like Java, Android, Kotlin</string>
-    <string name="experience_not_available">Experience NA</string>
-    <string name="skills_not_available">Skills NA</string>
+    <string name="experience_not_available">Experience : NA</string>
+    <string name="skills_not_available">Skills : NA</string>
     <string name="resume_not_available">Resume not available</string>
+    <string name="experience">Years Of Experience</string>
+    <string name="selected">SELECTED</string>
+    <string name="rejected">REJECTED</string>
+    <string name="skuad_talent">SKUAD TALENT</string>
+    <string name="login">LOGIN</string>
+    <string name="welcome_to_skuad_talent">Welcome to SKUAD TALENT</string>
+    <string name="android">Android</string>
+    <string name="active_number">Active 20</string>
+    <string name="ios">iOS</string>
+    <string name="backend">Backend</string>
+    <string name="candidate_name">Candidate Name</string>
+    <string name="years_of_experience">Years of experience</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="or">or</string>
+    <string name="forgot_password">Forgot Password?</string>
+
 
 </resources>

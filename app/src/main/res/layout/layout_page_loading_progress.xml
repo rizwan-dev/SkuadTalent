@@ -10,6 +10,6 @@
         android:id="@+id/pb_loading"
         style="@style/PageLoadingProgressBar"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="@dimen/dimen_32"
         android:layout_gravity="center" />
 </FrameLayout>

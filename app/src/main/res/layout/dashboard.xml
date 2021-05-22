@@ -6,23 +6,24 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvAppTitle"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_25"
         android:gravity="center"
-        android:text="Welcome to SKUAD TALENT"
+        android:text="@string/welcome_to_skuad_talent"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/font_20"
         android:textStyle="bold"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_main"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dimen_20dp"
+        android:padding="@dimen/dimen_20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,12 +31,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvAndroid"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="@dimen/dimen_160dp"
-            android:layout_margin="@dimen/dimen_20dp"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_160"
+            android:layout_margin="@dimen/dimen_20"
             android:clickable="true"
-            app:cardCornerRadius="@dimen/dimen_20dp"
-            app:cardElevation="@dimen/dimen_2dp"
+            app:cardCornerRadius="@dimen/dimen_20"
+            app:cardElevation="@dimen/dimen_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -47,18 +48,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="@dimen/dimen_64dp"
-                    android:layout_height="@dimen/dimen_64dp"
-                    android:padding="@dimen/dimen_10dp"
+                    android:layout_width="@dimen/dimen_64"
+                    android:layout_height="@dimen/dimen_64"
+                    android:padding="@dimen/dimen_10"
                     android:src="@drawable/android" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_10dp"
-                    android:text="Android"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/android"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/dimen_25sp"
+                    android:textSize="@dimen/font_25"
                     android:textStyle="bold" />
                 />
 
@@ -66,8 +67,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="@dimen/dimen_5dp"
-                    android:text="Active 20"
+                    android:padding="@dimen/dimen_5"
+                    android:text="@string/active_number"
                     android:textColor="@android:color/holo_green_dark" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -75,10 +76,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cvIPhone"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_160dp"
-            android:layout_margin="@dimen/dimen_20dp"
-            app:cardCornerRadius="@dimen/dimen_20dp"
-            app:cardElevation="@dimen/dimen_2dp"
+            android:layout_height="@dimen/dimen_160"
+            android:layout_margin="@dimen/dimen_20"
+            app:cardCornerRadius="@dimen/dimen_20"
+            app:cardElevation="@dimen/dimen_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cvAndroid"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,18 +92,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="@dimen/dimen_64dp"
-                    android:layout_height="@dimen/dimen_64dp"
-                    android:padding="@dimen/dimen_10dp"
+                    android:layout_width="@dimen/dimen_64"
+                    android:layout_height="@dimen/dimen_64"
+                    android:padding="@dimen/dimen_10"
                     android:src="@drawable/apple_logo" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_10dp"
-                    android:text="iOS"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/ios"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/dimen_25sp"
+                    android:textSize="@dimen/font_25"
                     android:textStyle="bold" />
                 />
 
@@ -110,8 +111,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="@dimen/dimen_5dp"
-                    android:text="Active 30"
+                    android:padding="@dimen/dimen_5"
+                    android:text="@string/active_number"
                     android:textColor="@android:color/holo_green_dark" />
             </LinearLayout>
 
@@ -119,15 +120,15 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBackend"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="@dimen/dimen_160dp"
-            android:layout_margin="@dimen/dimen_20dp"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_160"
+            android:layout_margin="@dimen/dimen_20"
             android:clickable="true"
-            app:cardCornerRadius="@dimen/dimen_20dp"
-            app:cardElevation="@dimen/dimen_2dp"
+            app:cardCornerRadius="@dimen/dimen_20"
+            app:cardElevation="@dimen/dimen_2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvIPhone">
 
             <LinearLayout
@@ -137,18 +138,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="@dimen/dimen_64dp"
-                    android:layout_height="@dimen/dimen_64dp"
-                    android:padding="@dimen/dimen_10dp"
+                    android:layout_width="@dimen/dimen_64"
+                    android:layout_height="@dimen/dimen_64"
+                    android:padding="@dimen/dimen_10"
                     android:src="@drawable/backend" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_10dp"
-                    android:text="Backend"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/backend"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/dimen_25sp"
+                    android:textSize="@dimen/font_25"
                     android:textStyle="bold" />
                 />
 
@@ -156,8 +157,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="@dimen/dimen_5dp"
-                    android:text="Active 60"
+                    android:padding="@dimen/dimen_5"
+                    android:text="@string/active_number"
                     android:textColor="@android:color/holo_green_dark" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

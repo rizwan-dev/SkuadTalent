@@ -40,7 +40,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
     override fun setup() {
         setToolBar()
-        //   setUpView()
         setupObserver()
 
         addListeners()
@@ -70,7 +69,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         val candidateId = intent.getStringExtra(CANDIDATE_ID)
         Timber.e("uid of Selected candidate ----> %s", candidateId)
         showLoading(true)
-//        viewModel.getCandidateDetails("67af0db0-bf93-4053-9d33-4a685f5ba97a", "")
         candidateId?.let { viewModel.getCandidateDetails(it, "") }
         viewModel.candidateLiveData.observe(this, {
             showLoading(false)
@@ -160,7 +158,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     companion object {
-        //to pass data
         const val CANDIDATE_ID = "candidate_id"
 
         private const val SELECTED = "registered"
