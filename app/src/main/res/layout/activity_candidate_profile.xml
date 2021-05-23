@@ -7,7 +7,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="@dimen/dimen_1"
         android:background="@color/fade_grey"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,24 +24,24 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivProfileImage"
-        android:layout_width="@dimen/dimen_60dp"
-        android:layout_height="@dimen/dimen_60dp"
-        android:layout_margin="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_width="@dimen/dimen_60"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_margin="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_10"
         android:src="@drawable/ellipse_profile_pic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCandidateName"
-        android:layout_width="@dimen/dimen_0dp"
-        android:layout_marginRight="@dimen/dimen_10dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
         android:gravity="center_vertical"
         android:text="Candidate Name "
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_20sp"
+        android:textSize="@dimen/font_20"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivProfileImage"
@@ -51,11 +51,11 @@
         android:id="@+id/tvDesignation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_5dp"
+        android:layout_marginTop="@dimen/dimen_5"
         android:gravity="center_vertical"
-        android:text="Designation | yrs"
+        android:text="@string/experience"
         android:textColor="@color/design_default_color_primary_dark"
-        android:textSize="@dimen/dimen_15sp"
+        android:textSize="@dimen/font_15"
         android:textStyle="normal"
         app:layout_constraintEnd_toStartOf="@id/tvDesignation"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
@@ -63,17 +63,17 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvSkills"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:layout_marginRight="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_marginRight="@dimen/dimen_10"
         android:ellipsize="end"
         android:ems="3"
         android:gravity="center_vertical"
         android:maxLines="2"
         android:text="@string/skills"
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_15sp"
+        android:textSize="@dimen/font_15"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
@@ -81,16 +81,16 @@
 
     <TextView
         android:id="@+id/btnSelected"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_10dp"
+        android:layout_margin="@dimen/dimen_10"
         android:background="@drawable/rounded_shape_selected_button"
         android:drawableEnd="@drawable/ic_green_checkmark"
         android:gravity="center"
-        android:padding="@dimen/dimen_10dp"
-        android:text="SELECTED"
+        android:padding="@dimen/dimen_10"
+        android:text="@string/selected"
         android:textColor="@color/teal_700"
-        android:textSize="@dimen/dimen_15sp"
+        android:textSize="@dimen/font_15"
         android:textStyle="normal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnRejected"
@@ -99,16 +99,16 @@
 
     <TextView
         android:id="@+id/btnRejected"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_10dp"
+        android:layout_margin="@dimen/dimen_10"
         android:background="@drawable/rounded_shape_rejected_button"
         android:drawableEnd="@drawable/ic_red_crossmark"
         android:gravity="center"
-        android:padding="@dimen/dimen_10dp"
-        android:text="REJECTED"
+        android:padding="@dimen/dimen_10"
+        android:text="@string/rejected"
         android:textColor="@color/red"
-        android:textSize="@dimen/dimen_15sp"
+        android:textSize="@dimen/font_15"
         app:layout_constraintBottom_toBottomOf="@id/btnSelected"
         app:layout_constraintLeft_toRightOf="@id/btnSelected"
         app:layout_constraintRight_toRightOf="parent"
@@ -116,10 +116,10 @@
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="@dimen/dimen_0dp"
-        android:layout_height="@dimen/dimen_10dp"
-        android:layout_margin="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="@dimen/dimen_10"
+        android:layout_margin="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_20"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,35 +127,35 @@
 
     <TextView
         android:id="@+id/tvResumeHeading"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_margin="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_10"
         android:gravity="center_vertical"
         android:text="Resume"
-        android:textSize="@dimen/dimen_20sp"
+        android:textSize="@dimen/font_20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2" />
 
     <FrameLayout
         android:id="@+id/webView"
-        android:layout_width="@dimen/dimen_0dp"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="@dimen/dimen_0"
+        android:layout_marginHorizontal="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_20"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvResumeHeading" >
+        app:layout_constraintTop_toBottomOf="@id/tvResumeHeading">
 
         <TextView
-            android:visibility="gone"
-            android:textSize="@dimen/dimen_20sp"
             android:id="@+id/tvNoResume"
-            android:text="@string/resume_not_available"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/resume_not_available"
+            android:textSize="@dimen/font_20"
+            android:visibility="gone" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

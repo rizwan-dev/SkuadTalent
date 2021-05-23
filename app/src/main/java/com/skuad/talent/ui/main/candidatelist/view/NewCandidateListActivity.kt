@@ -34,7 +34,6 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
     override fun setup() {
         setToolBar()
-//        setUpView()
         setupObserver()
     }
 
@@ -63,7 +62,6 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
         showLoading(true)
         cardId = intent.getStringExtra(CARD_ID) ?: ""
         Timber.e("card id from dashboard ----%s", cardId)
-        //(roleId = "5f9acb20130c9adc79c2e48d")
         viewModel.getCandidateInfo(CandidateListRequest(roleId = cardId))
     }
 
@@ -92,7 +90,6 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     private fun setUpView(candidateList: List<CandidateInfo>) {
 
         withBinding {
-            // val candidateList = DataUtil.getAndroidCandidates()
             Timber.e("candidate list from DataUtil---->> %s", candidateList)
             rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
             rvAndroid.adapter =
@@ -109,7 +106,6 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
 
     companion object {
-        //to pass data from dashbord to list
         const val CARD_TITLE = "card_title"
         const val CARD_ID = "card_id"
         private const val REQUEST_CHANGE_STATE = 10001
