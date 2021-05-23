@@ -115,7 +115,7 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
                     showLoading(true)
                     viewModel.getFirebaseToken(it)
                 }
-//                mGoogleSignInClient?.signOut()
+                mGoogleSignInClient?.signOut()
             } catch (e: ApiException) {
                 Timber.e(e)
                 showShortToast(getString(R.string.something_went_wrong))
