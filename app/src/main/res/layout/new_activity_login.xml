@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/dimen_25"
-    android:padding="@dimen/dimen_20">
+    android:padding="@dimen/dimen_32">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:layout_marginTop="@dimen/dimen_32"
         android:id="@+id/iv_skuadLogo"
         android:layout_width="@dimen/dimen_120"
         android:layout_height="@dimen/dimen_60"
         android:src="@drawable/skuad_logo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
+
         android:id="@+id/tv_welcome"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_32"
+        android:gravity="center"
         android:text="@string/welcome_to_skuad"
         android:textColor="@color/black"
         android:textSize="@dimen/font_25"
@@ -30,9 +36,11 @@
         android:id="@+id/tv_loginInstruction"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_32"
+        android:gravity="center"
         android:text="@string/sign_in_instruction"
         android:textColor="@color/black"
-        android:textSize="@dimen/font_20"
+        android:textSize="@dimen/font_17"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,102 +49,20 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/btnSignInwithGoogle"
         android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:paddingHorizontal="@dimen/dimen_15"
         android:layout_marginVertical="@dimen/dimen_20"
         android:background="@drawable/rounded_shape_white"
-        android:drawableLeft="@drawable/google_1"
+        android:drawableLeft="@drawable/ic_google"
         android:gravity="center"
-        android:padding="@dimen/dimen_15"
         android:text="@string/continue_with_google"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_20"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/font_17"
         android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_loginInstruction" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvOr"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20"
-        android:gravity="center"
-        android:text="@string/or"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSignInwithGoogle" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtUserName"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20"
-        android:hint="@string/user_name"
-        app:layout_constraintEnd_toEndOf="@id/tv_welcome"
-        app:layout_constraintStart_toStartOf="@id/tv_welcome"
-        app:layout_constraintTop_toBottomOf="@id/tvOr">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtUserPassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20"
-        android:hint="@string/password"
-        app:layout_constraintEnd_toEndOf="@id/tv_welcome"
-        app:layout_constraintStart_toStartOf="@id/tv_welcome"
-        app:layout_constraintTop_toBottomOf="@id/edtUserName"
-        app:passwordToggleDrawable="@drawable/show_password_selector"
-        app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_25"
-        android:background="@drawable/rounded_red_shape"
-        android:text="@string/sign_in"
-        android:textSize="@dimen/font_15"
-        app:layout_constraintEnd_toEndOf="@id/edtUserName"
-        app:layout_constraintStart_toStartOf="@id/edtUserName"
-        app:layout_constraintTop_toBottomOf="@id/edtUserPassword" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20"
-        android:gravity="center"
-        android:text="@string/forgot_password"
-        android:textColor="@color/red"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvSignupInstruction"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/dimen_20"
-        android:gravity="center"
-        android:text="@string/don_t_have_an_account_signup"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_15"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvForgotPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

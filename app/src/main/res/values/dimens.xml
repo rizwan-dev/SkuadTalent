@@ -9,6 +9,7 @@
     <dimen name="dimen_24">24dp</dimen>
     <dimen name="font_15">15sp</dimen>
     <dimen name="font_20">20sp</dimen>
+    <dimen name="font_17">20sp</dimen>
     <dimen name="dimen_120">120dp</dimen>
     <dimen name="dimen_2">2dp</dimen>
     <dimen name="dimen_1">1dp</dimen>

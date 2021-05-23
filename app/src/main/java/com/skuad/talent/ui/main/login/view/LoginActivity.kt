@@ -40,16 +40,16 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
 
     private fun setupLiveDataObserver() {
         viewModel.tokenLiveData.observe(this, Observer {
-            showLoading(false)
+
             when(it){
                 is ResourceState.Success -> {
-                    Timber.d("Auth Token -> ${it.body.authToken}")
-                    showLoading(true)
-                    viewModel.getFirebaseToken(it.body.authToken)
+                    Timber.d("Auth Token data -> ${it.body.authToken}")
+                    viewModel.loginFromServer(it.body.authToken)
                 }
 
                 is ResourceState.Failure -> {
-                    Timber.e(it.exception)
+                    showLoading(false)
+                    Timber.e("Auth Token error -> ${it.exception}")
                 }
             }
         })
@@ -58,24 +58,24 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
             when(it){
                 is ResourceState.Success -> {
                     Timber.d("Login Response -> ${it.body.success}")
+                    gotoDashboard()
                 }
 
                 is ResourceState.Failure -> {
-                    Timber.e(it.exception)
+                    Timber.e("Login error -> ${it.exception}")
+                    gotoDashboard()
                 }
             }
         })
     }
 
+    private fun gotoDashboard() {
+        startActivity(NewDashboardActivity.newInstance(this))
+        finish()
+    }
+
     private fun setupClickListener() {
         withBinding {
-            btnLogin.setSafeOnClickListener {
-                startActivity(NewDashboardActivity.newInstance(this@LoginActivity))
-            }
-            tvSignupInstruction.setSafeOnClickListener {
-                startActivity(SignUpActivity.newInstance(this@LoginActivity))
-            }
-
             btnSignInwithGoogle.setSafeOnClickListener {
                 fetchGoogleAccessToken()
             }
@@ -115,7 +115,7 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
                     showLoading(true)
                     viewModel.getFirebaseToken(it)
                 }
-                mGoogleSignInClient?.signOut()
+//                mGoogleSignInClient?.signOut()
             } catch (e: ApiException) {
                 Timber.e(e)
                 showShortToast(getString(R.string.something_went_wrong))

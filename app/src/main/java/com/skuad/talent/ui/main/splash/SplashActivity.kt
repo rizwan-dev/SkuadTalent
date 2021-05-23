@@ -14,7 +14,7 @@ class SplashActivity : BaseActivityVB<ActivitySplashBinding>() {
     }
 
     override fun setup() {
-        Handler(Looper.getMainLooper()).postDelayed(::navigateToNextActivity, 1000)
+        Handler(Looper.getMainLooper()).postDelayed(::navigateToNextActivity, 1500)
     }
 
     private fun navigateToNextActivity() {

@@ -19,6 +19,7 @@
     <color name="fade_grey">#E5E5E5</color>
     <color name="fade_grey_60">#99E5E5E5</color>
     <color name="light_teal">#8dd2bf</color>
-
+    <color name="grey">#666666</color>
+    <color name="dark_grey">#333333</color>
 
 </resources>

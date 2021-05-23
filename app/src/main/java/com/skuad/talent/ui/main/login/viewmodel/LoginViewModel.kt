@@ -10,7 +10,9 @@ import com.skuad.talent.domain.entities.login.LoginResponse
 import com.skuad.talent.domain.entities.login.LoginResponseData
 import com.skuad.talent.domain.entities.login.SocialLoginResponse
 import com.skuad.talent.domain.repository.LoginRepo
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(private val loginRepo: LoginRepo) : ViewModel() {
@@ -32,8 +34,11 @@ class LoginViewModel @Inject constructor(private val loginRepo: LoginRepo) : Vie
 
     fun loginFromServer(token: String){
         viewModelScope.launch {
-            val loginResult = loginRepo.loginFirebaseAsync(token)
-            _loginResponseData.value = loginResult
+            withContext(Dispatchers.IO){
+                val loginResult = loginRepo.loginFirebaseAsync(token)
+                _loginResponseData.postValue(loginResult)
+            }
+
         }
     }
 

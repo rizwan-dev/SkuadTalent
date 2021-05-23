@@ -17,7 +17,10 @@ class HeaderInterceptor (
         return synchronized(this) {
             val originalRequest = chain.request()
             val requestBuilder = originalRequest.newBuilder()
-                .header("Cookie", COOKIE)
+            if (originalRequest.header(HEADER_AUTH).isNullOrBlank()) {
+                requestBuilder
+                    .header("Cookie", COOKIE)
+            }
             chain.proceed(requestBuilder.build())
         }
     }
