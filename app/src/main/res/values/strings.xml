@@ -3,7 +3,7 @@
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
     <string name="welcome_to_skuad">Welcome to Skuad</string>
-    <string name="sign_in_instruction">Login with your Gmail account</string>
+    <string name="sign_in_instruction">Login with your Gmail account to use Skuad platform</string>
     <string name="sign_in">Sign in</string>
     <string name="create_your_skuad_profile">Create your Skuad profile</string>
     <string name="sign_up_instruction">Create your profile in few easy steps and get matched to amazing global opportunities</string>
