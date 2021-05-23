@@ -7,6 +7,7 @@ import com.skuad.talent.databinding.ActivitySignUpBinding
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.dashboard.view.NewDashboardActivity
+import com.skuad.talent.ui.main.login.view.LoginActivity
 
 class SignUpActivity : BaseActivityVB<ActivitySignUpBinding>() {
     override fun attachBinding(list: MutableList<ActivitySignUpBinding>, inflater: LayoutInflater) {

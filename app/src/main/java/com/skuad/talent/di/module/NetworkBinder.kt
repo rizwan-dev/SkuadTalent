@@ -8,19 +8,26 @@ import com.apollographql.apollo.cache.normalized.lru.LruNormalizedCacheFactory
 import com.apollographql.apollo.cache.normalized.sql.SqlNormalizedCacheFactory
 import com.apollographql.apollo.fetcher.ApolloResponseFetchers
 import com.google.firebase.auth.FirebaseAuth
+import com.skuad.talent.data.api.ApiManager
+import com.skuad.talent.data.api.BaseUrl
 import com.skuad.talent.data.api.HeaderInterceptor
+import com.skuad.talent.data.api.LoginApi
 import com.skuad.talent.data.repository.CandidateRepoImpl
 import com.skuad.talent.data.repository.DashboardRepoImpl
+import com.skuad.talent.data.repository.LoginRepoImpl
 import com.skuad.talent.domain.repository.SharedPrefRepo
 import com.skuad.talent.data.repository.SharedPrefRepoImpl
 import com.skuad.talent.domain.repository.CandidateRepo
 import com.skuad.talent.domain.repository.DashboardRepo
+import com.skuad.talent.domain.repository.LoginRepo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.net.CookieManager
 import java.net.CookiePolicy
 import java.util.concurrent.TimeUnit
@@ -37,8 +44,9 @@ class NetworkBinder {
 
     @Provides
     fun provideHeaderInterceptor(
+        firebaseAuth: FirebaseAuth,
         sharedPrefRepo: SharedPrefRepoImpl
-    ): HeaderInterceptor = HeaderInterceptor(sharedPrefRepo)
+    ): HeaderInterceptor = HeaderInterceptor(firebaseAuth, sharedPrefRepo)
 
     @Singleton
     @Provides
@@ -68,13 +76,23 @@ class NetworkBinder {
     }
 
 
-    /*@Provides
+    @Provides
     @Singleton
-    fun provideFirebaseAuth() = FirebaseAuth.getInstance()*/
+    fun provideFirebaseAuth() = FirebaseAuth.getInstance()
 
 
     @Provides
     fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+
+
+    @Singleton
+    @Provides
+    fun provideRetrofitClient(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BaseUrl.BASE_SERVER)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .client(okHttpClient)
+            .build()
 
     @Singleton
     @Provides
@@ -86,13 +104,21 @@ class NetworkBinder {
 
         return ApolloClient
             .builder()
-//            .normalizedCache(memoryFirstThenSqlCacheFactory)
-//            .defaultHttpCachePolicy(HttpCachePolicy.NETWORK_ONLY)
+            .normalizedCache(memoryFirstThenSqlCacheFactory)
+            .defaultHttpCachePolicy(HttpCachePolicy.NETWORK_ONLY)
             .defaultResponseFetcher(ApolloResponseFetchers.NETWORK_FIRST)
             .serverUrl("https://gql-dev.skuad.in/graphql")
             .okHttpClient(okHttpClient)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideApiManager(retrofit: Retrofit): ApiManager = ApiManager(retrofit)
+
+    @Singleton
+    @Provides
+    fun provideLoginApi(apiManager: ApiManager): LoginApi = apiManager.loginApi
 
     @Singleton
     @Provides
@@ -101,4 +127,8 @@ class NetworkBinder {
     @Singleton
     @Provides
     fun provideCandidateRepo(apolloClient: ApolloClient): CandidateRepo = CandidateRepoImpl(apolloClient)
+
+    @Singleton
+    @Provides
+    fun provideLoginRepo(firebaseAuth: FirebaseAuth, prefs: SharedPrefRepoImpl, loginApi: LoginApi): LoginRepo = LoginRepoImpl(firebaseAuth, prefs, loginApi)
 }

@@ -18,5 +18,6 @@
     <string name="experience_not_available">Experience NA</string>
     <string name="skills_not_available">Skills NA</string>
     <string name="resume_not_available">Resume not available</string>
-
+    <string name="server_client_id" translatable="false">1090609532096-d3p7ihmvut8r87thbrk0sa76ndrlbvf7.apps.googleusercontent.com</string>
+    <string name="something_went_wrong">Something went wrong</string>
 </resources>

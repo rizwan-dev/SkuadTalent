@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-android-extensions'
     id ("com.apollographql.apollo").version("2.5.5")
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {

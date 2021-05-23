@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.TalentSearch">
-        <activity android:name=".ui.main.login.LoginActivity"/>
+        <activity android:name=".ui.main.login.view.LoginActivity"/>
         <activity android:name=".ui.main.login.SignUpActivity"/>
         <activity android:name=".ui.main.dashboard.view.DashboardActivity"/>
         <activity android:name=".ui.main.dashboard.view.NewDashboardActivity"/>

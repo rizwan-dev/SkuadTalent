@@ -4,7 +4,7 @@ import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
 import com.skuad.talent.ui.main.candidatelist.view.NewCandidateListActivity
 import com.skuad.talent.ui.main.dashboard.view.NewDashboardActivity
-import com.skuad.talent.ui.main.login.LoginActivity
+import com.skuad.talent.ui.main.login.view.LoginActivity
 import com.skuad.talent.ui.main.login.SignUpActivity
 import com.skuad.talent.ui.main.splash.SplashActivity
 import dagger.Module

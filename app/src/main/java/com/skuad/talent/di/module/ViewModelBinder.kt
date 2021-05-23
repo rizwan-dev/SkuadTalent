@@ -7,6 +7,7 @@ import com.skuad.talent.di.scope.ViewModelKey
 import com.skuad.talent.ui.main.candiatedetails.viewmodel.CandidateDetailsViewModel
 import com.skuad.talent.ui.main.candidatelist.viewmodel.CandidateListViewModel
 import com.skuad.talent.ui.main.dashboard.vewmodel.DashboardViewModel
+import com.skuad.talent.ui.main.login.viewmodel.LoginViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -34,4 +35,9 @@ abstract class ViewModelBinder {
     @IntoMap
     @ViewModelKey(CandidateListViewModel::class)
     abstract fun providesCandidateListViewModel(candidateListViewModel: CandidateListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun providesLoginViewModel(loginViewModel: LoginViewModel): ViewModel
 }
