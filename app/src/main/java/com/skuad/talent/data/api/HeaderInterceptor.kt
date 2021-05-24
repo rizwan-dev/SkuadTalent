@@ -13,30 +13,17 @@ class HeaderInterceptor (
     private val prefs: SharedPrefRepoImpl
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        getToken()
         return synchronized(this) {
             val originalRequest = chain.request()
             val requestBuilder = originalRequest.newBuilder()
             if (originalRequest.header(HEADER_AUTH).isNullOrBlank()) {
                 requestBuilder
-                    .header("Cookie", COOKIE)
+                    .header("Cookie", "skuad-token=${prefs.getAccessToken()}")
             }
             chain.proceed(requestBuilder.build())
         }
     }
 
-    @NonNull
-    private fun getToken() = try {
-        firebaseAuth.currentUser?.getIdToken(false)?.let {
-            (Tasks.await(it).token)?.also { tokenValue ->
-                prefs.setAccessToken(tokenValue)
-            }
-        } ?: prefs.getAccessToken()
-    } catch (exception: Exception) {
-        exception.printStackTrace()
-        FirebaseCrashlytics.getInstance().recordException(exception)
-        prefs.getAccessToken()
-    }
 
 }
 

@@ -24,7 +24,7 @@ class SharedPrefRepoImpl (private val context: Context) : SharedPrefRepo, BaseRe
     }
 
     ///  Used to send in header with api
-    fun setAccessToken(value: String) {
+    override fun setAccessToken(value: String) {
         prefs.edit().putString(ACCESS_TOKEN_PREF, value).apply()
     }
 

@@ -12,6 +12,7 @@ import com.skuad.talent.R
 import com.skuad.talent.base.common.Constant
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.NewActivityLoginBinding
+import com.skuad.talent.domain.repository.SharedPrefRepo
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.extension.showShortToast
 import com.skuad.talent.ui.base.BaseActivityVB
@@ -25,6 +26,9 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
 
     @Inject
     lateinit var viewModel: LoginViewModel
+
+    @Inject
+    lateinit var sharedPref: SharedPrefRepo
 
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private var mGoogleSignInOptions: GoogleSignInOptions? = null
@@ -58,13 +62,13 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
             showLoading(false)
             when(it){
                 is ResourceState.Success -> {
-                    Timber.d("Login Response -> ${it.body.success}")
+                    Timber.d("Login Response -> ${it.body}")
+                    sharedPref.setAccessToken(it.body.token)
                     gotoDashboard()
                 }
 
                 is ResourceState.Failure -> {
                     Timber.e("Login error -> ${it.exception}")
-                    gotoDashboard()
                 }
             }
         })
