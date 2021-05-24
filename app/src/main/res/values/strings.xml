@@ -38,6 +38,8 @@
     <string name="address">Address</string>
     <string name="current_employer">Current Employer</string>
     <string name="current_salary">Current Salary</string>
+    <string name="notice_period">Notice Period</string>
+
 
 
 </resources>

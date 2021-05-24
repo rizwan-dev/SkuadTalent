@@ -91,6 +91,19 @@
         app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvCurrentEmployer" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvNoticePeriod"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:text="@string/notice_period"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_15"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
+        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintTop_toBottomOf="@id/tvSalary" />
 
     <ImageView
         android:id="@+id/ivArrow"

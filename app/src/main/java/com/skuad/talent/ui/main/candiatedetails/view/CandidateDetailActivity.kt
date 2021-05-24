@@ -22,7 +22,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(), DownloadFile.Listener {
+class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(),
+    DownloadFile.Listener {
 
     @Inject
     lateinit var viewModel: CandidateDetailsViewModel
@@ -120,31 +121,61 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     private fun setUpView(candidateData: GetCandidateByAdmin) {
-        val resumeUrl = "https://firebasestorage.googleapis.com/v0/b/fir-test-f324a.appspot.com/o/Pavan%20Bilagi_Halodoc.pdf?alt=media&token=178c0ed0-e012-4e6d-a237-d86c8c72d670"
+        val resumeUrl =
+            "https://firebasestorage.googleapis.com/v0/b/fir-test-f324a.appspot.com/o/Pavan%20Bilagi_Halodoc.pdf?alt=media&token=178c0ed0-e012-4e6d-a237-d86c8c72d670"
 
         withBinding {
 
-            if(resumeUrl==null){
+            if (resumeUrl == null) {
                 tvNoResume.setVisibility(true)
             } else {
                 tvNoResume.setVisibility(false)
                 showLoading(true)
-                 remotePDFViewPager = RemotePDFViewPager(this@CandidateDetailActivity, resumeUrl, this@CandidateDetailActivity)
-                 updateLayout()
+                remotePDFViewPager = RemotePDFViewPager(
+                    this@CandidateDetailActivity,
+                    resumeUrl,
+                    this@CandidateDetailActivity
+                )
+                updateLayout()
 
             }
+            //name
             tvCandidateName.text = candidateData.contact_info?.name
-            if (!candidateData.experience.isNullOrEmpty()) {
-                tvDesignation.text = (candidateData.experience[0].experience ?: "") .plus(" years")
-            }else{
-                tvDesignation.text=getString(R.string.experience_not_available)
-            }
-
-            Timber.e("value of candidateData.skills %s", candidateData.skills)
-            if (!candidateData.skills.isNullOrEmpty()) {
-                tvSkills.text = candidateData.skills.joinToString(", ")
+            //address
+            if (!candidateData.contact_info?.address.isNullOrEmpty()) {
+                tvAddress.text = candidateData.contact_info?.address
             } else {
-                tvSkills.text = getString(R.string.skills_not_available)
+                tvAddress.text = "Address : NA"
+            }
+            //exp
+//            if (!candidateData.experience.isNullOrEmpty()) {
+//                tvDesignation.text = (candidateData.experience[0].experience ?: "").plus(" years")
+//            } else {
+//                tvDesignation.text = "Experience : NA"
+//            }
+//
+            if (!candidateData.experience.isNullOrEmpty()) {
+                val designation = candidateData.experience[0].role
+                tvDesignation.text = "$designation | " + (candidateData.experience[0].experience
+                    ?: "").plus(" years")
+            } else {
+                tvDesignation.text = "Designation : NA | " +"Experience : NA"
+            }
+            //
+            if (!candidateData.experience.isNullOrEmpty() && !candidateData.experience!![0].company_id.isNullOrEmpty()
+                && candidateData.experience!![0].salary?.currency.isNullOrEmpty()
+            ) {
+                tvCurrentEmployer.text = candidateData.experience!![0].company_id
+                tvSalary.text = candidateData.experience!![0].salary?.currency
+            } else {
+                tvCurrentEmployer.text = "Current Employer : NA"
+                tvSalary.text = "Salary : NA"
+            }
+            //
+            if (!candidateData.preferences?.notice_period.isNullOrEmpty()) {
+                tvNoticePeriod.text = candidateData.preferences?.notice_period.toString()
+            } else {
+                tvNoticePeriod.text = "Notice Period : NA"
             }
 
 
@@ -152,8 +183,10 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     private fun updateLayout() {
-        getBinding().webView.addView(remotePDFViewPager,
-            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+        getBinding().webView.addView(
+            remotePDFViewPager,
+            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT
+        )
     }
 
     companion object {
@@ -176,7 +209,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     override fun onFailure(e: Exception?) {
-       showLoading(false)
+        showLoading(false)
     }
 
     override fun onProgressUpdate(progress: Int, total: Int) {
