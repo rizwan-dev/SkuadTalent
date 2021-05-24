@@ -11,7 +11,7 @@ import retrofit2.http.POST
 interface LoginApi {
     @POST("auth/hire")
     @Headers("$HEADER_AUTH:$AUTH_VALUE")
-    fun loginAsync(@Body loginRequest: LoginRequest): Call<ResponseDto<LoginResponseData>>
+    fun loginAsync(@Body loginRequest: LoginRequest): Call<LoginResponseData>
 }
 
 const val HEADER_AUTH = "Authorization"

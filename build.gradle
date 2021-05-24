@@ -18,6 +18,10 @@ buildscript {
         // App Libraries
         google_login_version = "19.0.0"
         play_core_version = "1.10.0"
+
+        // Oauth Ids
+        googleWebIdDev = "\"1080157401680-2d6sjlu406ath2gatkjh74p7f19sgfp1.apps.googleusercontent.com\""
+        googleWebIdStaging = "\"1090609532096-lf45nd2vlkk1pjbf1qfa7vjj5nek8u7t.apps.googleusercontent.com\""
     }
     repositories {
         google()

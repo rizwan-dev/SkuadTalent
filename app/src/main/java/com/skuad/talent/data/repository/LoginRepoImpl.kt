@@ -20,7 +20,7 @@ class LoginRepoImpl(
 
     override suspend fun loginFirebaseAsync(request: String): ResourceState<LoginResponseData> {
         return loginApi.loginAsync(LoginRequest(idToken = request)).mapToEntity(true){
-            it.data
+            it
         }
     }
 

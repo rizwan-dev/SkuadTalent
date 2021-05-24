@@ -9,6 +9,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.skuad.talent.R
+import com.skuad.talent.base.common.Constant
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.NewActivityLoginBinding
 import com.skuad.talent.extension.setSafeOnClickListener
@@ -89,7 +90,7 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
 
     private fun googleSignInSetup() {
         mGoogleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("1090609532096-lf45nd2vlkk1pjbf1qfa7vjj5nek8u7t.apps.googleusercontent.com")
+            .requestIdToken(Constant.GOOGLE_WEB_ID)
             .requestEmail()
             .build()
         mGoogleSignInOptions?.let {

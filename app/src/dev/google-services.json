@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1080157401680",
+    "project_id": "skuad-core-dev1",
+    "storage_bucket": "skuad-core-dev1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080157401680:android:f59c2a4cded8f2c8361755",
+        "android_client_info": {
+          "package_name": "com.skuad.talent.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080157401680-ju1khbvnavjodmcqmasgl89undualaq8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skuad.talent.test",
+            "certificate_hash": "4938f6b0e6b7a72e2c43d42adadbb9d33fc253f1"
+          }
+        },
+        {
+          "client_id": "1080157401680-2d6sjlu406ath2gatkjh74p7f19sgfp1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbD9ko4TUqIFja4Dsn3O8mssanFOYZlHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080157401680-2d6sjlu406ath2gatkjh74p7f19sgfp1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
