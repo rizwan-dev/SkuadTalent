@@ -41,7 +41,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     override fun setup() {
         setToolBar()
         setupObserver()
-
         addListeners()
     }
 
