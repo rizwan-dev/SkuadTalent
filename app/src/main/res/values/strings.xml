@@ -35,6 +35,9 @@
     <string name="continue_with_google">Continue with Google</string>
     <string name="or">or</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="address">Address</string>
+    <string name="current_employer">Current Employer</string>
+    <string name="current_salary">Current Salary</string>
 
 
 </resources>

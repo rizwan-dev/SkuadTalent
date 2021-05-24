@@ -21,16 +21,19 @@ class CandidateListViewHolder(
         this.candidate = candidate
         with(binding) {
             tvCandidateName.text = candidate.contact_info?.name
+            tvAddress.text = candidate.contact_info?.address
+            Timber.e("Address---${candidate.contact_info?.address}")
             if (!candidate.experience.isNullOrEmpty()) {
                 tvYearsOfExperience.text = (candidate.experience[0].experience ?: "").plus(" years")
 
             } else {
                 tvYearsOfExperience.text = "Experience : NA"
             }
-            if (!candidate.skills.isNullOrEmpty()) {
-                tvSkills.text = candidate.skills.joinToString(", ")
+            if (!candidate.contact_info?.address.isNullOrEmpty()) {
+                tvAddress.text = candidate.contact_info?.address
+                // tvAddress.text = candidate.skills.joinToString(", ")
             } else {
-                tvSkills.text = "Skills : NA"
+                tvAddress.text = "Skills : NA"
             }
         }
     }

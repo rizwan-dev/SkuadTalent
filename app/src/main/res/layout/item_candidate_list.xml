@@ -16,7 +16,8 @@
         android:layout_height="@dimen/dimen_60"
         android:layout_margin="@dimen/dimen_5"
         android:src="@drawable/avtar"
-        app:layout_constraintBottom_toBottomOf="@id/tvSkills"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tvAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvCandidateName" />
 
@@ -28,7 +29,7 @@
         android:gravity="center_vertical"
         android:text="@string/candidate_name"
         android:textColor="@color/black"
-        android:textSize="@dimen/font_20"
+        android:textSize="@dimen/font_17"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/years_of_experience"
-        android:textColor="@color/design_default_color_primary_dark"
+        android:textColor="@color/black"
         android:textSize="@dimen/font_15"
         android:textStyle="normal"
         app:layout_constraintEnd_toStartOf="@id/ivArrow"
@@ -48,14 +49,14 @@
         app:layout_constraintTop_toBottomOf="@id/tvCandidateName" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvSkills"
+        android:id="@+id/tvAddress"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:ems="3"
         android:gravity="center_vertical"
         android:maxLines="2"
-        android:text="@string/skills"
+        android:text="@string/address"
         android:textColor="@color/black"
         android:textSize="@dimen/font_15"
         android:textStyle="normal"
@@ -63,14 +64,42 @@
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvYearsOfExperience" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvCurrentEmployer"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:text="@string/current_employer"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_15"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
+        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSalary"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:text="@string/current_salary"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_15"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
+        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintTop_toBottomOf="@id/tvCurrentEmployer" />
+
     <ImageView
         android:id="@+id/ivArrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_10"
         android:src="@drawable/chevron_right"
-        app:layout_constraintBottom_toBottomOf="@id/tvYearsOfExperience"
+        app:layout_constraintBottom_toBottomOf="@id/tvAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvYearsOfExperience" />
+        app:layout_constraintTop_toTopOf="@id/tvAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

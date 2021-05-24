@@ -33,6 +33,6 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
     }
 
     private fun getContactInfo(contactInfo: GetCandidatesByRoleQuery.Contact_info?): ContactInfo? {
-        return contactInfo?.run { ContactInfo(name = name() ?: "") }
+        return contactInfo?.run { ContactInfo(name = name() ?: "", address = address() ?: "") }
     }
 }
