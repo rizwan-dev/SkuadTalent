@@ -48,7 +48,7 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
     }
 
     private fun mapSalary(salary: GetCandidateByAdminQuery.Salary?): Salary? {
-        return salary?.run { Salary(amount().toString()) }
+        return salary?.run { Salary(amount(),currency()?:"") }
     }
 
 

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
@@ -18,6 +19,7 @@ import es.voghdev.pdfviewpager.library.RemotePDFViewPager
 import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter
 import es.voghdev.pdfviewpager.library.remote.DownloadFile
 import es.voghdev.pdfviewpager.library.util.FileUtil
+import kotlinx.android.synthetic.main.alert_dialog.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -48,14 +50,54 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     private fun addListeners() {
         withBinding {
             btnSelected.setSafeOnClickListener {
-                changeState(SELECTED)
+                showAlertBox()
             }
 
             btnRejected.setSafeOnClickListener {
-                changeState(REJECTED)
+                showAlertBox()
             }
         }
     }
+
+    private fun showAlertBox() {
+        Timber.e("IN ALERT BOX")
+        val dialogView = layoutInflater.inflate(R.layout.alert_dialog, null)
+        val customDialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .show()
+        tvAlertTitle.text = "Profile Status"
+        tv_description.text = "This profile has been shortlisted."
+        btn_cancel_dialog.setSafeOnClickListener {
+            changeState(SELECTED)
+            customDialog.dismiss()
+        }
+    }
+
+    private fun showAlertBox(status: String) {
+        Timber.e("IN ALERT BOX$status")
+        val dialogView = layoutInflater.inflate(R.layout.alert_dialog, null)
+        val customDialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .show()
+        tvAlertTitle.text = "Profile Status"
+        if (status.equals("registered")) {
+            tv_description.text = "This profile has been shortlisted."
+        } else {
+            tv_description.text = "This profile has been Rejected."
+        }
+        btn_cancel_dialog.setSafeOnClickListener {
+
+            if (status.equals("registered")) {
+                changeState(SELECTED)
+
+            } else {
+                changeState(REJECTED)
+            }
+            customDialog.dismiss()
+        }
+
+    }
+
 
     private fun changeState(stage: String) {
         viewModel.userId?.let { uId ->
@@ -147,35 +189,47 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             } else {
                 tvAddress.text = "Address : NA"
             }
-            //exp
-//            if (!candidateData.experience.isNullOrEmpty()) {
-//                tvDesignation.text = (candidateData.experience[0].experience ?: "").plus(" years")
-//            } else {
-//                tvDesignation.text = "Experience : NA"
-//            }
-//
             if (!candidateData.experience.isNullOrEmpty()) {
-                val designation = candidateData.experience[0].role
-                tvDesignation.text = "$designation | " + (candidateData.experience[0].experience
-                    ?: "").plus(" years")
+
+                if (!candidateData.experience[0].role.isNullOrEmpty()) {
+                    val designation = candidateData.experience[0].role
+                    tvDesignation.text =
+                        "$designation | " + (candidateData.experience[0].experience
+                            ?: "").plus(" years")
+                } else {
+                    val designation = "Designation : NA"
+                    tvDesignation.text =
+                        "$designation | " + (candidateData.experience[0].experience
+                            ?: "").plus(" years")
+                }
+
             } else {
-                tvDesignation.text = "Designation : NA | " +"Experience : NA"
+                tvDesignation.text = getString(R.string.designation_exp_not_available)
             }
             //
-            if (!candidateData.experience.isNullOrEmpty() && !candidateData.experience!![0].company_id.isNullOrEmpty()
-                && candidateData.experience!![0].salary?.currency.isNullOrEmpty()
+            Timber.e("salary  currency--->%s", candidateData.experience!![0].salary?.currency)
+            Timber.e("salary  amount--->%s", candidateData.experience[0].salary?.amount)
+            Timber.e("company --->%s", candidateData.experience[0].company_id)
+
+
+            //
+            if (!candidateData.experience.isNullOrEmpty() && !candidateData.experience[0].company_id.isNullOrEmpty()
+                && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
             ) {
-                tvCurrentEmployer.text = candidateData.experience!![0].company_id
-                tvSalary.text = candidateData.experience!![0].salary?.currency
+
+                tvCurrentEmployer.text = candidateData.experience[0].company_id
+                tvSalary.text =
+                    "${candidateData.experience[0].salary?.currency}${candidateData.experience[0].salary?.amount}"
+                Timber.e("in if statement --->"+tvSalary.text)
             } else {
-                tvCurrentEmployer.text = "Current Employer : NA"
-                tvSalary.text = "Salary : NA"
+                tvCurrentEmployer.text = getString(R.string.current_employer_not_available)
+                tvSalary.text = getString(R.string.salary_not_available)
             }
             //
             if (!candidateData.preferences?.notice_period.isNullOrEmpty()) {
                 tvNoticePeriod.text = candidateData.preferences?.notice_period.toString()
             } else {
-                tvNoticePeriod.text = "Notice Period : NA"
+                tvNoticePeriod.text = getString(R.string.notice_period_not_available)
             }
 
 

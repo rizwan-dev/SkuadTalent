@@ -11,6 +11,7 @@ import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.ActivityCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import com.skuad.talent.domain.entities.candidatelist.CandidateListRequest
+import com.skuad.talent.extension.setVisibility
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.adapter.CandidateListAdapter
@@ -90,17 +91,26 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
     private fun setUpView(candidateList: List<CandidateInfo>) {
 
         withBinding {
-            Timber.e("candidate list from DataUtil---->> %s", candidateList)
-            rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
-            rvAndroid.adapter =
-                CandidateListAdapter(this@NewCandidateListActivity, candidateList) { candidate ->
-                    startActivityForResult(
-                        CandidateDetailActivity.newInstance(
-                            this@NewCandidateListActivity,
-                            candidate.uid
-                        ), REQUEST_CHANGE_STATE
-                    )
-                }
+            if (candidateList.isEmpty()) {
+                tvNoList.setVisibility(true)
+                rvAndroid.setVisibility(false)
+            } else {
+                tvNoList.setVisibility(false)
+                Timber.e("candidate list from DataUtil---->> %s", candidateList)
+                rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
+                rvAndroid.adapter =
+                    CandidateListAdapter(
+                        this@NewCandidateListActivity,
+                        candidateList
+                    ) { candidate ->
+                        startActivityForResult(
+                            CandidateDetailActivity.newInstance(
+                                this@NewCandidateListActivity,
+                                candidate.uid
+                            ), REQUEST_CHANGE_STATE
+                        )
+                    }
+            }
         }
     }
 

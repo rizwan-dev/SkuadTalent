@@ -3,7 +3,6 @@ package com.skuad.talent.data.mapper.candidatelist
 import com.skuad.talent.GetCandidatesByRoleQuery
 import com.skuad.talent.data.mapper.ResponseMapper
 import com.skuad.talent.domain.entities.candidatelist.*
-import org.jetbrains.annotations.Nullable
 
 
 class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<CandidateInfo>> {
@@ -31,7 +30,7 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
 
     private fun getPreferences(preferences: GetCandidatesByRoleQuery.Preferences?): Preferences? {
         return preferences?.run {
-            Preferences(notice_period = notice_period() ?: "")
+            Preferences(notice_period =notice_period())
         }
     }
 
@@ -52,6 +51,7 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
     private fun mapToSalary(salary: GetCandidatesByRoleQuery.Salary?): Salary? {
         return salary?.run {
             Salary(
+                amount =amount(),
                 currency = currency() ?: ""
             )
         }

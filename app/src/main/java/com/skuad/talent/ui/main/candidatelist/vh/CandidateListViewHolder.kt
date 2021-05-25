@@ -20,43 +20,48 @@ class CandidateListViewHolder(
     fun bind(candidate: CandidateInfo) {
         this.candidate = candidate
         with(binding) {
+            //name
             tvCandidateName.text = candidate.contact_info?.name
-
-
-
-            if (!candidate.experience.isNullOrEmpty()) {
-                Timber.e(
-                    "Address---${candidate.experience[0].experience}Current Employer--${candidate.experience[0].company_id}Salary--${candidate.experience[0].salary?.currency}"
-                )
-
-                if (!candidate.experience[0].role.isNullOrEmpty()) {
-                    val designation = candidate.experience[0].role
-                    tvYearsOfExperience.text =
-                        "$designation | ${(candidate.experience[0].experience ?: "").plus(" years")}"
-                } else {
-                    val designation = "Designation : NA"
-                }
-                if (!candidate.experience[0].company_id.isNullOrEmpty()) {
-                    tvCurrentEmployer.text = candidate.experience[0].company_id ?: ""
-                } else {
-                    tvCurrentEmployer.text = "CurrentEmployer : NA"
-                }
-                if (!candidate.experience[0].salary?.currency.isNullOrEmpty()) {
-                    tvSalary.text = candidate.experience[0].salary?.currency
-                } else {
-                    tvSalary.text = "Salary : NA"
-                }
-            } else {
-                tvYearsOfExperience.text = "Experience : NA"
-            }
+            //address
             if (!candidate.contact_info?.address.isNullOrEmpty()) {
-                Timber.e("Address---${candidate.contact_info?.address}")
                 tvAddress.text = candidate.contact_info?.address
-                // tvAddress.text = candidate.skills.joinToString(", ")
             } else {
                 tvAddress.text = "Address : NA"
             }
-            if (candidate.preferences?.notice_period.toString().isNullOrEmpty()) {
+            if (!candidate.experience.isNullOrEmpty()) {
+                Timber.e("Amount----->" + candidate.experience[0].salary?.amount)
+                Timber.e("Currency----->" + candidate.experience[0].salary?.currency)
+
+                if (!candidate.experience[0].role.isNullOrEmpty()) {
+                   val designation= candidate.experience[0].role
+                    tvYearsOfExperience.text =
+                        "$designation | " + (candidate.experience[0].experience
+                            ?: "").plus(" years")
+                } else {
+                    val designation = "Designation : NA"
+                    tvYearsOfExperience.text =
+                        "$designation | " + (candidate.experience[0].experience
+                            ?: "").plus(" years")
+                }
+
+
+            } else {
+                tvYearsOfExperience.text = "Designation : NA | " + "Experience : NA"
+            }
+            //
+            if (!candidate.experience.isNullOrEmpty() && !candidate.experience!![0].company_id.isNullOrEmpty()
+                && candidate.experience!![0].salary?.currency.isNullOrEmpty()
+            ) {
+
+                tvCurrentEmployer.text = candidate.experience!![0].company_id
+                tvSalary.text = candidate.experience!![0].salary?.currency
+            } else {
+                tvCurrentEmployer.text = "Current Employer : NA"
+                tvSalary.text = "Salary : NA"
+            }
+            //
+
+            if (candidate.preferences?.notice_period == null) {
                 tvNoticePeriod.text = "Notice Period : NA"
             } else {
                 tvNoticePeriod.text = candidate.preferences?.notice_period.toString()

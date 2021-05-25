@@ -18,4 +18,67 @@
         <item name="colorPrimaryDark">@color/purple_7B1FA1</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
     </style>
+    <style name="RobotoTextViewStyle500" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="fontWeight">500</item>
+    </style>
+    <style name="RobotoTextViewStyle400" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="fontWeight">400</item>
+    </style>
+
+    <style name="TextStyle_16_500" parent="RobotoTextViewStyle500">
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+    <style name="TextStyleWhite_16_500" parent="TextStyle_16_500">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextStylePurple_16_500" parent="TextStyle_16_500">
+        <item name="android:textColor">@color/purple_7B1FA1</item>
+    </style>
+    <style name="TextStyleDarkGrey_14_400" parent="RobotoTextViewStyle400">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+    <style name="TextStyle_18_500" parent="RobotoTextViewStyle500">
+        <item name="android:textSize">@dimen/font_18</item>
+    </style>
+    <style name="TextStyleBlack_18_500" parent="TextStyle_18_500">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextStyleGrey_14_400" parent="RobotoTextViewStyle400">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+    <style name="TextStyle_14_500" parent="RobotoTextViewStyle500">
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+    <style name="TextStyleBlack_14_400" parent="RobotoTextViewStyle400">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+    <style name="TextStyleGreen_14_400" parent="RobotoTextViewStyle400">
+        <item name="android:textColor">@color/teal_700</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+    <style name="TextStyle_12_500" parent="RobotoTextViewStyle500">
+        <item name="android:textSize">@dimen/text_size_12sp</item>
+    </style>
+    <style name="TextStyleTeal_12_500" parent="TextStyle_12_500">
+        <item name="android:textColor">@color/teal_700</item>
+    </style>
+    <style name="TextStyleRed_12_500" parent="TextStyle_12_500">
+        <item name="android:textColor">@color/red</item>
+    </style>
+    <style name="TextStyleRed_14_400" parent="RobotoTextViewStyle400">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+    <style name="TextStyleBlack_14_500" parent="TextStyle_14_500">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="font_14">14sp</dimen>
+    <dimen name="font_18">18sp</dimen>
 </resources>
