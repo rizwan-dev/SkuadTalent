@@ -1,11 +1,16 @@
 package com.skuad.talent.ui.main.candiatedetails.view
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
@@ -33,7 +38,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     var adapter: PDFPagerAdapter? = null
 
     var remotePDFViewPager: RemotePDFViewPager? = null
-
     override fun attachBinding(
         list: MutableList<ActivityCandidateProfileBinding>,
         inflater: LayoutInflater
@@ -59,18 +63,21 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         }
     }
 
+
     private fun showAlertBox() {
         Timber.e("IN ALERT BOX")
-        val dialogView = layoutInflater.inflate(R.layout.alert_dialog, null)
-        val customDialog = AlertDialog.Builder(this)
-            .setView(dialogView)
-            .show()
-        tvAlertTitle.text = "Profile Status"
-        tv_description.text = "This profile has been shortlisted."
-        btn_cancel_dialog.setSafeOnClickListener {
-            changeState(SELECTED)
-            customDialog.dismiss()
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.alert_dialog)
+        dialog.setTitle("Profile Status")
+        dialog.setCancelable(true)
+        val textView:TextView=dialog.findViewById(R.id.tv_description)
+        textView.text="This profile has been shortlisted."
+        val button: Button = dialog.findViewById(R.id.btn_cancel_dialog)
+        button.setOnClickListener {
+            Toast.makeText(this,"alert dialog box",Toast.LENGTH_LONG).show()
         }
+
+        dialog.show()
     }
 
     private fun showAlertBox(status: String) {
@@ -206,23 +213,25 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             } else {
                 tvDesignation.text = getString(R.string.designation_exp_not_available)
             }
-            //
-            Timber.e("salary  currency--->%s", candidateData.experience!![0].salary?.currency)
-            Timber.e("salary  amount--->%s", candidateData.experience[0].salary?.amount)
-            Timber.e("company --->%s", candidateData.experience[0].company_id)
 
-
-            //
             if (!candidateData.experience.isNullOrEmpty() && !candidateData.experience[0].company_id.isNullOrEmpty()
-                && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
+
             ) {
 
                 tvCurrentEmployer.text = candidateData.experience[0].company_id
-                tvSalary.text =
-                    "${candidateData.experience[0].salary?.currency}${candidateData.experience[0].salary?.amount}"
-                Timber.e("in if statement --->"+tvSalary.text)
+
             } else {
                 tvCurrentEmployer.text = getString(R.string.current_employer_not_available)
+            }
+            //
+            if (!candidateData.experience.isNullOrEmpty() && candidateData.experience[0].salary?.amount?.equals(null) == true
+                && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
+            ) {
+
+                tvSalary.text =
+                    "${candidateData.experience[0].salary?.currency}${candidateData.experience[0].salary?.amount}"
+                Timber.e("in if statement --->" + tvSalary.text)
+            } else {
                 tvSalary.text = getString(R.string.salary_not_available)
             }
             //

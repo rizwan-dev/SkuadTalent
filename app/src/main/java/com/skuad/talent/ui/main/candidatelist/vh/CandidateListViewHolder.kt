@@ -1,6 +1,7 @@
 package com.skuad.talent.ui.main.candidatelist.vh
 
 import androidx.recyclerview.widget.RecyclerView
+import com.skuad.talent.R
 import com.skuad.talent.databinding.ItemCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import timber.log.Timber
@@ -49,14 +50,24 @@ class CandidateListViewHolder(
                 tvYearsOfExperience.text = "Designation : NA | " + "Experience : NA"
             }
             //
-            if (!candidate.experience.isNullOrEmpty() && !candidate.experience!![0].company_id.isNullOrEmpty()
-                && candidate.experience!![0].salary?.currency.isNullOrEmpty()
+            if (!candidate.experience.isNullOrEmpty() && !candidate.experience[0].company_id.isNullOrEmpty()
+
             ) {
 
-                tvCurrentEmployer.text = candidate.experience!![0].company_id
-                tvSalary.text = candidate.experience!![0].salary?.currency
+                tvCurrentEmployer.text = candidate.experience[0].company_id
+
             } else {
                 tvCurrentEmployer.text = "Current Employer : NA"
+            }
+            //
+            if (!candidate.experience.isNullOrEmpty() && candidate.experience[0].salary?.amount?.equals(null) == true
+                && !candidate.experience[0].salary?.currency.isNullOrEmpty()
+            ) {
+
+                tvSalary.text =
+                    "${candidate.experience[0].salary?.currency}${candidate.experience[0].salary?.amount}"
+                Timber.e("in if statement --->" + tvSalary.text)
+            } else {
                 tvSalary.text = "Salary : NA"
             }
             //
