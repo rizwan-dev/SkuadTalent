@@ -44,9 +44,8 @@ class NetworkBinder {
 
     @Provides
     fun provideHeaderInterceptor(
-        firebaseAuth: FirebaseAuth,
         sharedPrefRepo: SharedPrefRepoImpl
-    ): HeaderInterceptor = HeaderInterceptor(firebaseAuth, sharedPrefRepo)
+    ): HeaderInterceptor = HeaderInterceptor(sharedPrefRepo)
 
     @Singleton
     @Provides

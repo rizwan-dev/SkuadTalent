@@ -5,12 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MenuItem
-import android.widget.Button
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
@@ -72,11 +71,12 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         dialog.setCancelable(true)
         val textView:TextView=dialog.findViewById(R.id.tv_description)
         textView.text="This profile has been shortlisted."
-        val button: Button = dialog.findViewById(R.id.btn_cancel_dialog)
+        val button: TextView = dialog.findViewById(R.id.btn_cancel_dialog)
         button.setOnClickListener {
             Toast.makeText(this,"alert dialog box",Toast.LENGTH_LONG).show()
         }
-
+        val width = (resources.displayMetrics.widthPixels * 0.75).toInt()
+        dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.show()
     }
 

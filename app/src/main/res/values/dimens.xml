@@ -25,6 +25,7 @@
     <dimen name="dimen_6">6dp</dimen>
     <dimen name="dimen_32">32dp</dimen>
     <dimen name="dimen_200">200dp</dimen>
+    <dimen name="dimen_250">250dp</dimen>
     <dimen name="dimen_18">18dp</dimen>
     <dimen name="dimen_132">132dp</dimen>
     <dimen name="dimen_44">44dp</dimen>

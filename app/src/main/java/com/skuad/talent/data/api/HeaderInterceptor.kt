@@ -1,15 +1,10 @@
 package com.skuad.talent.data.api
 
-import androidx.annotation.NonNull
-import com.google.android.gms.tasks.Tasks
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.skuad.talent.data.repository.SharedPrefRepoImpl
 import okhttp3.Interceptor
 import okhttp3.Response
 
 class HeaderInterceptor (
-    private val firebaseAuth:FirebaseAuth,
     private val prefs: SharedPrefRepoImpl
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {

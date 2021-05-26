@@ -28,8 +28,8 @@
 
     <TextView
         android:id="@+id/tv_description"
-
-        android:layout_width="@dimen/dimen_200"
+        android:paddingHorizontal="@dimen/dimen_20"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_18"
         android:gravity="center"
