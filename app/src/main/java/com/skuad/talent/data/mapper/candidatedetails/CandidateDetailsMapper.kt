@@ -27,11 +27,11 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
     }
 
     private fun getPreferences(preferences: GetCandidateByAdminQuery.Preferences?): Preferences? {
-        return preferences?.run { Preferences(notice_period = notice_period()?.toString()) }
+        return preferences?.run { Preferences(notice_period = notice_period()) }
     }
 
     private fun getRoll(roleId: GetCandidateByAdminQuery.Role_id?): RoleId? {
-        return roleId?.run { RoleId(name = name() ?: "") }
+        return roleId?.run { RoleId(name ()?: "") }
     }
 
 
@@ -43,7 +43,7 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
 
     private fun getExperience(experience: List<GetCandidateByAdminQuery.Experience>?): List<Experience>? {
         return experience?.map {
-            Experience(it.experience(), it.company_id(), it.role(), mapSalary(it.salary()))
+            Experience(it.experience(), it.company_id(),mapSalary(it.salary()))
         }
     }
 

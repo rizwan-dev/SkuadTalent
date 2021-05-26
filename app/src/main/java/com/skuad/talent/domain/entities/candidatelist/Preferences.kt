@@ -11,5 +11,5 @@ data class Preferences(
     //  val job_type: List<String>,
     //  val location_type: List<Any>,
     //   val locations: List<String>,
-    val notice_period: @Nullable Double?
+    val notice_period: Double?
 )

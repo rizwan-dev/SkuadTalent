@@ -9,5 +9,5 @@ data class Preferences(
 //    val job_type: List<String>,
 //    val location_type: List<String>,
 //    val locations: List<Any>,
-    val notice_period: String? = null
+    val notice_period: Double?
 )

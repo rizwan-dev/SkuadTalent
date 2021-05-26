@@ -71,9 +71,9 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         dialog.setTitle("Profile Status")
         dialog.setCancelable(true)
         val textView: TextView = dialog.findViewById(R.id.tv_description)
-        if (stage.equals("registered")){
+        if (stage.equals("registered")) {
             textView.text = "This profile has been shortlisted."
-        }else{
+        } else {
             textView.text = "This profile has been rejected."
         }
 
@@ -111,6 +111,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                 is ResourceState.Success -> {
                     Timber.d("Candidate details is ${it.body}")
                     val candidateData = it.body
+                    Timber.d("Candidate details is-----> ${candidateData}")
                     viewModel.userId = candidateData.uid
                     setUpView(candidateData)
                 }
@@ -127,7 +128,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             when (it) {
                 is ResourceState.Success -> {
                     Timber.d("+++++State change success " + it.body)
-
 
 
                 }
@@ -187,8 +187,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             }
             if (!candidateData.experience.isNullOrEmpty()) {
 
-                if (!candidateData.experience[0].role.isNullOrEmpty()) {
-                    val designation = candidateData.experience[0].role
+                if (!candidateData.role_id?.name.isNullOrEmpty()) {
+                    val designation = candidateData.role_id?.name
                     tvDesignation.text =
                         "$designation | " + (candidateData.experience[0].experience
                             ?: "").plus(" years")
@@ -213,21 +213,20 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                 tvCurrentEmployer.text = getString(R.string.current_employer_not_available)
             }
             //
-            if (!candidateData.experience.isNullOrEmpty() && candidateData.experience[0].salary?.amount?.equals(
-                    null
-                ) == true
+            if (!candidateData.experience.isNullOrEmpty()
                 && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
+                && !candidateData.experience[0].salary?.amount?.toDouble().toString().isNullOrEmpty()
             ) {
 
                 tvSalary.text =
-                    "${candidateData.experience[0].salary?.currency}${candidateData.experience[0].salary?.amount}"
+                    "${candidateData.experience[0].salary?.currency }${candidateData.experience[0].salary?.amount?.toDouble().toString()}"
                 Timber.e("in if statement --->" + tvSalary.text)
             } else {
                 tvSalary.text = getString(R.string.salary_not_available)
             }
             //
-            if (!candidateData.preferences?.notice_period.isNullOrEmpty()) {
-                tvNoticePeriod.text = candidateData.preferences?.notice_period.toString()
+            if (!candidateData.preferences?.notice_period?.toDouble().toString().isNullOrEmpty()) {
+                tvNoticePeriod.text = candidateData.preferences?.notice_period?.toDouble().toString()
             } else {
                 tvNoticePeriod.text = getString(R.string.notice_period_not_available)
             }

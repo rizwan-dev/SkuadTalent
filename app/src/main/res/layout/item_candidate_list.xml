@@ -25,21 +25,31 @@
         android:id="@+id/tvCandidateName"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_5"
         android:gravity="center_vertical"
         android:text="@string/candidate_name"
         android:textSize="@dimen/font_17"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/purple_7B1FA1"
+        android:fontFamily="@font/roboto_medium"
         android:textFontWeight="500"
         app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
         app:layout_constraintTop_toTopOf="@id/ivAvatar" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Experience"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:src="@drawable/mental_health"
+        app:layout_constraintBottom_toBottomOf="@id/tvYearsOfExperience"
+        app:layout_constraintEnd_toStartOf="@id/tvYearsOfExperience"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvYearsOfExperience" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvYearsOfExperience"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5"
         android:gravity="center_vertical"
         android:text="@string/years_of_experience"
         android:textSize="@dimen/font_15"
@@ -47,9 +57,18 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toStartOf="@id/ivArrow"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Experience"
         app:layout_constraintTop_toBottomOf="@id/tvCandidateName" />
-
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Location"
+        android:src="@drawable/location_icon"
+        android:layout_marginRight="@dimen/dimen_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvAddress"
+        app:layout_constraintTop_toTopOf="@id/tvAddress"
+        app:layout_constraintBottom_toBottomOf="@id/tvAddress"
+        android:layout_width="16dp"
+        android:layout_height="16dp"/>
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvAddress"
         android:layout_width="@dimen/dimen_0"
@@ -64,9 +83,18 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Location"
         app:layout_constraintTop_toBottomOf="@id/tvYearsOfExperience" />
-
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Office"
+        android:src="@drawable/office_icon"
+        android:layout_marginRight="@dimen/dimen_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvCurrentEmployer"
+        app:layout_constraintTop_toTopOf="@id/tvCurrentEmployer"
+        app:layout_constraintBottom_toBottomOf="@id/tvCurrentEmployer"
+        android:layout_width="16dp"
+        android:layout_height="16dp"/>
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCurrentEmployer"
         android:layout_width="@dimen/dimen_0"
@@ -79,9 +107,18 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Office"
         app:layout_constraintTop_toBottomOf="@id/tvAddress" />
-
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Salary"
+        android:src="@drawable/salary_icon"
+        android:layout_marginRight="@dimen/dimen_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvSalary"
+        app:layout_constraintTop_toTopOf="@id/tvSalary"
+        app:layout_constraintBottom_toBottomOf="@id/tvSalary"
+        android:layout_width="16dp"
+        android:layout_height="16dp"/>
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvSalary"
         android:layout_width="@dimen/dimen_0"
@@ -94,8 +131,18 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Salary"
         app:layout_constraintTop_toBottomOf="@id/tvCurrentEmployer" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_NoticePeriod"
+        android:src="@drawable/notice_period_icon"
+        android:layout_marginRight="@dimen/dimen_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvNoticePeriod"
+        app:layout_constraintTop_toTopOf="@id/tvNoticePeriod"
+        app:layout_constraintBottom_toBottomOf="@id/tvNoticePeriod"
+        android:layout_width="16dp"
+        android:layout_height="16dp"/>
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNoticePeriod"
         android:layout_width="@dimen/dimen_0"
@@ -108,7 +155,7 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_NoticePeriod"
         app:layout_constraintTop_toBottomOf="@id/tvSalary" />
 
     <ImageView

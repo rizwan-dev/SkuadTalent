@@ -42,11 +42,13 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
                 experience = it.experience(),
                 company_id = it.company_id(),
                 salary = mapToSalary(it.salary()),
-                role = it.role()
+
             )
 
         }
     }
+
+
 
     private fun mapToSalary(salary: GetCandidatesByRoleQuery.Salary?): Salary? {
         return salary?.run {

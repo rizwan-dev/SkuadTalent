@@ -27,19 +27,29 @@
         android:id="@+id/tvCandidateName"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_20"
+        android:layout_marginLeft="@dimen/dimen_10"
         android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginRight="@dimen/dimen_10"
         android:gravity="center_vertical"
         android:text="Candidate Name "
         android:textSize="@dimen/font_17"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/purple_7B1FA1"
+        android:fontFamily="@font/roboto_medium"
         android:textFontWeight="500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Experience"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+       android:layout_margin="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:src="@drawable/mental_health"
+        app:layout_constraintBottom_toBottomOf="@id/tvDesignation"
+        app:layout_constraintEnd_toStartOf="@id/tvDesignation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDesignation" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvDesignation"
         android:layout_width="@dimen/dimen_0"
@@ -52,9 +62,19 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
        app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Experience"
         app:layout_constraintTop_toBottomOf="@id/tvCandidateName" />
-
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Location"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_margin="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:src="@drawable/location_icon"
+        app:layout_constraintBottom_toBottomOf="@id/tvAddress"
+        app:layout_constraintEnd_toStartOf="@id/tvAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAddress" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvAddress"
         android:layout_width="@dimen/dimen_0"
@@ -66,9 +86,19 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Location"
         app:layout_constraintTop_toBottomOf="@id/tvDesignation" />
-
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Office"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_margin="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:src="@drawable/office_icon"
+        app:layout_constraintBottom_toBottomOf="@id/tvCurrentEmployer"
+        app:layout_constraintEnd_toStartOf="@id/tvCurrentEmployer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvCurrentEmployer" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCurrentEmployer"
         android:layout_width="@dimen/dimen_0"
@@ -80,9 +110,19 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvDesignation"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Office"
         app:layout_constraintTop_toBottomOf="@id/tvAddress" />
-
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Salary"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_margin="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:src="@drawable/salary_icon"
+        app:layout_constraintBottom_toBottomOf="@id/tvSalary"
+        app:layout_constraintEnd_toStartOf="@id/tvSalary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvSalary" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvSalary"
         android:layout_width="@dimen/dimen_0"
@@ -94,8 +134,19 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvDesignation"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_Salary"
         app:layout_constraintTop_toBottomOf="@id/tvCurrentEmployer" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_NoticePeriod"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_margin="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:src="@drawable/notice_period_icon"
+        app:layout_constraintBottom_toBottomOf="@id/tvNoticePeriod"
+        app:layout_constraintEnd_toStartOf="@id/tvNoticePeriod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNoticePeriod" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNoticePeriod"
         android:layout_width="@dimen/dimen_0"
@@ -107,7 +158,7 @@
         android:fontFamily="@font/roboto_regular"
         android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
-        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintStart_toEndOf="@id/iv_NoticePeriod"
         app:layout_constraintTop_toBottomOf="@id/tvSalary" />
 
     <TextView
@@ -152,18 +203,17 @@
         android:id="@+id/divider2"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="@dimen/dimen_10"
-        android:layout_margin="@dimen/dimen_20"
+
         android:layout_marginTop="@dimen/dimen_20"
         android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
+        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/btnSelected" />
 
     <TextView
         android:id="@+id/tvResumeHeading"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_20"
         android:layout_marginTop="@dimen/dimen_10"
         android:gravity="center_vertical"
         android:text="Resume"
@@ -171,19 +221,18 @@
         android:textColor="@color/grey"
         android:fontFamily="@font/roboto_medium"
         android:textFontWeight="500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
+        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/divider2" />
 
     <FrameLayout
         android:id="@+id/webView"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="@dimen/dimen_0"
-        android:layout_marginHorizontal="@dimen/dimen_20"
         android:layout_marginTop="@dimen/dimen_20"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
+        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvResumeHeading">
 
         <TextView

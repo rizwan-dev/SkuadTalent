@@ -30,8 +30,8 @@ class CandidateListViewHolder(
                 tvAddress.text = "Address : NA"
             }
             if (!candidate.experience.isNullOrEmpty()) {
-                if (!candidate.experience[0].role.isNullOrEmpty()) {
-                    val designation = candidate.experience[0].role
+                if (!candidate.role_id?.name.isNullOrEmpty()) {
+                    val designation = candidate.role_id?.name
                     tvYearsOfExperience.text =
                         "$designation | " + (candidate.experience[0].experience
                             ?: "").plus(" years")
@@ -57,24 +57,23 @@ class CandidateListViewHolder(
                 tvCurrentEmployer.text = "Current Employer : NA"
             }
             //
-            if (!candidate.experience.isNullOrEmpty() && candidate.experience[0].salary?.amount?.equals(
-                    null
-                ) == true
+            if (!candidate.experience.isNullOrEmpty()
                 && !candidate.experience[0].salary?.currency.isNullOrEmpty()
+                && !candidate.experience[0].salary?.amount?.toDouble().toString().isNullOrEmpty()
             ) {
 
                 tvSalary.text =
-                    "${candidate.experience[0].salary?.currency}${candidate.experience[0].salary?.amount}"
+                    "${candidate.experience[0].salary?.currency }${candidate.experience[0].salary?.amount?.toDouble().toString()}"
                 Timber.e("in if statement --->" + tvSalary.text)
             } else {
                 tvSalary.text = "Salary : NA"
             }
             //
 
-            if (candidate.preferences?.notice_period == null) {
+            if (candidate.preferences?.notice_period?.toDouble().toString().isNullOrEmpty()) {
                 tvNoticePeriod.text = "Notice Period : NA"
             } else {
-                tvNoticePeriod.text = candidate.preferences?.notice_period.toString()
+                tvNoticePeriod.text = candidate.preferences?.notice_period?.toDouble().toString()
             }
         }
     }
