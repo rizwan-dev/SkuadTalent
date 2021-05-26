@@ -25,7 +25,6 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCandidateName"
-        style="@style/TextStyleBlack_18_500"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_20"
@@ -33,18 +32,25 @@
         android:layout_marginRight="@dimen/dimen_10"
         android:gravity="center_vertical"
         android:text="Candidate Name "
+        android:textSize="@dimen/font_17"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvDesignation"
-        style="@style/TextStyleGrey_14_400"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_5"
         android:gravity="center_vertical"
         android:text="@string/experience"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
        app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvCandidateName" />
@@ -52,10 +58,13 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvAddress"
         android:layout_width="@dimen/dimen_0"
-        style="@style/TextStyleGrey_14_400"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/address"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvDesignation" />
@@ -63,10 +72,13 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCurrentEmployer"
         android:layout_width="@dimen/dimen_0"
-        style="@style/TextStyleGrey_14_400"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/current_employer"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvDesignation"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvAddress" />
@@ -74,20 +86,26 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvSalary"
         android:layout_width="@dimen/dimen_0"
-        style="@style/TextStyleGrey_14_400"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/current_salary"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvDesignation"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvCurrentEmployer" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNoticePeriod"
         android:layout_width="@dimen/dimen_0"
-        style="@style/TextStyleGrey_14_400"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/notice_period"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
         app:layout_constraintStart_toStartOf="@id/tvCandidateName"
         app:layout_constraintTop_toBottomOf="@id/tvSalary" />
@@ -95,7 +113,6 @@
     <TextView
         android:id="@+id/btnSelected"
         android:layout_width="@dimen/dimen_0"
-        style="@style/TextStyleTeal_12_500"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_10"
         android:background="@drawable/rounded_shape_selected_button"
@@ -103,6 +120,10 @@
         android:gravity="center"
         android:padding="@dimen/dimen_10"
         android:text="@string/selected"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/teal_700"
+        android:fontFamily="@font/roboto_medium"
+        android:textFontWeight="500"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnRejected"
         app:layout_constraintTop_toBottomOf="@id/tvNoticePeriod" />
@@ -110,7 +131,6 @@
 
     <TextView
         android:id="@+id/btnRejected"
-        style="@style/TextStyleRed_12_500"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_10"
@@ -119,6 +139,10 @@
         android:gravity="center"
         android:padding="@dimen/dimen_10"
         android:text="@string/rejected"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/red"
+        android:fontFamily="@font/roboto_medium"
+        android:textFontWeight="500"
         app:layout_constraintBottom_toBottomOf="@id/btnSelected"
         app:layout_constraintLeft_toRightOf="@id/btnSelected"
         app:layout_constraintRight_toRightOf="parent"
@@ -138,12 +162,15 @@
     <TextView
         android:id="@+id/tvResumeHeading"
         android:layout_width="@dimen/dimen_0"
-        style="@style/TextStyle_12_500"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_20"
         android:layout_marginTop="@dimen/dimen_10"
         android:gravity="center_vertical"
         android:text="Resume"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto_medium"
+        android:textFontWeight="500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2" />

@@ -30,11 +30,8 @@ class CandidateListViewHolder(
                 tvAddress.text = "Address : NA"
             }
             if (!candidate.experience.isNullOrEmpty()) {
-                Timber.e("Amount----->" + candidate.experience[0].salary?.amount)
-                Timber.e("Currency----->" + candidate.experience[0].salary?.currency)
-
                 if (!candidate.experience[0].role.isNullOrEmpty()) {
-                   val designation= candidate.experience[0].role
+                    val designation = candidate.experience[0].role
                     tvYearsOfExperience.text =
                         "$designation | " + (candidate.experience[0].experience
                             ?: "").plus(" years")
@@ -60,7 +57,9 @@ class CandidateListViewHolder(
                 tvCurrentEmployer.text = "Current Employer : NA"
             }
             //
-            if (!candidate.experience.isNullOrEmpty() && candidate.experience[0].salary?.amount?.equals(null) == true
+            if (!candidate.experience.isNullOrEmpty() && candidate.experience[0].salary?.amount?.equals(
+                    null
+                ) == true
                 && !candidate.experience[0].salary?.currency.isNullOrEmpty()
             ) {
 

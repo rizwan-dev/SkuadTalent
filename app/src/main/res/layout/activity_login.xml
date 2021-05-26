@@ -15,8 +15,9 @@
         android:gravity="center"
         android:text="@string/skuad_talent"
         android:textColor="@color/black"
-        android:textSize="@dimen/font_20"
-        android:textStyle="bold"
+        android:textSize="@dimen/font_17"
+        android:textStyle="normal"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -84,6 +85,7 @@
             android:background="@drawable/rounded_red_shape"
             android:text="@string/login"
             android:textSize="@dimen/font_15"
+            android:fontFamily="@font/roboto_medium"
             app:layout_constraintEnd_toEndOf="@id/edtUserName"
             app:layout_constraintStart_toStartOf="@id/edtUserName"
             app:layout_constraintTop_toBottomOf="@id/edtUserPassword" />

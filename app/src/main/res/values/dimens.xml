@@ -8,7 +8,7 @@
     <dimen name="dimen_5">5dp</dimen>
     <dimen name="font_15">15sp</dimen>
     <dimen name="font_20">20sp</dimen>
-    <dimen name="font_17">20sp</dimen>
+    <dimen name="font_17">17sp</dimen>
     <dimen name="dimen_120">120dp</dimen>
     <dimen name="dimen_2">2dp</dimen>
     <dimen name="dimen_1">1dp</dimen>
@@ -38,4 +38,7 @@
     <dimen name="text_size_20sp">20sp</dimen>
     <dimen name="text_size_21sp">21sp</dimen>
     <dimen name="text_size_24sp">24sp</dimen>
+    <dimen name="dimen_36">36dp</dimen>
+    <dimen name="font_12">12sp</dimen>
+    <dimen name="font_14">14sp</dimen>
 </resources>

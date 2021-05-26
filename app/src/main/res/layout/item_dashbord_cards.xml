@@ -22,12 +22,15 @@
 
     <TextView
         android:id="@+id/tvCardName"
-        style="@style/TextStyleBlack_14_500"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10"
         android:gravity="center"
         android:text="@string/android"
+        android:textSize="@dimen/font_15"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="500"
         app:layout_constraintBottom_toTopOf="@+id/tvActiveProfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -36,12 +39,14 @@
 
     <TextView
         android:id="@+id/tvActiveProfiles"
-        style="@style/TextStyleRed_12_500"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="@dimen/dimen_5"
         android:text="@string/active_number"
+        android:textSize="@dimen/font_12"
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
         android:textColor="@android:color/holo_red_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -8,8 +8,6 @@ import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
@@ -53,63 +51,51 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     private fun addListeners() {
         withBinding {
             btnSelected.setSafeOnClickListener {
-                showAlertBox()
+                Timber.d("+++++On click of Selected btn")
+                changeState(SELECTED)
             }
 
             btnRejected.setSafeOnClickListener {
-                showAlertBox()
+                changeState(REJECTED)
             }
         }
     }
 
 
-    private fun showAlertBox() {
-        Timber.e("IN ALERT BOX")
+    private fun showAlertBox(stage: String) {
+
+        Timber.e("+++++IN ALERT BOX")
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.alert_dialog)
+        dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner_10)
         dialog.setTitle("Profile Status")
         dialog.setCancelable(true)
-        val textView:TextView=dialog.findViewById(R.id.tv_description)
-        textView.text="This profile has been shortlisted."
-        val button: TextView = dialog.findViewById(R.id.btn_cancel_dialog)
+        val textView: TextView = dialog.findViewById(R.id.tv_description)
+        if (stage.equals("registered")){
+            textView.text = "This profile has been shortlisted."
+        }else{
+            textView.text = "This profile has been rejected."
+        }
+
+        val button: TextView = dialog.findViewById(R.id.btn_ok_dialog)
         button.setOnClickListener {
-            Toast.makeText(this,"alert dialog box",Toast.LENGTH_LONG).show()
+            Timber.d("+++++On click of OK btn in alert")
+            setResult(RESULT_OK)
+            finish()
+            dialog.dismiss()
         }
         val width = (resources.displayMetrics.widthPixels * 0.75).toInt()
         dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.show()
     }
 
-    private fun showAlertBox(status: String) {
-        Timber.e("IN ALERT BOX$status")
-        val dialogView = layoutInflater.inflate(R.layout.alert_dialog, null)
-        val customDialog = AlertDialog.Builder(this)
-            .setView(dialogView)
-            .show()
-        tvAlertTitle.text = "Profile Status"
-        if (status.equals("registered")) {
-            tv_description.text = "This profile has been shortlisted."
-        } else {
-            tv_description.text = "This profile has been Rejected."
-        }
-        btn_cancel_dialog.setSafeOnClickListener {
-
-            if (status.equals("registered")) {
-                changeState(SELECTED)
-
-            } else {
-                changeState(REJECTED)
-            }
-            customDialog.dismiss()
-        }
-
-    }
-
 
     private fun changeState(stage: String) {
+        Timber.d("+++++In change state fun--->$stage")
         viewModel.userId?.let { uId ->
             showLoading(true)
             viewModel.changeCandidateState(uId, stage)
+            showAlertBox(stage)
         }
 
     }
@@ -137,14 +123,17 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
         viewModel.changeStateLiveData.observe(this, Observer {
             showLoading(false)
+            Timber.d("In observer ")
             when (it) {
                 is ResourceState.Success -> {
-                    Timber.d("Candidate details is ${it.body}")
-                    setResult(RESULT_OK)
-                    finish()
+                    Timber.d("+++++State change success " + it.body)
+
+
+
                 }
 
                 is ResourceState.Failure -> {
+                    Timber.d("State change failed ")
                     Timber.e(it.exception)
                 }
             }
@@ -224,7 +213,9 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                 tvCurrentEmployer.text = getString(R.string.current_employer_not_available)
             }
             //
-            if (!candidateData.experience.isNullOrEmpty() && candidateData.experience[0].salary?.amount?.equals(null) == true
+            if (!candidateData.experience.isNullOrEmpty() && candidateData.experience[0].salary?.amount?.equals(
+                    null
+                ) == true
                 && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
             ) {
 
