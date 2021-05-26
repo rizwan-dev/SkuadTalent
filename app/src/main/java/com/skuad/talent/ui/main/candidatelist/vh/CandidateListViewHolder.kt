@@ -63,17 +63,19 @@ class CandidateListViewHolder(
             ) {
 
                 tvSalary.text =
-                    "${candidate.experience[0].salary?.currency }${candidate.experience[0].salary?.amount?.toDouble().toString()}"
+                    "${candidate.experience[0].salary?.currency}${
+                        candidate.experience[0].salary?.amount?.toDouble().toString()
+                    }"
                 Timber.e("in if statement --->" + tvSalary.text)
             } else {
                 tvSalary.text = "Salary : NA"
             }
             //
 
-            if (candidate.preferences?.notice_period?.toDouble().toString().isNullOrEmpty()) {
+            if (candidate.preferences?.notice_period?.toString().isNullOrEmpty()) {
                 tvNoticePeriod.text = "Notice Period : NA"
             } else {
-                tvNoticePeriod.text = candidate.preferences?.notice_period?.toDouble().toString()
+                tvNoticePeriod.text = candidate.preferences?.notice_period.toString()
             }
         }
     }

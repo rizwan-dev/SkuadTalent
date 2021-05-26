@@ -225,8 +225,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                 tvSalary.text = getString(R.string.salary_not_available)
             }
             //
-            if (!candidateData.preferences?.notice_period?.toDouble().toString().isNullOrEmpty()) {
-                tvNoticePeriod.text = candidateData.preferences?.notice_period?.toDouble().toString()
+            if (!candidateData.preferences?.notice_period?.toString().isNullOrEmpty()) {
+                tvNoticePeriod.text = candidateData.preferences?.notice_period?.toString()
             } else {
                 tvNoticePeriod.text = getString(R.string.notice_period_not_available)
             }

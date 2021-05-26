@@ -23,14 +23,12 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
     }
 
     private fun getRollId(roleId: GetCandidatesByRoleQuery.Role_id?): RoleId? {
-        return roleId?.run {
-            RoleId(name = name() ?: "")
-        }
+        return roleId?.run { RoleId(name() ?: "") }
     }
 
     private fun getPreferences(preferences: GetCandidatesByRoleQuery.Preferences?): Preferences? {
         return preferences?.run {
-            Preferences(notice_period =notice_period())
+            Preferences(notice_period())
         }
     }
 
@@ -43,17 +41,16 @@ class CandidateListMapper : ResponseMapper<GetCandidatesByRoleQuery.Data, List<C
                 company_id = it.company_id(),
                 salary = mapToSalary(it.salary()),
 
-            )
+                )
 
         }
     }
 
 
-
     private fun mapToSalary(salary: GetCandidatesByRoleQuery.Salary?): Salary? {
         return salary?.run {
             Salary(
-                amount =amount(),
+                amount = amount(),
                 currency = currency() ?: ""
             )
         }
