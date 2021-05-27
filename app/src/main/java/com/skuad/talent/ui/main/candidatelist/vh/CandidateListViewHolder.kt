@@ -59,14 +59,13 @@ class CandidateListViewHolder(
             //
             if (!candidate.experience.isNullOrEmpty()
                 && !candidate.experience[0].salary?.currency.isNullOrEmpty()
-                && !candidate.experience[0].salary?.amount?.toDouble().toString().isNullOrEmpty()
+                && !candidate.experience[0].salary?.amount?.toString().isNullOrEmpty()
             ) {
+                val currency = candidate.experience[0].salary?.currency
+                val amount = candidate.experience[0].salary?.amount?.toInt()
 
-                tvSalary.text =
-                    "${candidate.experience[0].salary?.currency}${
-                        candidate.experience[0].salary?.amount?.toDouble().toString()
-                    }"
-                Timber.e("in if statement --->" + tvSalary.text)
+                tvSalary.text = currency + " " + amount
+
             } else {
                 tvSalary.text = "Salary : NA"
             }

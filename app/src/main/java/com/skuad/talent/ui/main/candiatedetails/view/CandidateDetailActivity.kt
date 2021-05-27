@@ -215,12 +215,13 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             //
             if (!candidateData.experience.isNullOrEmpty()
                 && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
-                && !candidateData.experience[0].salary?.amount?.toDouble().toString().isNullOrEmpty()
+                && !candidateData.experience[0].salary?.amount?.toString().isNullOrEmpty()
             ) {
 
-                tvSalary.text =
-                    "${candidateData.experience[0].salary?.currency }${candidateData.experience[0].salary?.amount?.toDouble().toString()}"
-                Timber.e("in if statement --->" + tvSalary.text)
+                val currency = candidateData.experience[0].salary?.currency
+                val amount = candidateData.experience[0].salary?.amount?.toInt()
+
+                tvSalary.text = currency + " " + amount
             } else {
                 tvSalary.text = getString(R.string.salary_not_available)
             }
