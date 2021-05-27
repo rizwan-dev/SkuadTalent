@@ -30,18 +30,14 @@ class CandidateListViewHolder(
                 tvAddress.text = "Address : NA"
             }
             if (!candidate.experience.isNullOrEmpty()) {
-                if (!candidate.role_id?.name.isNullOrEmpty()) {
-                    val designation = candidate.role_id?.name
-                    tvYearsOfExperience.text =
-                        "$designation | " + (candidate.experience[0].experience
-                            ?: "").plus(" years")
-                } else {
-                    val designation = "Designation : NA"
-                    tvYearsOfExperience.text =
-                        "$designation | " + (candidate.experience[0].experience
-                            ?: "").plus(" years")
-                }
+                val role = candidate.experience[0].role
+                val experience = candidate.experience[0].experience
 
+                val roleString = if(role.isNullOrEmpty()) "Designation : NA" else role
+
+                val experienceString  = if(experience.isNullOrEmpty()) "Experience : NA" else experience
+
+                tvYearsOfExperience.text = "$roleString | $experienceString"
 
             } else {
                 tvYearsOfExperience.text = "Designation : NA | " + "Experience : NA"

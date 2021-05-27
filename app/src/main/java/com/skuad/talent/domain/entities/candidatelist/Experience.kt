@@ -8,7 +8,7 @@ data class Experience(
     // val freelancer: Any,
     // val from_date: String,
     //  val location: String,
-    //val role: String? = null,
+    val role: String? = null,
     val salary: Salary?
 
     //  val to_date: Any
