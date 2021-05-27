@@ -31,28 +31,22 @@ class CandidateListViewHolder(
             }
             if (!candidate.experience.isNullOrEmpty()) {
                 val role = candidate.experience[0].role
+                //val role = candidate.role_id?.name
                 val experience = candidate.experience[0].experience
+                val employer = candidate.experience[0].company_id
+                val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
 
-                val roleString = if(role.isNullOrEmpty()) "Designation : NA" else role
-
-                val experienceString  = if(experience.isNullOrEmpty()) "Experience : NA" else experience
-
-                tvYearsOfExperience.text = "$roleString | $experienceString"
+                val experienceString =
+                    if (experience.isNullOrEmpty()) "Experience : NA" else experience
+                tvYearsOfExperience.text = "$roleString | $experienceString" + " years"
+                val employerString =
+                    if (employer.isNullOrEmpty()) "Current Employer : NA" else employer
+                tvCurrentEmployer.text = employerString
 
             } else {
                 tvYearsOfExperience.text = "Designation : NA | " + "Experience : NA"
             }
-            //
-            if (!candidate.experience.isNullOrEmpty() && !candidate.experience[0].company_id.isNullOrEmpty()
 
-            ) {
-
-                tvCurrentEmployer.text = candidate.experience[0].company_id
-
-            } else {
-                tvCurrentEmployer.text = "Current Employer : NA"
-            }
-            //
             if (!candidate.experience.isNullOrEmpty()
                 && !candidate.experience[0].salary?.currency.isNullOrEmpty()
                 && !candidate.experience[0].salary?.amount?.toString().isNullOrEmpty()
@@ -70,7 +64,8 @@ class CandidateListViewHolder(
             if (candidate.preferences?.notice_period?.toString().isNullOrEmpty()) {
                 tvNoticePeriod.text = "Notice Period : NA"
             } else {
-                tvNoticePeriod.text = candidate.preferences?.notice_period.toString()
+                tvNoticePeriod.text =
+                    candidate.preferences?.notice_period?.toInt().toString() + " days"
             }
         }
     }

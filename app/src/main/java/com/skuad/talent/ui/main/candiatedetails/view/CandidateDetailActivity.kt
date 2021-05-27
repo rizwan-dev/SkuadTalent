@@ -186,18 +186,29 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                 tvAddress.text = "Address : NA"
             }
             if (!candidateData.experience.isNullOrEmpty()) {
+                //val role = candidate.experience[0].role
+                val role = candidateData.role_id?.name
+                val experience = candidateData.experience[0].experience
+                val employer = candidateData.experience[0].company_id
+                val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
 
-                if (!candidateData.role_id?.name.isNullOrEmpty()) {
-                    val designation = candidateData.role_id?.name
-                    tvDesignation.text =
-                        "$designation | " + (candidateData.experience[0].experience
-                            ?: "").plus(" years")
-                } else {
-                    val designation = "Designation : NA"
-                    tvDesignation.text =
-                        "$designation | " + (candidateData.experience[0].experience
-                            ?: "").plus(" years")
-                }
+                val experienceString =
+                    if (experience.isNullOrEmpty()) "Experience : NA" else experience
+                tvDesignation.text = "$roleString | $experienceString" + " years"
+                val employerString =
+                    if (employer.isNullOrEmpty()) "Current Employer : NA" else employer
+                tvCurrentEmployer.text = employerString
+//                if (!candidateData.role_id?.name.isNullOrEmpty()) {
+//                    val designation = candidateData.role_id?.name
+//                    tvDesignation.text =
+//                        "$designation | " + (candidateData.experience[0].experience
+//                            ?: "").plus(" years")
+//                } else {
+//                    val designation = "Designation : NA"
+//                    tvDesignation.text =
+//                        "$designation | " + (candidateData.experience[0].experience
+//                            ?: "").plus(" years")
+//                }
 
             } else {
                 tvDesignation.text = getString(R.string.designation_exp_not_available)
@@ -227,7 +238,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             }
             //
             if (!candidateData.preferences?.notice_period?.toString().isNullOrEmpty()) {
-                tvNoticePeriod.text = candidateData.preferences?.notice_period?.toString()
+                tvNoticePeriod.text = candidateData.preferences?.notice_period?.toInt().toString() +" days"
             } else {
                 tvNoticePeriod.text = getString(R.string.notice_period_not_available)
             }
