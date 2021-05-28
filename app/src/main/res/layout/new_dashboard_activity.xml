@@ -11,8 +11,8 @@
         android:layout_width="411dp"
         android:layout_height="171dp"
         android:adjustViewBounds="true"
-        android:visibility="gone"
-        android:src="@drawable/ic_profile_background"
+        android:visibility="visible"
+        android:src="@drawable/ic_curved_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

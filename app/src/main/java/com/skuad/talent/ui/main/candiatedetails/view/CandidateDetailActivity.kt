@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
-import com.skuad.talent.databinding.ActivityCandidateProfileBinding
+import com.skuad.talent.databinding.ActivityCandidateDetailsBinding
 import com.skuad.talent.domain.entities.candidate.GetCandidateByAdmin
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.extension.setVisibility
@@ -26,7 +26,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(),
+class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(),
     DownloadFile.Listener {
 
     @Inject
@@ -36,10 +36,10 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
     var remotePDFViewPager: RemotePDFViewPager? = null
     override fun attachBinding(
-        list: MutableList<ActivityCandidateProfileBinding>,
+        list: MutableList<ActivityCandidateDetailsBinding>,
         inflater: LayoutInflater
     ) {
-        list.add(ActivityCandidateProfileBinding.inflate(layoutInflater))
+        list.add(ActivityCandidateDetailsBinding.inflate(layoutInflater))
     }
 
     override fun setup() {
@@ -178,7 +178,18 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
 
             }
             //name
-            tvCandidateName.text = candidateData.contact_info?.name
+            val fullname = candidateData.contact_info?.name
+            tvCandidateName.text = fullname
+//            val initials = StringBuilder()
+//            for (s in fullname!!.split(" ").toTypedArray()) {
+//                initials.append(s[0])
+//            }
+//            println(initials.toString())
+            //  Timber.e("first letters of name ----> $initials")
+            val myName = fullname?.split(" ")
+            val initial = myName?.fold("", { acc, s -> acc + s[0] })
+            imgProfile.text = initial
+            Timber.e("first letters of name ----> $initial")
             //address
             if (!candidateData.contact_info?.address.isNullOrEmpty()) {
                 tvAddress.text = candidateData.contact_info?.address
@@ -238,7 +249,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
             }
             //
             if (!candidateData.preferences?.notice_period?.toString().isNullOrEmpty()) {
-                tvNoticePeriod.text = candidateData.preferences?.notice_period?.toInt().toString() +" days"
+                tvNoticePeriod.text =
+                    candidateData.preferences?.notice_period?.toInt().toString() + " days"
             } else {
                 tvNoticePeriod.text = getString(R.string.notice_period_not_available)
             }

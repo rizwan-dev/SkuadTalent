@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/top_banner"
+        android:layout_width="411dp"
+        android:layout_height="@dimen/dimen_120"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_gradient_rectangle"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/img_profile"
+        android:layout_width="@dimen/profile_image_size"
+        android:layout_height="@dimen/profile_image_size"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_12"
+        android:background="@drawable/rounded_textview"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="H"
+        android:textColor="@color/white"
+        android:textFontWeight="400"
+        android:textSize="@dimen/font_25"
+        app:layout_constraintBottom_toBottomOf="@+id/top_banner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_banner" />
+
+    <TextView
+        android:id="@+id/tvCandidateName"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="Shailee Sharma"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="@dimen/font_17"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_profile"
+        app:layout_constraintTop_toTopOf="@+id/img_profile" />
+
+    <TextView
+        android:id="@+id/tv_email_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:text="abc123@gmail.com"
+        android:textColor="#1A237E"
+        android:textFontWeight="500"
+        android:textSize="@dimen/font_15"
+        app:layout_constraintEnd_toEndOf="@id/tvCandidateName"
+        app:layout_constraintStart_toStartOf="@id/tvCandidateName"
+        app:layout_constraintTop_toBottomOf="@+id/top_banner" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_exp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/rounded_shape_white"
+        android:elevation="@dimen/dimen_2"
+        android:padding="@dimen/dimen_5"
+        app:layout_constraintTop_toBottomOf="@id/img_profile">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_Experience"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@drawable/mental_health"
+            app:layout_constraintBottom_toBottomOf="@id/tvDesignation"
+            app:layout_constraintEnd_toStartOf="@id/tvDesignation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvDesignation" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDesignation"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_vertical"
+            android:text="@string/experience"
+            android:textColor="@color/grey"
+            android:textFontWeight="400"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_Experience"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_Location"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@drawable/location_icon"
+            app:layout_constraintBottom_toBottomOf="@id/tvAddress"
+            app:layout_constraintEnd_toStartOf="@id/tvAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvAddress" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvAddress"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_vertical"
+            android:text="@string/address"
+            android:textColor="@color/grey"
+            android:textFontWeight="400"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_Location"
+            app:layout_constraintTop_toBottomOf="@id/tvDesignation" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_Office"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@drawable/office_icon"
+            app:layout_constraintBottom_toBottomOf="@id/tvCurrentEmployer"
+            app:layout_constraintEnd_toStartOf="@id/tvCurrentEmployer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvCurrentEmployer" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCurrentEmployer"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_vertical"
+            android:text="@string/current_employer"
+            android:textColor="@color/grey"
+            android:textFontWeight="400"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintEnd_toEndOf="@id/tvDesignation"
+            app:layout_constraintStart_toEndOf="@id/iv_Office"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_Salary"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@drawable/salary_icon"
+            app:layout_constraintBottom_toBottomOf="@id/tvSalary"
+            app:layout_constraintEnd_toStartOf="@id/tvSalary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvSalary" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvSalary"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_vertical"
+            android:text="@string/current_salary"
+            android:textColor="@color/grey"
+            android:textFontWeight="400"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintEnd_toEndOf="@id/tvDesignation"
+            app:layout_constraintStart_toEndOf="@id/iv_Salary"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrentEmployer" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_NoticePeriod"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@drawable/notice_period_icon"
+            app:layout_constraintBottom_toBottomOf="@id/tvNoticePeriod"
+            app:layout_constraintEnd_toStartOf="@id/tvNoticePeriod"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvNoticePeriod" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNoticePeriod"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_vertical"
+            android:text="@string/notice_period"
+            android:textColor="@color/grey"
+            android:textFontWeight="400"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_NoticePeriod"
+            app:layout_constraintTop_toBottomOf="@id/tvSalary" />
+
+        <TextView
+            android:id="@+id/btnSelected"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10"
+            android:background="@drawable/rounded_shape_selected_button"
+            android:drawableEnd="@drawable/ic_green_checkmark"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10"
+            android:text="@string/selected"
+            android:textColor="@color/teal_700"
+            android:textFontWeight="500"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btnRejected"
+            app:layout_constraintTop_toBottomOf="@id/tvNoticePeriod" />
+
+
+        <TextView
+            android:id="@+id/btnRejected"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10"
+            android:background="@drawable/rounded_shape_rejected_button"
+            android:drawableEnd="@drawable/ic_red_crossmark"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10"
+            android:text="@string/rejected"
+            android:textColor="@color/red"
+            android:textFontWeight="500"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintBottom_toBottomOf="@id/btnSelected"
+            app:layout_constraintLeft_toRightOf="@id/btnSelected"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnSelected" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="@dimen/dimen_5"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_exp" />
+
+    <TextView
+        android:id="@+id/tvResumeHeading"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dimen_5"
+        android:text="Resume"
+        android:textColor="@color/grey"
+        android:textFontWeight="500"
+        android:textSize="@dimen/font_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+    <FrameLayout
+        android:id="@+id/webView"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="@dimen/dimen_0"
+        android:layout_marginTop="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResumeHeading">
+
+        <TextView
+            android:id="@+id/tvNoResume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/resume_not_available"
+            android:textSize="@dimen/font_20"
+            android:visibility="gone" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

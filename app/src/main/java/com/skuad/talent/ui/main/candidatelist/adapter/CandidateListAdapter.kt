@@ -1,6 +1,7 @@
 package com.skuad.talent.ui.main.candidatelist.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,6 @@ class CandidateListAdapter(
     private val onItemClick: (CandidateInfo) -> Unit
 ) :
     RecyclerView.Adapter<CandidateListViewHolder>() {
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

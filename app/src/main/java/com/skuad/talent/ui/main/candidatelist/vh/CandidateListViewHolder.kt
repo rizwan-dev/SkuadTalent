@@ -67,6 +67,7 @@ class CandidateListViewHolder(
                 tvNoticePeriod.text =
                     candidate.preferences?.notice_period?.toInt().toString() + " days"
             }
+
         }
     }
 }

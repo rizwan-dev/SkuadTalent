@@ -41,4 +41,6 @@
     <dimen name="dimen_36">36dp</dimen>
     <dimen name="font_12">12sp</dimen>
     <dimen name="font_14">14sp</dimen>
+    <dimen name="profile_image_size">100dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
 </resources>

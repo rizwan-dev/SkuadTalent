@@ -49,7 +49,7 @@
     <TextView
         android:id="@+id/btn_ok_dialog"
         android:gravity="center"
-        android:background="@drawable/bg_hollow_light_gray"
+        android:background="@drawable/bg_red_filled"
         app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_width="@dimen/dimen_132"
         android:layout_height="@dimen/dimen_44"
