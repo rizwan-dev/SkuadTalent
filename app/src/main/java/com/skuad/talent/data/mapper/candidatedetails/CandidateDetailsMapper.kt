@@ -31,7 +31,7 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
     }
 
     private fun getRoll(roleId: GetCandidateByAdminQuery.Role_id?): RoleId? {
-        return roleId?.run { RoleId(name ()?: "") }
+        return roleId?.run { RoleId(name() ?: "") }
     }
 
 
@@ -41,14 +41,17 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
         }
     }
 
+
+
+
     private fun getExperience(experience: List<GetCandidateByAdminQuery.Experience>?): List<Experience>? {
         return experience?.map {
-            Experience(it.experience(), it.company_id(),mapSalary(it.salary()))
+            Experience(it.experience(), it.company_id(), mapSalary(it.salary()))
         }
     }
 
     private fun mapSalary(salary: GetCandidateByAdminQuery.Salary?): Salary? {
-        return salary?.run { Salary(amount(),currency()?:"") }
+        return salary?.run { Salary(amount(), currency() ?: "") }
     }
 
 

@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
-import com.skuad.talent.databinding.NewDashboardActivityBinding
+import com.skuad.talent.databinding.ActivityDashboardBinding
 import com.skuad.talent.domain.entities.dashboard.SkillsInfo
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
@@ -19,16 +19,16 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class DashboardActivity : BaseActivityVB<NewDashboardActivityBinding>() {
+class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
 
     @Inject
     lateinit var viewModel: DashboardViewModel
 
     override fun attachBinding(
-        list: MutableList<NewDashboardActivityBinding>,
+        list: MutableList<ActivityDashboardBinding>,
         inflater: LayoutInflater
     ) {
-        list.add(NewDashboardActivityBinding.inflate(layoutInflater))
+        list.add(ActivityDashboardBinding.inflate(layoutInflater))
     }
 
     override fun setup() {

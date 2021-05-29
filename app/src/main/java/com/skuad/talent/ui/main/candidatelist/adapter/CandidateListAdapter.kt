@@ -22,7 +22,7 @@ class CandidateListAdapter(
     ): CandidateListViewHolder {
         val inflater = LayoutInflater.from(context)
         val binding = ItemCandidateListBinding.inflate(inflater, parent, false)
-        return CandidateListViewHolder(binding, onItemClick)
+        return CandidateListViewHolder(context,binding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: CandidateListViewHolder, position: Int) {

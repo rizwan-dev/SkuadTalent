@@ -26,27 +26,40 @@ class DashboardViewHolder(
 
             val skillImage = when (skills.name) {
                 ANDROID_DEVELOPER -> R.drawable.android_128
-                "iOS Developer" -> R.drawable.apple_logo
-                "Project Manager" -> R.drawable.ic_projectmanager
-                "Product Manager" -> R.drawable.ic_product_manager
-                "Full Stack Developer" -> R.drawable.fullstack
-                "Talent Acquisition" -> R.drawable.talent_acquisition
-                "Backend developer" -> R.drawable.backend
-                "PPC Analyst" -> R.drawable.ic_php
-                "DevOps" -> R.drawable.devops
-                "Hybrid App Developer" -> R.drawable.fullstack
-                "Quality Assurance Engineer" -> R.drawable.quality
-                "Sales Professional" -> R.drawable.sales
-                "Graphic Designer" -> R.drawable.designer
-                "UI/UX Designer" -> R.drawable.ic_uidesigner
+                IOS_DEVELOPER -> R.drawable.apple_logo
+                PROJECT_MANAGER -> R.drawable.ic_projectmanager
+                PRODUCT_MANAGER -> R.drawable.ic_product_manager
+                FULL_STACK_DEVELOPER -> R.drawable.fullstack
+                TALENT_ACQUISITION -> R.drawable.talent_acquisition
+                BACKEND_DEVELOPER -> R.drawable.backend
+                PPC_ANALYST -> R.drawable.ic_php
+                DEVOPS -> R.drawable.devops
+                HYBRID_APP_DEVELOPER -> R.drawable.fullstack
+                QUALITY_ASSURANCE_ENGINEER -> R.drawable.quality
+                SALES_PROFESSIONAL -> R.drawable.sales
+                GRAPHIC_DESIGNER -> R.drawable.designer
+                UI_DESIGNER -> R.drawable.ic_uidesigner
                 else -> R.drawable.backend
             }
-            Timber.e("selected image resource --->" + skillImage)
             ivCardLogo.setImageResource(skillImage)
         }
     }
 
-    companion object{
+    companion object {
         private const val ANDROID_DEVELOPER = "Android Developer"
+        private const val IOS_DEVELOPER = "iOS Developer"
+        private const val PROJECT_MANAGER = "Project Manager"
+        private const val PRODUCT_MANAGER = "Product Manager"
+        private const val FULL_STACK_DEVELOPER = "Full Stack Developer"
+        private const val TALENT_ACQUISITION = "Talent Acquisition"
+        private const val BACKEND_DEVELOPER = "Backend developer"
+        private const val PPC_ANALYST = "PPC Analyst"
+        private const val HYBRID_APP_DEVELOPER = "Hybrid App Developer"
+        private const val DEVOPS = "DevOps"
+        private const val QUALITY_ASSURANCE_ENGINEER = "Quality Assurance Engineer"
+        private const val SALES_PROFESSIONAL = "Sales Professional"
+        private const val GRAPHIC_DESIGNER = "Graphic Designer"
+        private const val UI_DESIGNER = "UI/UX Designer"
+
     }
 }

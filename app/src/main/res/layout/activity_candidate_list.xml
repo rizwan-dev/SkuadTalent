@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAndroid"
+        android:id="@+id/rvCandidateList"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="@dimen/dimen_0"
         android:layout_margin="@dimen/dimen_15"

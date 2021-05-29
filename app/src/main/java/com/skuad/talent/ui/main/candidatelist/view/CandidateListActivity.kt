@@ -24,7 +24,7 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
     @Inject
     lateinit var viewModel: CandidateListViewModel
 
-    private lateinit var cardTitle: String
+    private lateinit var skillTitle: String
     private lateinit var skillId: String
     override fun attachBinding(
         list: MutableList<ActivityCandidateListBinding>,
@@ -73,9 +73,9 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
             supportActionBar?.setHomeButtonEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
-            cardTitle = intent.getStringExtra(SKILL_NAME) ?: ""
-            Timber.e("cardTitle------------%s", cardTitle)
-            supportActionBar?.title = cardTitle
+            skillTitle = intent.getStringExtra(SKILL_NAME) ?: ""
+            Timber.e("cardTitle------------%s", skillTitle)
+            supportActionBar?.title = skillTitle
 
         }
 
@@ -93,17 +93,18 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
         withBinding {
             if (candidateList.isEmpty()) {
                 tvNoList.setVisibility(true)
-                rvAndroid.setVisibility(false)
+                rvCandidateList.setVisibility(false)
             } else {
                 tvNoList.setVisibility(false)
-                Timber.e("candidate list from DataUtil---->> %s", candidateList)
-                rvAndroid.layoutManager = LinearLayoutManager(this@CandidateListActivity)
-                rvAndroid.adapter =
+                Timber.e("candidate list from api---->> %s", candidateList)
+                rvCandidateList.layoutManager = LinearLayoutManager(this@CandidateListActivity)
+                rvCandidateList.adapter =
                     CandidateListAdapter(
                         this@CandidateListActivity,
                         candidateList
                     ) { candidate ->
                         startActivityForResult(
+
                             CandidateDetailActivity.newInstance(
                                 this@CandidateListActivity,
                                 candidate.uid
@@ -137,10 +138,10 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
     }
 
     override fun onBackPressed() {
-        if(viewModel.isDataChanged){
+        if (viewModel.isDataChanged) {
             setResult(RESULT_OK)
             finish()
-        } else{
+        } else {
             super.onBackPressed()
         }
 

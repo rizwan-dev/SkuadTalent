@@ -120,7 +120,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
             Timber.d("In observer ")
             when (it) {
                 is ResourceState.Success -> {
-                    Timber.d("+++++State change success " + it.body)
+                    Timber.d("+++++State change success ${it.body}")
                     showSuccessAlert(viewModel.changeStage)
 
                 }
@@ -170,15 +170,11 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 updateLayout()
 
             }
-            //name
             val fullName = candidateData.contact_info?.name
             tvCandidateName.text = fullName
-
             val myName = fullName?.split(" ")
             val initial = myName?.fold("", { acc, s -> acc + s[0] })
-
             imgProfile.text = initial
-            //address
             if (!candidateData.contact_info?.address.isNullOrEmpty()) {
                 tvAddress.text = candidateData.contact_info?.address
             } else {
@@ -202,16 +198,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 tvDesignation.text = getString(R.string.designation_exp_not_available)
             }
 
-            if (!candidateData.experience.isNullOrEmpty() && !candidateData.experience[0].company_id.isNullOrEmpty()
-
-            ) {
-
-                tvCurrentEmployer.text = candidateData.experience[0].company_id
-
-            } else {
-                tvCurrentEmployer.text = getString(R.string.current_employer_not_available)
-            }
-            //
             if (!candidateData.experience.isNullOrEmpty()
                 && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
                 && !candidateData.experience[0].salary?.amount?.toString().isNullOrEmpty()
@@ -219,8 +205,10 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
                 val currency = candidateData.experience[0].salary?.currency
                 val amount = candidateData.experience[0].salary?.amount?.toInt()
-
-                tvSalary.text = "$currency $amount"
+                val s: String = amount.toString()
+                val d = java.lang.Double.valueOf(s)
+                val amountWithComma = String.format("%,.0f", d)
+                tvSalary.text = "₹" + " " + amountWithComma
             } else {
                 tvSalary.text = getString(R.string.salary_not_available)
             }

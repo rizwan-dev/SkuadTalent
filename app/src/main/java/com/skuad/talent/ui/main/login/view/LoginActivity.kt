@@ -11,7 +11,7 @@ import com.google.android.gms.common.api.ApiException
 import com.skuad.talent.R
 import com.skuad.talent.base.common.Constant
 import com.skuad.talent.base.entities.ResourceState
-import com.skuad.talent.databinding.NewActivityLoginBinding
+import com.skuad.talent.databinding.ActivityLoginBinding
 import com.skuad.talent.domain.repository.SharedPrefRepo
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.extension.showShortToast
@@ -21,7 +21,7 @@ import com.skuad.talent.ui.main.login.viewmodel.LoginViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
-class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
+class LoginActivity : BaseActivityVB<ActivityLoginBinding>() {
 
     @Inject
     lateinit var viewModel: LoginViewModel
@@ -32,8 +32,8 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private var mGoogleSignInOptions: GoogleSignInOptions? = null
 
-    override fun attachBinding(list: MutableList<NewActivityLoginBinding>, inflater: LayoutInflater) {
-        list.add(NewActivityLoginBinding.inflate(layoutInflater))
+    override fun attachBinding(list: MutableList<ActivityLoginBinding>, inflater: LayoutInflater) {
+        list.add(ActivityLoginBinding.inflate(layoutInflater))
     }
 
     override fun setup() {
