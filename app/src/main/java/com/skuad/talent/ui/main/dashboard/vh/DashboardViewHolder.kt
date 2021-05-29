@@ -4,29 +4,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.R
 import com.skuad.talent.databinding.ItemDashbordCardsBinding
 import com.skuad.talent.domain.entities.dashboard.SkillsInfo
-import kotlinx.android.synthetic.main.item_dashbord_cards.view.*
 import timber.log.Timber
 
 class DashboardViewHolder(
     private val binding: ItemDashbordCardsBinding,
     private val onItemClick: (SkillsInfo) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    private lateinit var card: SkillsInfo
+    private lateinit var skillsInfo: SkillsInfo
 
     init {
         binding.root.setOnClickListener {
-            onItemClick.invoke(card)
+            onItemClick.invoke(skillsInfo)
         }
     }
 
-    fun bind(card: SkillsInfo) {
-        this.card = card
+    fun bind(skills: SkillsInfo) {
+        this.skillsInfo = skills
         with(binding) {
-            tvCardName.text = card.name
-            tvActiveProfiles.text = card.stageCount.sourced.toString()
+            tvCardName.text = skills.name
+            tvActiveProfiles.text = skills.stageCount.sourced.toString()
 
-            val skillImage = when (card.name) {
-                "Android Developer" -> R.drawable.android_128
+            val skillImage = when (skills.name) {
+                ANDROID_DEVELOPER -> R.drawable.android_128
                 "iOS Developer" -> R.drawable.apple_logo
                 "Project Manager" -> R.drawable.ic_projectmanager
                 "Product Manager" -> R.drawable.ic_product_manager
@@ -45,5 +44,9 @@ class DashboardViewHolder(
             Timber.e("selected image resource --->" + skillImage)
             ivCardLogo.setImageResource(skillImage)
         }
+    }
+
+    companion object{
+        private const val ANDROID_DEVELOPER = "Android Developer"
     }
 }

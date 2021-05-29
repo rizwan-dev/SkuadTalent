@@ -19,13 +19,13 @@ import com.skuad.talent.ui.main.candidatelist.viewmodel.CandidateListViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
-class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
+class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
 
     @Inject
     lateinit var viewModel: CandidateListViewModel
 
     private lateinit var cardTitle: String
-    private lateinit var cardId: String
+    private lateinit var skillId: String
     override fun attachBinding(
         list: MutableList<ActivityCandidateListBinding>,
         inflater: LayoutInflater
@@ -61,9 +61,9 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
     private fun getCandidateList() {
         showLoading(true)
-        cardId = intent.getStringExtra(CARD_ID) ?: ""
-        Timber.e("card id from dashboard ----%s", cardId)
-        viewModel.getCandidateInfo(CandidateListRequest(roleId = cardId))
+        skillId = intent.getStringExtra(SKILL_ID) ?: ""
+        Timber.e("card id from dashboard ----%s", skillId)
+        viewModel.getCandidateInfo(CandidateListRequest(roleId = skillId))
     }
 
     private fun setToolBar() {
@@ -73,7 +73,7 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
             supportActionBar?.setHomeButtonEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
-            cardTitle = intent.getStringExtra(CARD_TITLE) ?: ""
+            cardTitle = intent.getStringExtra(SKILL_NAME) ?: ""
             Timber.e("cardTitle------------%s", cardTitle)
             supportActionBar?.title = cardTitle
 
@@ -97,15 +97,15 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
             } else {
                 tvNoList.setVisibility(false)
                 Timber.e("candidate list from DataUtil---->> %s", candidateList)
-                rvAndroid.layoutManager = LinearLayoutManager(this@NewCandidateListActivity)
+                rvAndroid.layoutManager = LinearLayoutManager(this@CandidateListActivity)
                 rvAndroid.adapter =
                     CandidateListAdapter(
-                        this@NewCandidateListActivity,
+                        this@CandidateListActivity,
                         candidateList
                     ) { candidate ->
                         startActivityForResult(
                             CandidateDetailActivity.newInstance(
-                                this@NewCandidateListActivity,
+                                this@CandidateListActivity,
                                 candidate.uid
                             ), REQUEST_CHANGE_STATE
                         )
@@ -116,15 +116,15 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
 
 
     companion object {
-        const val CARD_TITLE = "card_title"
-        const val CARD_ID = "card_id"
-        private const val REQUEST_CHANGE_STATE = 10001
+        const val SKILL_NAME = "skill_name"
+        const val SKILL_ID = "skill_id"
+        const val REQUEST_CHANGE_STATE = 10001
 
 
         fun newInstance(context: Context, name: String, id: String) =
-            Intent(context, NewCandidateListActivity::class.java).apply {
-                putExtra(CARD_TITLE, name)
-                putExtra(CARD_ID, id)
+            Intent(context, CandidateListActivity::class.java).apply {
+                putExtra(SKILL_NAME, name)
+                putExtra(SKILL_ID, id)
             }
     }
 
@@ -132,7 +132,18 @@ class NewCandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() 
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == REQUEST_CHANGE_STATE) {
             getCandidateList()
+            viewModel.isDataChanged = true
         }
+    }
+
+    override fun onBackPressed() {
+        if(viewModel.isDataChanged){
+            setResult(RESULT_OK)
+            finish()
+        } else{
+            super.onBackPressed()
+        }
+
     }
 
 }

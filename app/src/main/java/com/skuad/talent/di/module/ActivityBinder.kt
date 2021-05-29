@@ -1,8 +1,8 @@
 package com.skuad.talent.di.module
 
 import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
-import com.skuad.talent.ui.main.candidatelist.view.NewCandidateListActivity
-import com.skuad.talent.ui.main.dashboard.view.NewDashboardActivity
+import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
+import com.skuad.talent.ui.main.dashboard.view.DashboardActivity
 import com.skuad.talent.ui.main.login.view.LoginActivity
 import com.skuad.talent.ui.main.login.SignUpActivity
 import com.skuad.talent.ui.main.splash.SplashActivity
@@ -22,10 +22,10 @@ abstract class ActivityBinder {
     abstract fun bindSignUpActivity(): SignUpActivity
 
     @ContributesAndroidInjector
-    abstract fun bindNewDashboardActivity(): NewDashboardActivity
+    abstract fun bindNewDashboardActivity(): DashboardActivity
 
     @ContributesAndroidInjector
-    abstract fun bindNewCandidateListActivity(): NewCandidateListActivity
+    abstract fun bindNewCandidateListActivity(): CandidateListActivity
 
     @ContributesAndroidInjector
     abstract fun bindCandidateDetailActivity(): CandidateDetailActivity

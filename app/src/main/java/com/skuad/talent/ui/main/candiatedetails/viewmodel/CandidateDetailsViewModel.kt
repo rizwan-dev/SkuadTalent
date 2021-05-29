@@ -21,6 +21,8 @@ class CandidateDetailsViewModel @Inject constructor(private val candidateRepo: C
 
     var userId: String? = null
 
+    var changeStage = ""
+
 
     val changeStateLiveData : LiveData<ResourceState<ChangeStateResponse>> get() = _changeStateLiveData
     private var _changeStateLiveData = MutableLiveData<ResourceState<ChangeStateResponse>>()
@@ -33,6 +35,7 @@ class CandidateDetailsViewModel @Inject constructor(private val candidateRepo: C
     }
 
     fun changeCandidateState(id: String, stage: String){
+        changeStage = stage
         viewModelScope.launch {
             val result = candidateRepo.changeState(ChangeStateRequest(id, stage))
             _changeStateLiveData.value = result

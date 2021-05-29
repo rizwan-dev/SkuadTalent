@@ -51,7 +51,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     private fun addListeners() {
         withBinding {
             btnSelected.setSafeOnClickListener {
-                Timber.d("+++++On click of Selected btn")
                 changeState(SELECTED)
             }
 
@@ -62,24 +61,21 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     }
 
 
-    private fun showAlertBox(stage: String) {
-
-        Timber.e("+++++IN ALERT BOX")
+    private fun showSuccessAlert(stage: String) {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.alert_dialog)
         dialog?.window?.setBackgroundDrawableResource(R.drawable.round_corner_10)
-        dialog.setTitle("Profile Status")
+        dialog.setTitle(getString(R.string.profile_status))
         dialog.setCancelable(true)
         val textView: TextView = dialog.findViewById(R.id.tv_description)
-        if (stage.equals("registered")) {
-            textView.text = "This profile has been shortlisted."
+        if (stage == SELECTED) {
+            textView.text = getString(R.string.profile_shortlisted)
         } else {
-            textView.text = "This profile has been rejected."
+            textView.text = getString(R.string.profile_rejected)
         }
 
-        val button: TextView = dialog.findViewById(R.id.btn_ok_dialog)
-        button.setOnClickListener {
-            Timber.d("+++++On click of OK btn in alert")
+        val btnOk: TextView = dialog.findViewById(R.id.btn_ok_dialog)
+        btnOk.setOnClickListener {
             setResult(RESULT_OK)
             finish()
             dialog.dismiss()
@@ -91,11 +87,9 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
 
     private fun changeState(stage: String) {
-        Timber.d("+++++In change state fun--->$stage")
         viewModel.userId?.let { uId ->
             showLoading(true)
             viewModel.changeCandidateState(uId, stage)
-            showAlertBox(stage)
         }
 
     }
@@ -111,7 +105,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 is ResourceState.Success -> {
                     Timber.d("Candidate details is ${it.body}")
                     val candidateData = it.body
-                    Timber.d("Candidate details is-----> ${candidateData}")
                     viewModel.userId = candidateData.uid
                     setUpView(candidateData)
                 }
@@ -128,7 +121,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
             when (it) {
                 is ResourceState.Success -> {
                     Timber.d("+++++State change success " + it.body)
-
+                    showSuccessAlert(viewModel.changeStage)
 
                 }
 
@@ -178,18 +171,13 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
             }
             //name
-            val fullname = candidateData.contact_info?.name
-            tvCandidateName.text = fullname
-//            val initials = StringBuilder()
-//            for (s in fullname!!.split(" ").toTypedArray()) {
-//                initials.append(s[0])
-//            }
-//            println(initials.toString())
-            //  Timber.e("first letters of name ----> $initials")
-            val myName = fullname?.split(" ")
+            val fullName = candidateData.contact_info?.name
+            tvCandidateName.text = fullName
+
+            val myName = fullName?.split(" ")
             val initial = myName?.fold("", { acc, s -> acc + s[0] })
+
             imgProfile.text = initial
-            Timber.e("first letters of name ----> $initial")
             //address
             if (!candidateData.contact_info?.address.isNullOrEmpty()) {
                 tvAddress.text = candidateData.contact_info?.address
@@ -197,7 +185,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 tvAddress.text = "Address : NA"
             }
             if (!candidateData.experience.isNullOrEmpty()) {
-                //val role = candidate.experience[0].role
                 val role = candidateData.role_id?.name
                 val experience = candidateData.experience[0].experience
                 val employer = candidateData.experience[0].company_id
@@ -205,21 +192,11 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
                 val experienceString =
                     if (experience.isNullOrEmpty()) "Experience : NA" else experience
-                tvDesignation.text = "$roleString | $experienceString" + " years"
+                tvDesignation.text = "$roleString | $experienceString years"
                 val employerString =
                     if (employer.isNullOrEmpty()) "Current Employer : NA" else employer
                 tvCurrentEmployer.text = employerString
-//                if (!candidateData.role_id?.name.isNullOrEmpty()) {
-//                    val designation = candidateData.role_id?.name
-//                    tvDesignation.text =
-//                        "$designation | " + (candidateData.experience[0].experience
-//                            ?: "").plus(" years")
-//                } else {
-//                    val designation = "Designation : NA"
-//                    tvDesignation.text =
-//                        "$designation | " + (candidateData.experience[0].experience
-//                            ?: "").plus(" years")
-//                }
+
 
             } else {
                 tvDesignation.text = getString(R.string.designation_exp_not_available)
@@ -243,7 +220,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 val currency = candidateData.experience[0].salary?.currency
                 val amount = candidateData.experience[0].salary?.amount?.toInt()
 
-                tvSalary.text = currency + " " + amount
+                tvSalary.text = "$currency $amount"
             } else {
                 tvSalary.text = getString(R.string.salary_not_available)
             }

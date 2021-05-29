@@ -48,6 +48,9 @@
     <string name="salary_not_available">Salary : NA</string>
     <string name="notice_period_not_available">Notice Period : NA</string>
     <string name="designation_exp_not_available">Designation : NA | Experience : NA</string>
+    <string name="profile_shortlisted">This profile has been Shortlisted.</string>
+    <string name="profile_rejected">This profile has been Rejected.</string>
+    <string name="profile_status">Profile Status</string>
 
 
 </resources>

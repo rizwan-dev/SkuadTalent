@@ -15,6 +15,8 @@ class CandidateListViewModel @Inject constructor(private val candidateRepo: Cand
 
     val candidateListLiveData: LiveData<ResourceState<List<CandidateInfo>>> get() = _candidateListLiveData
 
+    var isDataChanged = false
+
     private val _candidateListLiveData = MutableLiveData<ResourceState<List<CandidateInfo>>>()
 
     fun getCandidateInfo(candidateListRequest: CandidateListRequest){

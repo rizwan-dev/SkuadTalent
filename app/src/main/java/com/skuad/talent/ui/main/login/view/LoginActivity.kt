@@ -16,8 +16,7 @@ import com.skuad.talent.domain.repository.SharedPrefRepo
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.extension.showShortToast
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.dashboard.view.NewDashboardActivity
-import com.skuad.talent.ui.main.login.SignUpActivity
+import com.skuad.talent.ui.main.dashboard.view.DashboardActivity
 import com.skuad.talent.ui.main.login.viewmodel.LoginViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -75,7 +74,7 @@ class LoginActivity : BaseActivityVB<NewActivityLoginBinding>() {
     }
 
     private fun gotoDashboard() {
-        startActivity(NewDashboardActivity.newInstance(this))
+        startActivity(DashboardActivity.newInstance(this))
         finish()
     }
 
