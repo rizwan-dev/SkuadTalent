@@ -85,8 +85,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_Experience"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="@dimen/dimen_16"
+            android:layout_height="@dimen/dimen_16"
             android:layout_margin="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
             android:src="@drawable/mental_health"
@@ -112,8 +112,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_Location"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="@dimen/dimen_16"
+            android:layout_height="@dimen/dimen_16"
             android:layout_margin="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
             android:src="@drawable/location_icon"
@@ -138,8 +138,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_Office"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="@dimen/dimen_16"
+            android:layout_height="@dimen/dimen_16"
             android:layout_margin="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
             android:src="@drawable/office_icon"
@@ -164,8 +164,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_Salary"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="@dimen/dimen_16"
+            android:layout_height="@dimen/dimen_16"
             android:layout_margin="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
             android:src="@drawable/salary_icon"
@@ -190,8 +190,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_NoticePeriod"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="@dimen/dimen_16"
+            android:layout_height="@dimen/dimen_16"
             android:layout_margin="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
             android:src="@drawable/notice_period_icon"
