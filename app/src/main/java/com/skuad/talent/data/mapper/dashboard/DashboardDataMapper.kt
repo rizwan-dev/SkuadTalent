@@ -27,7 +27,6 @@ class DashboardDataMapper : ResponseMapper<GetDashboardRoleswithCountQuery.Data,
                 sourced = sourced(),
                 hired = hired(),
                 offered = offered(),
-                registered = registered()
             )
         }
     }

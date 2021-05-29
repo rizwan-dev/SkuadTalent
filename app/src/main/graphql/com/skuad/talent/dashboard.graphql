@@ -3,7 +3,6 @@ query getDashboardRoleswithCount{
     _id
     name
     stageCount{
-      registered
       sourced
       hired
       offered
@@ -18,7 +17,6 @@ getDashboardCategoriesCount {
             disqualified
             offered
             hired
-            registered
             passive
             mao
             network

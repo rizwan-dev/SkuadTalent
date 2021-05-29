@@ -7,7 +7,7 @@ import com.skuad.talent.domain.entities.dashboard.DashboardCategoriesCount
 class DashboardCategoriesCountMapper : ResponseMapper<GetDashboardCategoriesCountQuery.Data, DashboardCategoriesCount> {
     override fun map(input: GetDashboardCategoriesCountQuery.Data): DashboardCategoriesCount {
         return input.dashboardCategoriesCount.run {
-            DashboardCategoriesCount(sourced = sourced(), registered = registered())
+            DashboardCategoriesCount(sourced = sourced(), registered = hired())
         }
     }
 }

@@ -22,6 +22,14 @@ buildscript {
         // Oauth Ids
         googleWebIdDev = "\"1080157401680-2d6sjlu406ath2gatkjh74p7f19sgfp1.apps.googleusercontent.com\""
         googleWebIdStaging = "\"1090609532096-lf45nd2vlkk1pjbf1qfa7vjj5nek8u7t.apps.googleusercontent.com\""
+
+        // Base URLs
+        baseUrlDev = "\"https://gql-dev.skuad.in/graphql\""
+        baseURlStaging = "\"https://gql-dev.skuad.in/graphql\""
+
+        // Base URLs REST
+        baseRestUrlDev = "\"https://id-service-skd.herokuapp.com/\""
+        baseRestURlStaging = "\"https://id-service-skd.herokuapp.com/\""
     }
     repositories {
         google()

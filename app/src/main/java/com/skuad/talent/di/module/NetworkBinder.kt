@@ -8,6 +8,7 @@ import com.apollographql.apollo.cache.normalized.lru.LruNormalizedCacheFactory
 import com.apollographql.apollo.cache.normalized.sql.SqlNormalizedCacheFactory
 import com.apollographql.apollo.fetcher.ApolloResponseFetchers
 import com.google.firebase.auth.FirebaseAuth
+import com.skuad.talent.base.common.Constant
 import com.skuad.talent.data.api.ApiManager
 import com.skuad.talent.data.api.BaseUrl
 import com.skuad.talent.data.api.HeaderInterceptor
@@ -88,7 +89,7 @@ class NetworkBinder {
     @Provides
     fun provideRetrofitClient(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BaseUrl.BASE_SERVER)
+            .baseUrl(BaseUrl.BASE_REST_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()
@@ -106,7 +107,7 @@ class NetworkBinder {
             .normalizedCache(memoryFirstThenSqlCacheFactory)
             .defaultHttpCachePolicy(HttpCachePolicy.NETWORK_ONLY)
             .defaultResponseFetcher(ApolloResponseFetchers.NETWORK_FIRST)
-            .serverUrl("https://gql-dev.skuad.in/graphql")
+            .serverUrl(Constant.BASES_URL)
             .okHttpClient(okHttpClient)
             .build()
     }
