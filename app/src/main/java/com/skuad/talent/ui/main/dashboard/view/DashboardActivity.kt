@@ -20,6 +20,7 @@ import com.skuad.talent.base.common.Constant
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.ActivityDashboardBinding
 import com.skuad.talent.domain.entities.dashboard.SkillsInfo
+import com.skuad.talent.domain.repository.SharedPrefRepo
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
@@ -40,7 +41,12 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
 
     @Inject
     lateinit var viewModel: DashboardViewModel
-    private var mGoogleSignInClient: GoogleSignInClient? = null
+
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
+
+    @Inject
+    lateinit var sharedPrefRepo: SharedPrefRepo
 
     private val auth by lazy {
         FirebaseAuth.getInstance()
@@ -64,7 +70,6 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
     private fun getDashBoardData() {
@@ -136,13 +141,10 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
     }
 
     private fun logout() {
-        mGoogleSignInClient?.signOut()?.addOnCompleteListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            Timber.e("logout")
-            startActivity(intent)
-            finish()
-
-        }
+        firebaseAuth.signOut()
+        sharedPrefRepo.setAccessToken("")
+        startActivity(LoginActivity.newInstance(this))
+        finish()
     }
 
     companion object {
