@@ -170,17 +170,15 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 updateLayout()
 
             }
-            val fullName = candidateData.contact_info?.name
-            tvCandidateName.text = fullName
-            val myName = fullName?.split(" ")
-            val initial = myName?.fold("", { acc, s -> acc + s[0] })
-            imgProfile.text = initial
-            val address = candidateData.contact_info?.address
-            val addressString = if (address.isNullOrEmpty()) "Address : NA" else address
-            tvAddress.text = addressString
 
             candidateData.contact_info?.let {
-                tvEmailAddress.text =  if(it.email.isEmpty())  "Email : NA" else it.email
+                val fullName = candidateData.contact_info?.name
+                val myName = fullName?.split(" ")
+                val initial = myName?.fold("", { acc, s -> acc + s[0] })
+                imgProfile.text = initial
+                tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
+                tvEmailAddress.text = if (it.email.isEmpty()) "Email : NA" else it.email
+                tvAddress.text= if (it.address.isNullOrEmpty()) "Address :NA" else it.address
             }
 
             if (!candidateData.experience.isNullOrEmpty()) {
