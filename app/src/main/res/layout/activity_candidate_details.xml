@@ -16,8 +16,8 @@
 
     <ImageView
         android:id="@+id/top_banner"
-        android:layout_width="411dp"
-        android:layout_height="@dimen/dimen_120"
+        android:layout_width="@dimen/dimen_411"
+        android:layout_height="@dimen/dimen_80"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_gradient_rectangle"
         android:visibility="visible"

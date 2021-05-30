@@ -37,7 +37,7 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
 
     private fun getContactInfo(contactInfo: GetCandidateByAdminQuery.Contact_info?): ContactInfo? {
         return contactInfo?.run {
-            ContactInfo(address() ?: "", name() ?: "")
+            ContactInfo(email= email()?: emptyList(),name = name()?:"",address = address()?:"")
         }
     }
 

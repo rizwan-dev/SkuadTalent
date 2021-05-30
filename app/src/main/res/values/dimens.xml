@@ -44,4 +44,6 @@
     <dimen name="profile_image_size">100dp</dimen>
     <dimen name="dimen_12">12dp</dimen>
     <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_411">411dp</dimen>
 </resources>

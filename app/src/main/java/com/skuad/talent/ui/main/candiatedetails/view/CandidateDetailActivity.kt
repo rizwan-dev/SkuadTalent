@@ -175,11 +175,21 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
             val myName = fullName?.split(" ")
             val initial = myName?.fold("", { acc, s -> acc + s[0] })
             imgProfile.text = initial
-            if (!candidateData.contact_info?.address.isNullOrEmpty()) {
-                tvAddress.text = candidateData.contact_info?.address
-            } else {
-                tvAddress.text = "Address : NA"
+            val address = candidateData.contact_info?.address
+            val addressString = if (address.isNullOrEmpty()) "Address : NA" else address
+            tvAddress.text = addressString
+
+            //
+
+            if (!candidateData.contact_info?.email.isNullOrEmpty()) {
+                val email = candidateData.contact_info?.email
+                Timber.e("email=$email")
+                val emailString = if (email.isNullOrEmpty()) "Email : NA" else email
+                tvEmailAddress.text = emailString.toString()
+            }else{
+                tvEmailAddress.text= "Email : NA"
             }
+//
             if (!candidateData.experience.isNullOrEmpty()) {
                 val role = candidateData.role_id?.name
                 val experience = candidateData.experience[0].experience
