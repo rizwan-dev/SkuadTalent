@@ -179,17 +179,10 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
             val addressString = if (address.isNullOrEmpty()) "Address : NA" else address
             tvAddress.text = addressString
 
-            //
-
-            if (!candidateData.contact_info?.email.isNullOrEmpty()) {
-                val email = candidateData.contact_info?.email
-                Timber.e("email=$email")
-                val emailString = if (email.isNullOrEmpty()) "Email : NA" else email
-                tvEmailAddress.text = emailString.toString()
-            }else{
-                tvEmailAddress.text= "Email : NA"
+            candidateData.contact_info?.let {
+                tvEmailAddress.text =  if(it.email.isEmpty())  "Email : NA" else it.email
             }
-//
+
             if (!candidateData.experience.isNullOrEmpty()) {
                 val role = candidateData.role_id?.name
                 val experience = candidateData.experience[0].experience

@@ -1,7 +1,7 @@
 package com.skuad.talent.domain.entities.candidate
 
 data class ContactInfo(
-    val email: List<String> = emptyList(),
+    val email: String,
     val address: String,
     val name: String
 )
