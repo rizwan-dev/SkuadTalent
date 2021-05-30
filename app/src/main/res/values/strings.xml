@@ -51,10 +51,10 @@
     <string name="profile_rejected">This profile has been Rejected.</string>
     <string name="profile_status">Profile Status</string>
     <string name="designation_experience_not_available">Designation : NA | Experience : NA</string>
-    <string name="logout_from_skuad">Logout from Skuad</string>
+    <string name="logout_from_skuad">Logout from Hire</string>
     <string name="sure_you_want_to_logout_now">Sure you want to logout now?</string>
-    <string name="cancle">Cancle</string>
-    <string name="logout_title">Logout from Skuad Talent</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout_title">Logout from SkuadHire</string>
     <string name="cnf_logout">Sure you want to logout now?</string>
 
 

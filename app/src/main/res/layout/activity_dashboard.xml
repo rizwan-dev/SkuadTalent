@@ -38,9 +38,9 @@
         android:layout_width="@dimen/dimen_25"
         android:layout_height="@dimen/dimen_25"
         android:layout_margin="@dimen/dimen_10"
-        android:layout_marginRight="@dimen/dimen_10"
-        android:src="@drawable/logout_left"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:src="@drawable/logout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView

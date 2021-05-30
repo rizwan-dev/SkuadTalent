@@ -41,7 +41,6 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
     @Inject
     lateinit var viewModel: DashboardViewModel
     private var mGoogleSignInClient: GoogleSignInClient? = null
-    private var mGoogleSignInOptions: GoogleSignInOptions? = null
 
     private val auth by lazy {
         FirebaseAuth.getInstance()
@@ -127,10 +126,12 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
             finish()
             dialog.dismiss()
         }
-        val btnCancle: TextView = dialog.findViewById(R.id.btn_cancle_dialog)
-        btnCancle.setOnClickListener {
+        val btnCancel: TextView = dialog.findViewById(R.id.btn_cancel_dialog)
+        btnCancel.setOnClickListener {
             dialog.dismiss()
         }
+        val width = (resources.displayMetrics.widthPixels * 0.75).toInt()
+        dialog.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.show()
     }
 
