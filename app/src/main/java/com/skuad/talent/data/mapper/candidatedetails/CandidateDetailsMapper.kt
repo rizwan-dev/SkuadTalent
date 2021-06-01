@@ -46,7 +46,7 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
 
     private fun getExperience(experience: List<GetCandidateByAdminQuery.Experience>?): List<Experience>? {
         return experience?.map {
-            Experience(it.experience(), it.company_id(), mapSalary(it.salary()))
+            Experience(it.experience(), it.company_id(),it.role(), mapSalary(it.salary()))
         }
     }
 

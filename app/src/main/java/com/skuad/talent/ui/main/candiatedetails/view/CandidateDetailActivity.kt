@@ -178,12 +178,13 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 val initial = myName?.fold("", { acc, s -> acc + s[0] })
                 imgProfile.text = initial
                 tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
-                tvEmailAddress.text = if (it.email.isEmpty()) "Email : NA" else it.email
+                tvEmailAddress.text = if (it.email.isNullOrEmpty()) "Email : NA" else it.email
                 tvAddress.text= if (it.address.isNullOrEmpty()) "Address :NA" else it.address
             }
 
             if (!candidateData.experience.isNullOrEmpty()) {
-                val role = candidateData.role_id?.name
+//                val role = candidateData.role_id?.name
+                val role = candidateData.experience[0].role
                 val experience = candidateData.experience[0].experience
                 val employer = candidateData.experience[0].company_id
                 val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
