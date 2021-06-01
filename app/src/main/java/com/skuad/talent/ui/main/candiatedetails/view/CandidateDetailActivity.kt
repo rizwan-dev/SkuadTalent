@@ -152,8 +152,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     }
 
     private fun setUpView(candidateData: GetCandidateByAdmin) {
-        val resume =
-            "candidateData.resume"
+        val resume = "candidateData.resume"
 
         withBinding {
 
@@ -174,9 +173,9 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
             candidateData.contact_info?.let {
                 val fullName = candidateData.contact_info?.name
-                if (fullName.isNullOrEmpty()){
+                if (fullName.isNullOrEmpty()) {
                     imgProfile.text = "NA"
-                }else {
+                } else {
                     val first = fullName?.substring(0, 1)
                     Timber.e("first letter is $first")
                     imgProfile.text = first.capitalize()
@@ -187,8 +186,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
             }
 
             if (!candidateData.experience.isNullOrEmpty()) {
-//                val role = candidateData.role_id?.name
-                val role = candidateData.experience[0].role
+                val role = candidateData.role_id?.name
+                // val role = candidateData.experience[0].role
                 val experience = candidateData.experience[0].experience
                 val employer = candidateData.experience[0].company_id
                 val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role

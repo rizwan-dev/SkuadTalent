@@ -96,6 +96,7 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
                 rvCandidateList.setVisibility(false)
             } else {
                 tvNoList.setVisibility(false)
+
                 Timber.e("candidate list from api---->> %s", candidateList)
                 rvCandidateList.layoutManager = LinearLayoutManager(this@CandidateListActivity)
                 rvCandidateList.adapter =
@@ -103,6 +104,7 @@ class CandidateListActivity : BaseActivityVB<ActivityCandidateListBinding>() {
                         this@CandidateListActivity,
                         candidateList
                     ) { candidate ->
+                        Timber.e("candidate id---->> %s",candidate.uid)
                         startActivityForResult(
 
                             CandidateDetailActivity.newInstance(
