@@ -186,8 +186,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
             }
 
             if (!candidateData.experience.isNullOrEmpty()) {
-                val role = candidateData.role_id?.name
-                // val role = candidateData.experience[0].role
+                //val role = candidateData.role_id?.name
+               val role = candidateData.experience[0].role
                 val experience = candidateData.experience[0].experience
                 val employer = candidateData.experience[0].company_id
                 val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
