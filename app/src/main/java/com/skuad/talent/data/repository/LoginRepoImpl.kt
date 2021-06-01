@@ -30,7 +30,6 @@ class LoginRepoImpl(
             firebaseAuth.signInWithCredential(credential).await()
             firebaseAuth.currentUser?.run {
                 val firebaseToken = this.getIdToken(true).await().token ?: ""
-                prefs.setAccessToken(firebaseToken)
                 ResourceState.Success(SocialLoginResponse("ok", firebaseToken), 200)
             } ?: ResourceState.Failure(FirebaseAuthException("Error", "Google error"))
         } catch (exception: Exception) {

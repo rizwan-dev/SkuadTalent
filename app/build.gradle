@@ -33,10 +33,18 @@ android {
         }
 
         staging {
-            applicationIdSuffix ""
+            applicationIdSuffix ".test"
             buildConfigField "String", "googleWebId", "$googleWebIdStaging"
             buildConfigField "String", "baseUrl", "$baseURlStaging"
             buildConfigField "String", "baseRestUrl", "$baseRestURlStaging"
+            manifestPlaceholders = [appAuthRedirectScheme: "com.skuad.talent", applicationName: "SkuadTalent-Staging"]
+        }
+
+        prod {
+            applicationIdSuffix ""
+            buildConfigField "String", "googleWebId", "$googleWebIdProd"
+            buildConfigField "String", "baseUrl", "$baseURlProd"
+            buildConfigField "String", "baseRestUrl", "$baseRestURlProd"
             manifestPlaceholders = [appAuthRedirectScheme: "com.skuad.talent", applicationName: "SkuadTalent-Staging"]
         }
     }

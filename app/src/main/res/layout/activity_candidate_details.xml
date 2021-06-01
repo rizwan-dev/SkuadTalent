@@ -295,10 +295,11 @@
             app:layout_constraintTop_toBottomOf="@id/tvResumeHeading">
 
             <TextView
+                android:layout_marginTop="@dimen/dimen_40"
                 android:id="@+id/tvNoResume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/resume_not_available"
                 android:textSize="@dimen/font_20"
                 android:visibility="gone" />

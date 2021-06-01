@@ -152,16 +152,17 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     }
 
     private fun setUpView(candidateData: GetCandidateByAdmin) {
-        val resumeUrl =
-            "https://firebasestorage.googleapis.com/v0/b/fir-test-f324a.appspot.com/o/Pavan%20Bilagi_Halodoc.pdf?alt=media&token=178c0ed0-e012-4e6d-a237-d86c8c72d670"
+        val resume =
+            "candidateData.resume"
 
         withBinding {
 
-            if (resumeUrl == null) {
+            if (resume == null) {
                 tvNoResume.setVisibility(true)
             } else {
                 tvNoResume.setVisibility(false)
                 showLoading(true)
+                val resumeUrl = RESUME_BASE_URL + viewModel.userId
                 remotePDFViewPager = RemotePDFViewPager(
                     this@CandidateDetailActivity,
                     resumeUrl,
@@ -235,9 +236,11 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     companion object {
         const val CANDIDATE_ID = "candidate_id"
 
-        private const val SELECTED = "registered"
+        private const val RESUME_BASE_URL = "https://hire-service.skuad.in/api/v1/document/candidate/"
 
-        private const val REJECTED = "disqualified"
+        private const val SELECTED = "Registered"
+
+        private const val REJECTED = "Disqualified"
 
         fun newInstance(context: Context, uid: String?) =
             Intent(context, CandidateDetailActivity::class.java).apply {

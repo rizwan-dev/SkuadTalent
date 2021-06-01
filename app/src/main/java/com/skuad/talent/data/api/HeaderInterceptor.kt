@@ -14,6 +14,7 @@ class HeaderInterceptor (
             if (originalRequest.header(HEADER_AUTH).isNullOrBlank()) {
                 requestBuilder
                     .header("Cookie", "skuad-token=${prefs.getAccessToken()}")
+//                    .header("Cookie", COOKIE)
             }
             chain.proceed(requestBuilder.build())
         }

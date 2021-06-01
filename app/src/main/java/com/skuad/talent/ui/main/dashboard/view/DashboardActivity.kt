@@ -48,6 +48,10 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
     @Inject
     lateinit var sharedPrefRepo: SharedPrefRepo
 
+    private val dashboardList = mutableListOf<SkillsInfo>()
+
+    lateinit var dashboardAdapter: DashboardAdapter
+
     private val auth by lazy {
         FirebaseAuth.getInstance()
     }
@@ -62,6 +66,7 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
     override fun setup() {
         setupObserver()
         getDashBoardData()
+        setUpView()
         setUpLogout()
     }
 
@@ -84,8 +89,9 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
                 is ResourceState.Success -> {
                     Timber.d("Dashboard data is ${it.body}")
                     val cardList = it.body
-                    setUpView(cardList)
-
+                    dashboardList.clear()
+                    dashboardList.addAll(cardList)
+                    dashboardAdapter.notifyDataSetChanged()
                 }
                 is ResourceState.Failure -> {
                     Timber.e(it.exception)
@@ -95,12 +101,12 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
 
     }
 
-    private fun setUpView(cardList: List<SkillsInfo>) {
+    private fun setUpView() {
         withBinding {
             rvDashboard.layoutManager = GridLayoutManager(this@DashboardActivity, 2)
             val spacingInPixels = resources.getDimensionPixelSize(R.dimen.dimen_20)
             rvDashboard.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, false))
-            rvDashboard.adapter = DashboardAdapter(this@DashboardActivity, cardList) {
+            dashboardAdapter = DashboardAdapter(this@DashboardActivity, dashboardList) {
                 startActivityForResult(
                     CandidateListActivity.newInstance(
                         this@DashboardActivity,
@@ -109,9 +115,9 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
                 )
             }
         }
+        rvDashboard.adapter = dashboardAdapter
         iv_logout.setSafeOnClickListener {
             showCnfDialog()
-
         }
     }
 
