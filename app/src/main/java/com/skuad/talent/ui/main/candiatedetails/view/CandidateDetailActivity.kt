@@ -174,12 +174,16 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
             candidateData.contact_info?.let {
                 val fullName = candidateData.contact_info?.name
-                val myName = fullName?.split(" ")
-                val initial = myName?.fold("", { acc, s -> acc + s[0] })
-                imgProfile.text = initial
+                if (fullName.isNullOrEmpty()){
+                    imgProfile.text = "NA"
+                }else {
+                    val first = fullName?.substring(0, 1)
+                    Timber.e("first letter is $first")
+                    imgProfile.text = first.capitalize()
+                }
                 tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
                 tvEmailAddress.text = if (it.email.isNullOrEmpty()) "Email : NA" else it.email
-                tvAddress.text= if (it.address.isNullOrEmpty()) "Address :NA" else it.address
+                tvAddress.text = if (it.address.isNullOrEmpty()) "Address :NA" else it.address
             }
 
             if (!candidateData.experience.isNullOrEmpty()) {
@@ -237,7 +241,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     companion object {
         const val CANDIDATE_ID = "candidate_id"
 
-        private const val RESUME_BASE_URL = "https://hire-service.skuad.in/api/v1/document/candidate/"
+        private const val RESUME_BASE_URL =
+            "https://hire-service.skuad.in/api/v1/document/candidate/"
 
         private const val SELECTED = "Registered"
 
