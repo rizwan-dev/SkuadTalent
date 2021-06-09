@@ -98,7 +98,8 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
         val candidateId = intent.getStringExtra(CANDIDATE_ID)
         Timber.e("uid of Selected candidate ----> %s", candidateId)
         showLoading(true)
-        candidateId?.let { viewModel.getCandidateDetails(it, "") }
+//        candidateId?.let { viewModel.getCandidateDetails(it, "") }
+        viewModel.getCandidateDetails("64b4c1c5-ccea-45be-a2bb-0123f7721b19", "")
         viewModel.candidateLiveData.observe(this, {
             showLoading(false)
             when (it) {

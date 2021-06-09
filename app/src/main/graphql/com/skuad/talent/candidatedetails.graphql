@@ -8,6 +8,7 @@ query getCandidateByAdmin($id: String!, $requirement_id: String) {
                 whatsapp_no
             }
             resume
+            resumeUrl
             linkedin_profile
             uid
             stage

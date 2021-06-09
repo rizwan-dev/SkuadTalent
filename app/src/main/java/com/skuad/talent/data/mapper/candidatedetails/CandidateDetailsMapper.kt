@@ -20,8 +20,8 @@ class CandidateDetailsMapper : ResponseMapper<GetCandidateByAdminQuery.Data, Get
                 uid = uid() ?: "",
                 skills = skills() ?: emptyList(),
                 role_id = getRoll(role_id()),
-                preferences = getPreferences(preferences())
-
+                preferences = getPreferences(preferences()),
+                resumeUrl = resumeUrl()
             )
         } ?: kotlin.run { GetCandidateByAdmin() }
     }

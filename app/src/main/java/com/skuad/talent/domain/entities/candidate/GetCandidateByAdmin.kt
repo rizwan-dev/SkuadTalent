@@ -10,6 +10,7 @@ data class GetCandidateByAdmin(
 //    val metaInfo: MetaInfo,
     val preferences: Preferences? = null,
     val resume: String? = null,
+    val resumeUrl: String? = null,
     val role_id: RoleId? = null,
     val skills: List<String> = emptyList(),
 //    val stage: String,
