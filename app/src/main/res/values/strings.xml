@@ -56,6 +56,8 @@
     <string name="cancel">Cancel</string>
     <string name="logout_title">Logout from SkuadHire</string>
     <string name="cnf_logout">Sure you want to logout now?</string>
+    <string name="download">Download</string>
+    <string name="resume">Resume</string>
 
 
 </resources>

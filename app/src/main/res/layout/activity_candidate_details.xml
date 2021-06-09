@@ -280,9 +280,20 @@
             android:textColor="@color/grey"
             android:textFontWeight="500"
             android:textSize="@dimen/font_15"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/download_resume"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider2" />
+        <ImageView
+            android:id="@+id/download_resume"
+            android:visibility="gone"
+            android:layout_width="@dimen/dimen_40"
+            android:layout_height="@dimen/dimen_40"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@drawable/download_resume"
+            app:layout_constraintBottom_toBottomOf="@id/tvResumeHeading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvResumeHeading"
+            app:layout_constraintTop_toTopOf="@id/tvResumeHeading" />
 
         <FrameLayout
             android:id="@+id/webView"
