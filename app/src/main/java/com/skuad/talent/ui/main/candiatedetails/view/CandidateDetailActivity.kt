@@ -6,6 +6,8 @@ import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -31,6 +33,7 @@ import es.voghdev.pdfviewpager.library.util.FileUtil
 import kotlinx.android.synthetic.main.activity_candidate_details.*
 import timber.log.Timber
 import java.io.File
+import java.util.*
 import javax.inject.Inject
 
 
@@ -217,6 +220,15 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                     val first = fullName?.substring(0, 1)
                     Timber.e("first letter is $first")
                     imgProfile.text = first.capitalize()
+                    val mRandom = Random()
+                    val color: Int = Color.argb(
+                        255,
+                        mRandom.nextInt(256),
+                        mRandom.nextInt(256),
+                        mRandom.nextInt(256)
+                    )
+                    (imgProfile.background as GradientDrawable).setColor(color)
+
                 }
                 tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
                 tvEmailAddress.text = if (it.email.isNullOrEmpty()) "Email : NA" else it.email

@@ -1,15 +1,21 @@
 package com.skuad.talent.ui.main.candidatelist.vh
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.R
-import com.skuad.talent.databinding.ItemCandidateListBinding
+import com.skuad.talent.databinding.NewItemCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import timber.log.Timber
+import java.util.*
+import kotlin.random.Random as Random1
+
 
 class CandidateListViewHolder(
     private val context: Context,
-    private val binding: ItemCandidateListBinding,
+    //private val binding: ItemCandidateListBinding,
+    private val binding: NewItemCandidateListBinding,
     private val onItemClick: (CandidateInfo) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     lateinit var candidate: CandidateInfo
@@ -23,12 +29,27 @@ class CandidateListViewHolder(
     fun bind(candidate: CandidateInfo) {
         this.candidate = candidate
         with(binding) {
-
-            tvCandidateName.text = candidate.contact_info?.name
+            val fullName = candidate.contact_info?.name
+            if (fullName.isNullOrEmpty()) {
+                ivAvatar.text = "NA"
+            } else {
+                val first = fullName?.substring(0, 1)
+                Timber.e("first letter is $first")
+                ivAvatar.text = first.capitalize()
+                val mRandom = Random()
+                val color: Int = Color.argb(
+                    255,
+                    mRandom.nextInt(256),
+                    mRandom.nextInt(256),
+                    mRandom.nextInt(256)
+                )
+                (ivAvatar.background as GradientDrawable).setColor(color)
+            }
+            tvCandidateName.text = if (fullName.isNullOrEmpty()) "Name : NA" else fullName
             val addressString = candidate.contact_info?.address
             tvAddress.text = if (addressString.isNullOrEmpty()) "Address : NA" else addressString
             if (!candidate.experience.isNullOrEmpty()) {
-            val role = candidate.experience[0].role
+                val role = candidate.experience[0].role
                 //val role = candidate.role_id?.name
                 val experience = candidate.experience[0].experience
                 val employer = candidate.experience[0].company_id

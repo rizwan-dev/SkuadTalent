@@ -22,7 +22,7 @@ class DashboardViewHolder(
         this.skillsInfo = skills
         with(binding) {
             tvCardName.text = skills.name
-            tvActiveProfiles.text = skills.stageCount.sourced.toString()
+            tvActiveProfiles.text = skills.stageCount.sourced.toString()+" Profiles"
 
 
             val skillImage = when (skills.name) {
