@@ -10,8 +10,6 @@ import android.os.Environment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.ViewGroup
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -30,6 +28,7 @@ import es.voghdev.pdfviewpager.library.remote.DownloadFile
 import es.voghdev.pdfviewpager.library.util.FileUtil
 import kotlinx.android.synthetic.main.activity_candidate_details.*
 import timber.log.Timber
+import java.io.File
 import javax.inject.Inject
 
 
@@ -38,10 +37,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
     @Inject
     lateinit var viewModel: CandidateDetailsViewModel
-
     var adapter: PDFPagerAdapter? = null
-    //var resume: String = ""
-
     var remotePDFViewPager: RemotePDFViewPager? = null
     override fun attachBinding(
         list: MutableList<ActivityCandidateDetailsBinding>,
@@ -162,31 +158,39 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
     private fun setUpView(candidateData: GetCandidateByAdmin) {
 
+
         withBinding {
-            val resume = candidateData.resumeUrl
-            Timber.e("Resume url --->>$resume")
-            if (resume == null) {
+            //var resume = candidateData.resumeUrl
+            Timber.e("Resume url --->>${candidateData.resume}")
+            if (candidateData.resume.isNullOrEmpty()) {
                 tvNoResume.setVisibility(true)
-                downloadResume.setVisibility(false)
             } else {
                 tvNoResume.setVisibility(false)
-                downloadResume.setVisibility(true)
-                downloadResume.setSafeOnClickListener {
-                    showLoading(true)
-                    openResume(resume)
+                Timber.e("resumelink ${candidateData.resumeUrl}")
+                val f = File(candidateData.resume)
+                val ext = f.extension
+                Timber.e("file extension is == $ext")
+
+                if (ext.equals("pdf")) {
+                    downloadResume.setVisibility(false)
+                    val resumeUrl = candidateData.resumeUrl
+                    Timber.e("resumeurl to show in pdf $resumeUrl")
+                    //RESUME_BASE_URL + viewModel.userId
+                    remotePDFViewPager = RemotePDFViewPager(
+                        this@CandidateDetailActivity,
+                        resumeUrl,
+                        this@CandidateDetailActivity
+                    )
+                    updateLayout()
+                } else {
+                    downloadResume.setVisibility(true)
+                    downloadResume.setSafeOnClickListener {
+                        showLoading(true)
+                        openResume(candidateData.resumeUrl!!)
+                    }
                 }
-
-
-//                val resumeUrl = RESUME_BASE_URL + viewModel.userId
-//                remotePDFViewPager = RemotePDFViewPager(
-//                    this@CandidateDetailActivity,
-//                    resumeUrl,
-//                    this@CandidateDetailActivity
-//                )
-//                updateLayout()
-
             }
-
+            //--------------------------------------------
             candidateData.contact_info?.let {
                 val fullName = candidateData.contact_info?.name
                 if (fullName.isNullOrEmpty()) {
@@ -246,9 +250,17 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
         }
     }
 
+    private fun updateLayout() {
+        Timber.e("In update layout---")
+        getBinding().webView.addView(
+            remotePDFViewPager,
+            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT
+        )
+    }
+
     private fun openResume(resume: String) {
 
-        startDownloding(resume)
+        // startDownloding(resume)
         showLoading(false)
         val browserIntent = Intent(
             Intent.ACTION_VIEW,
@@ -256,16 +268,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
         )
         startActivity(browserIntent)
 
-       // webView.loadUrl("https://docs.google.com/viewer?url="+resume)
-//        webView.settings.setJavaScriptEnabled(true)
-//
-//        webView.webViewClient = object : WebViewClient() {
-//            override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
-//                view?.loadUrl(url)
-//                return true
-//            }
-//        }
-//        webView.loadUrl("https://www.google.co.in/")
     }
 
     override fun onRequestPermissionsResult(
@@ -290,8 +292,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
         //request for download
         val request = DownloadManager.Request(Uri.parse(resume))
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
-        request.setTitle("Download")
-        request.setDescription("The file is downloading.....")
+        request.setTitle("Download Resume")
         request.allowScanningByMediaScanner()
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         request.setDestinationInExternalPublicDir(
@@ -303,12 +304,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
         manager.enqueue(request)
     }
 
-    private fun updateLayout() {
-        getBinding().webView.addView(
-            remotePDFViewPager,
-            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT
-        )
-    }
 
     companion object {
         const val CANDIDATE_ID = "candidate_id"
