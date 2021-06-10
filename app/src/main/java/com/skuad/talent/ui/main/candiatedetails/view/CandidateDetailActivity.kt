@@ -1,11 +1,13 @@
 package com.skuad.talent.ui.main.candiatedetails.view
 
+import android.Manifest
 import android.app.Dialog
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -186,7 +188,23 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                     downloadResume.setVisibility(true)
                     downloadResume.setSafeOnClickListener {
                         showLoading(true)
-                        openResume(candidateData.resumeUrl!!)
+                        //startDownloading(candidateData.resumeUrl!!)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                                //permission denied , request it
+                                //show popup
+                                requestPermissions(
+                                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                                    STORAGE_PERMISSION_CODE
+                                )
+                            } else {
+                                // permission alredy granted, perfom download
+                                openResume(candidateData.resumeUrl!!)
+                            }
+                        } else {
+                            openResume(candidateData.resumeUrl!!)
+                        }
+
                     }
                 }
             }
@@ -259,8 +277,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     }
 
     private fun openResume(resume: String) {
-
-        // startDownloding(resume)
+        startDownloading(resume)
         showLoading(false)
         val browserIntent = Intent(
             Intent.ACTION_VIEW,
@@ -280,9 +297,10 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
             STORAGE_PERMISSION_CODE -> {
                 if (grantResults.isEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     Toast.makeText(this, "Permission Denied!", Toast.LENGTH_LONG).show()
+                    showLoading(false)
                 } else {
                     Toast.makeText(this, "Permission Granted!", Toast.LENGTH_LONG).show()
-                    //startDownloding(resume)
+                    showLoading(false)
                 }
             }
         }
@@ -290,6 +308,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
 
     private fun startDownloading(resume: String) {
         //request for download
+        showLoading(false)
         val request = DownloadManager.Request(Uri.parse(resume))
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
         request.setTitle("Download Resume")
