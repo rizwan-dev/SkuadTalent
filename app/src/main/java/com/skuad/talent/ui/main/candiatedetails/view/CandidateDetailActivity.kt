@@ -288,7 +288,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
         }
     }
 
-    private fun startDownloding(resume: String) {
+    private fun startDownloading(resume: String) {
         //request for download
         val request = DownloadManager.Request(Uri.parse(resume))
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
@@ -308,8 +308,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     companion object {
         const val CANDIDATE_ID = "candidate_id"
         private const val STORAGE_PERMISSION_CODE: Int = 1000
-        private const val RESUME_BASE_URL =
-            "https://hire-service.skuad.in/api/v1/document/candidate/"
 
         private const val SELECTED = "Registered"
 
@@ -322,6 +320,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     }
 
     override fun onSuccess(url: String?, destinationPath: String?) {
+        Timber.e("Success download : $url")
         adapter = PDFPagerAdapter(this, FileUtil.extractFileNameFromURL(url))
         remotePDFViewPager?.adapter = adapter
         showLoading(false)
@@ -329,6 +328,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     }
 
     override fun onFailure(e: Exception?) {
+        Timber.e("Download Error is ${e!!.message}")
         showLoading(false)
     }
 
