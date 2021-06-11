@@ -58,6 +58,7 @@
     <string name="cnf_logout">Sure you want to logout now?</string>
     <string name="download">Download</string>
     <string name="resume">Resume</string>
+    <string name="Name">Hello, Shailee</string>
 
 
 </resources>

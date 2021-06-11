@@ -170,6 +170,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
             Timber.e("Resume url --->>${candidateData.resume}")
             if (candidateData.resume.isNullOrEmpty()) {
                 tvNoResume.setVisibility(true)
+                downloadResume.setVisibility(false)
             } else {
                 tvNoResume.setVisibility(false)
                 Timber.e("resumelink ${candidateData.resumeUrl}")

@@ -6,24 +6,19 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.databinding.adapters.ViewGroupBindingAdapter.setListener
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.skuad.talent.R
-import com.skuad.talent.base.common.Constant
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.ActivityDashboardBinding
 import com.skuad.talent.domain.entities.dashboard.SkillsInfo
 import com.skuad.talent.domain.repository.SharedPrefRepo
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.ui.base.BaseActivityVB
-import com.skuad.talent.ui.main.candiatedetails.view.CandidateDetailActivity
 import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity
 import com.skuad.talent.ui.main.candidatelist.view.CandidateListActivity.Companion.REQUEST_CHANGE_STATE
 import com.skuad.talent.ui.main.dashboard.adapter.DashboardAdapter
@@ -69,6 +64,9 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
         setUpView()
         setUpLogout()
     }
+
+
+
 
     private fun setUpLogout() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -119,6 +117,7 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
         iv_logout.setSafeOnClickListener {
             showCnfDialog()
         }
+
     }
 
     private fun showCnfDialog() {

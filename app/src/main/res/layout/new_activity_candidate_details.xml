@@ -14,7 +14,7 @@
             android:layout_width="@dimen/dimen_0"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
             android:layout_height="@dimen/dimen_80"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_gradient_rectangle"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,10 +41,9 @@
             android:textColor="@color/white"
             android:textFontWeight="600"
             android:textSize="@dimen/font_25"
-            app:layout_constraintBottom_toBottomOf="@+id/top_banner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/top_banner"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:text="H" />
 
         <TextView
@@ -312,7 +311,7 @@
             android:textFontWeight="600"
             android:textSize="@dimen/font_14"
             android:gravity="center"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/tvResumeHeading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvResumeHeading" />
