@@ -32,7 +32,7 @@ class DashboardViewHolder(
                 DATA_ANALYST -> R.drawable.ic_php
                 TECHNICAL_MANAGER -> R.drawable.ic_technicalmanager
                 DEVOPS -> R.drawable.ic_devops__gcp_
-                DB_ADMINISTRATOR -> R.drawable.ic_product_manager
+                DB_ADMINISTRATOR -> R.drawable.ic_technicalmanager
                 PPC_ANALYST -> R.drawable.ic_ppc_analyst
                 ANDROID_DEVELOPER -> R.drawable.ic_androiddeveloper
                 SALES_PROFESSIONAL -> R.drawable.sales
@@ -49,7 +49,7 @@ class DashboardViewHolder(
                 HYBRID_APP_DEVELOPER -> R.drawable.ic_php
                 FRESHER-> R.drawable.ic_freshers
                 BACKEND_DEVELOPER->R.drawable.ic_backenddeveloper
-                PRODUCT_MANAGER -> R.drawable.ic_product_manager
+                PRODUCT_MANAGER -> R.drawable.ic_technicalmanager
                 VFX_ARTIST -> R.drawable.ic_php
                 CONTENT_WRITER->R.drawable.ic_php
                 STORYBOARD_ARTIST-> R.drawable.ic_php

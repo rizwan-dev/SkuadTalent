@@ -21,8 +21,8 @@
     <string name="server_client_id" translatable="false">1090609532096-d3p7ihmvut8r87thbrk0sa76ndrlbvf7.apps.googleusercontent.com</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="experience">Years Of Experience</string>
-    <string name="selected">SELECTED</string>
-    <string name="rejected">REJECTED</string>
+    <string name="selected">SHORTLIST</string>
+    <string name="rejected">REJECT</string>
     <string name="skuad_talent">SKUAD TALENT</string>
     <string name="login">LOGIN</string>
     <string name="welcome_to_skuad_talent">Welcome to SKUAD TALENT</string>
@@ -35,7 +35,7 @@
     <string name="continue_with_google">Continue with Google</string>
     <string name="or">or</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="address">Address</string>
+    <string name="address">Pune, Maharashtra</string>
     <string name="current_employer">Current Employer</string>
     <string name="current_salary">Current Salary</string>
     <string name="notice_period">Notice Period</string>
@@ -44,8 +44,8 @@
     <string name="profile_selection_status">This profile has been Shortlisted / Rejected .</string>
     <string name="ok">OK</string>
     <string name="current_employer_not_available">Current Employer : NA</string>
-    <string name="salary_not_available">Salary : NA</string>
-    <string name="notice_period_not_available">Notice Period : NA</string>
+    <string name="salary_not_available"> NA</string>
+    <string name="notice_period_not_available"> NA</string>
     <string name="designation_exp_not_available">Designation : NA | Experience : NA</string>
     <string name="profile_shortlisted">This profile has been Selected.</string>
     <string name="profile_rejected">This profile has been Rejected.</string>

@@ -21,5 +21,13 @@
     <color name="light_teal">#8dd2bf</color>
     <color name="grey">#666666</color>
     <color name="dark_grey">#333333</color>
+    <color name="grey_dark">#595959</color>
+    <color name="grey_light">#69778C</color>
+    <color name="light_grey">#3E4659</color>
+    <color name="light_grey_a4">#663E4659</color>
+    <color name="light_grey_a5">#803E4659</color>
+    <color name="blue_download">#00909E</color>
+    <color name="red_db">#EC4747</color>
+    <color name="balck_20">#202020</color>
 
 </resources>

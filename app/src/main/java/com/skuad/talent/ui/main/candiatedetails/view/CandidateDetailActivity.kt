@@ -21,6 +21,7 @@ import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
 import com.skuad.talent.databinding.ActivityCandidateDetailsBinding
+import com.skuad.talent.databinding.NewActivityCandidateDetailsBinding
 import com.skuad.talent.domain.entities.candidate.GetCandidateByAdmin
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.extension.setVisibility
@@ -37,7 +38,7 @@ import java.util.*
 import javax.inject.Inject
 
 
-class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(),
+class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBinding>(),
     DownloadFile.Listener {
 
     @Inject
@@ -45,10 +46,10 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
     var adapter: PDFPagerAdapter? = null
     var remotePDFViewPager: RemotePDFViewPager? = null
     override fun attachBinding(
-        list: MutableList<ActivityCandidateDetailsBinding>,
+        list: MutableList<NewActivityCandidateDetailsBinding>,
         inflater: LayoutInflater
     ) {
-        list.add(ActivityCandidateDetailsBinding.inflate(layoutInflater))
+        list.add(NewActivityCandidateDetailsBinding.inflate(layoutInflater))
     }
 
     override fun setup() {
@@ -220,19 +221,19 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                     val first = fullName?.substring(0, 1)
                     Timber.e("first letter is $first")
                     imgProfile.text = first.capitalize()
-                    val mRandom = Random()
-                    val color: Int = Color.argb(
-                        255,
-                        mRandom.nextInt(256),
-                        mRandom.nextInt(256),
-                        mRandom.nextInt(256)
-                    )
-                    (imgProfile.background as GradientDrawable).setColor(color)
+//                    val mRandom = Random()
+//                    val color: Int = Color.argb(
+//                        255,
+//                        mRandom.nextInt(256),
+//                        mRandom.nextInt(256),
+//                        mRandom.nextInt(256)
+//                    )
+//                    (imgProfile.background as GradientDrawable).setColor(color)
 
                 }
                 tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
                 tvEmailAddress.text = if (it.email.isNullOrEmpty()) "Email : NA" else it.email
-                tvAddress.text = if (it.address.isNullOrEmpty()) "Address :NA" else it.address
+                tvAddress.text = if (it.address.isNullOrEmpty()) "Address : NA" else it.address
             }
 
             if (!candidateData.experience.isNullOrEmpty()) {
@@ -243,10 +244,10 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateDetailsBinding>(
                 val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
 
                 val experienceString =
-                    if (experience.isNullOrEmpty()) "Experience : NA" else experience
-                tvDesignation.text = "$roleString | $experienceString years"
+                    if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
+                tvDesignation.text = "$roleString | $experienceString"
                 val employerString =
-                    if (employer.isNullOrEmpty()) "Current Employer : NA" else employer
+                    if (employer.isNullOrEmpty()) " NA" else employer
                 tvCurrentEmployer.text = employerString
 
 

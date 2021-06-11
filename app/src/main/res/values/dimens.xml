@@ -41,9 +41,16 @@
     <dimen name="dimen_36">36dp</dimen>
     <dimen name="font_12">12sp</dimen>
     <dimen name="font_14">14sp</dimen>
-    <dimen name="profile_image_size">100dp</dimen>
+    <dimen name="profile_image_size">120dp</dimen>
     <dimen name="dimen_12">12dp</dimen>
     <dimen name="dimen_16">16dp</dimen>
     <dimen name="dimen_40">40dp</dimen>
     <dimen name="dimen_411">411dp</dimen>
+    <dimen name="font_18">18sp</dimen>
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_28">28dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+    <dimen name="dimen_23">23dp</dimen>
+    <dimen name="dimen_13">13dp</dimen>
 </resources>

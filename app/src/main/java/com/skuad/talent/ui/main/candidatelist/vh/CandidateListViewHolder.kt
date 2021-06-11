@@ -56,10 +56,10 @@ class CandidateListViewHolder(
                 val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
 
                 val experienceString =
-                    if (experience.isNullOrEmpty()) "Experience : NA" else experience
-                tvYearsOfExperience.text = "$roleString | $experienceString years"
+                    if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
+                tvYearsOfExperience.text = "$roleString | $experienceString"
                 val employerString =
-                    if (employer.isNullOrEmpty()) "Current Employer : NA" else employer
+                    if (employer.isNullOrEmpty()) " NA" else employer
                 tvCurrentEmployer.text = employerString
 
             } else {
