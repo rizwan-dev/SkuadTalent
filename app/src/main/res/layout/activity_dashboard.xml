@@ -25,6 +25,7 @@
             android:background="@color/fade_grey_60">
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvUserName"
+                style="@style/OpenSansTextViewStyleBlack_20_400"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="@dimen/dimen_0"
                 android:layout_height="wrap_content"
@@ -35,10 +36,6 @@
                 android:lines="1"
                 android:ems="2"
                 android:ellipsize="end"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_20"
-                android:fontFamily="@font/roboto"
-                android:textFontWeight="400"
                 app:layout_constraintEnd_toStartOf="@id/iv_userProfile"
                 app:layout_constraintStart_toStartOf="parent"
                  />
@@ -53,16 +50,14 @@
                 android:layout_height="@dimen/dimen_30"/>
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvAppTitle"
+                style="@style/OpenSansTextViewStyleBlack_16_600"
                 android:layout_width="@dimen/dimen_0"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginLeft="@dimen/dimen_16"
                 android:gravity="center_vertical"
                 android:text="@string/skuad_talent_"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_16"
-                android:fontFamily="@font/roboto"
-                android:textFontWeight="600"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvUserName" />

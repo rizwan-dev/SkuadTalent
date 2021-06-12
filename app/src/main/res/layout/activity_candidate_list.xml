@@ -21,21 +21,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
-    <ImageView
-        android:id="@+id/top_banner"
-        android:layout_width="411dp"
-        android:layout_height="180dp"
-        android:adjustViewBounds="true"
-        android:visibility="gone"
-        android:src="@drawable/ic_curved_top"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCandidateList"
         android:layout_width="@dimen/dimen_0"
-        android:layout_height="@dimen/dimen_0"
-        android:layout_margin="@dimen/dimen_15"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/dimen_15"
+        android:layout_marginHorizontal="@dimen/dimen_15"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

@@ -151,7 +151,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
             supportActionBar?.setHomeButtonEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
-            supportActionBar?.title = "Profile Details"
+            supportActionBar?.title = ""
         }
 
     }

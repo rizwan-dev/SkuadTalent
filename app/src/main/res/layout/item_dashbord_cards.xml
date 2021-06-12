@@ -13,7 +13,7 @@
         android:id="@+id/ivCardLogo"
         android:layout_width="@dimen/dimen_60"
         android:layout_height="@dimen/dimen_60"
-        android:src="@drawable/android"
+        android:src="@drawable/ic_freshers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         />
 
     <TextView
-        style="@style/OpenSansTextViewStyleBlack_12_600"
+        style="@style/OpenSansTextViewStyleBlack_14_600"
         app:layout_constraintTop_toBottomOf="@id/ivCardLogo"
         app:layout_constraintBottom_toTopOf="@id/tvActiveProfiles"
         android:id="@+id/tvCardName"
