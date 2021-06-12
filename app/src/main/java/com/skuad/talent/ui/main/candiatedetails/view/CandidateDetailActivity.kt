@@ -165,7 +165,6 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
 
     private fun setUpView(candidateData: GetCandidateByAdmin) {
 
-
         withBinding {
             resume = candidateData.resumeUrl
             Timber.e("Resume url --->>${candidateData.resume}")
@@ -179,9 +178,10 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                 val ext = f.extension
                 Timber.e("file extension is == $ext")
 
-                if (ext.equals("pdf")) {
+                if (ext == "pdf") {
                     downloadResume.setVisibility(false)
-                    val resumeUrl = candidateData.resumeUrl
+                    val resumeUrl = candidateData.resumeUrl ?: ""
+                    viewModel.resumeUrl = resumeUrl
                     Timber.e("resumeurl to show in pdf $resumeUrl")
                     //RESUME_BASE_URL + viewModel.userId
                     remotePDFViewPager = RemotePDFViewPager(
@@ -193,20 +193,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                 } else {
                     downloadResume.setVisibility(true)
                     downloadResume.setSafeOnClickListener {
-                        showLoading(true)
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                                requestPermissions(
-                                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                                    STORAGE_PERMISSION_CODE
-                                )
-                            } else {
-                                openResume(candidateData.resumeUrl!!)
-                            }
-                        } else {
-                            openResume(candidateData.resumeUrl!!)
-                        }
-
+                        openResume(candidateData.resumeUrl!!)
                     }
                 }
             }
@@ -219,14 +206,6 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                     val first = fullName?.substring(0, 1)
                     Timber.e("first letter is $first")
                     imgProfile.text = first.capitalize()
-//                    val mRandom = Random()
-//                    val color: Int = Color.argb(
-//                        255,
-//                        mRandom.nextInt(256),
-//                        mRandom.nextInt(256),
-//                        mRandom.nextInt(256)
-//                    )
-//                    (imgProfile.background as GradientDrawable).setColor(color)
 
                 }
                 tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
@@ -263,7 +242,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                 val s: String = amount.toString()
                 val d = java.lang.Double.valueOf(s)
                 val amountWithComma = String.format("%,.0f", d)
-                tvSalary.text = "₹" + " " + amountWithComma
+                tvSalary.text = "₹ $amountWithComma"
             } else {
                 tvSalary.text = getString(R.string.salary_not_available)
             }
@@ -362,6 +341,9 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
     override fun onFailure(e: Exception?) {
         Timber.e("Download Error is ${e!!.message}")
         showLoading(false)
+        if(viewModel.resumeUrl.isNotEmpty()){
+            openResume(viewModel.resumeUrl)
+        }
     }
 
     override fun onProgressUpdate(progress: Int, total: Int) {

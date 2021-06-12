@@ -23,6 +23,8 @@ class CandidateDetailsViewModel @Inject constructor(private val candidateRepo: C
 
     var changeStage = ""
 
+    var resumeUrl = ""
+
 
     val changeStateLiveData : LiveData<ResourceState<ChangeStateResponse>> get() = _changeStateLiveData
     private var _changeStateLiveData = MutableLiveData<ResourceState<ChangeStateResponse>>()

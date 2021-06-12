@@ -5,54 +5,49 @@
     android:layout_height="@dimen/dimen_160"
     android:background="@drawable/rounded_shape_white"
     android:elevation="@dimen/dimen_6"
-    android:padding="@dimen/dimen_5">
+    android:paddingHorizontal="@dimen/dimen_13"
+    android:paddingBottom="@dimen/dimen_13"
+    android:paddingTop="@dimen/dimen_15">
 
     <ImageView
         android:id="@+id/ivCardLogo"
         android:layout_width="@dimen/dimen_60"
         android:layout_height="@dimen/dimen_60"
-        android:padding="@dimen/dimen_10"
         android:src="@drawable/android"
-        app:layout_constraintBottom_toTopOf="@+id/tvCardName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/tvCardName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_12"
-        android:gravity="center"
-        android:text="@string/android"
-        android:textSize="@dimen/font_14"
-        android:textColor="@color/balck_20"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="600"
-        app:layout_constraintBottom_toTopOf="@+id/tvActiveProfiles"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCardLogo" />
 
     <TextView
+        style="@style/OpenSansTextViewStyleRed_12_600"
         android:id="@+id/tvActiveProfiles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="@dimen/dimen_23"
-        android:padding="@dimen/dimen_5"
         android:text="@string/active_number"
-        android:textSize="@dimen/font_12"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="600"
-        android:textColor="@color/red_db"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCardName" />
+        />
+
+    <TextView
+        style="@style/OpenSansTextViewStyleBlack_12_600"
+        app:layout_constraintTop_toBottomOf="@id/ivCardLogo"
+        app:layout_constraintBottom_toTopOf="@id/tvActiveProfiles"
+        android:id="@+id/tvCardName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/android"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+       />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
