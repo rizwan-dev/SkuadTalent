@@ -3,13 +3,15 @@ package com.skuad.talent.ui.main.dashboard.view
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.skuad.talent.R
@@ -47,6 +49,7 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
 
     lateinit var dashboardAdapter: DashboardAdapter
 
+
     private val auth by lazy {
         FirebaseAuth.getInstance()
     }
@@ -59,13 +62,31 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
     }
 
     override fun setup() {
+        getUserInfo()
         setupObserver()
         getDashBoardData()
         setUpView()
         setUpLogout()
     }
 
+    private fun getUserInfo() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val name = user.displayName
+        val userUri =user.photoUrl
+        withBinding {
+            if(name.isNullOrEmpty()){
+                tvUserName.text = "Hello!"
+            }else {
+                tvUserName.text = "Hello, $name"
+            }
+            try {
+                Glide.with(this@DashboardActivity).load(userUri).circleCrop().into(ivUserProfile)
+            } catch (e: NullPointerException) {
+                Toast.makeText(applicationContext, "image not found", Toast.LENGTH_LONG).show()
+            }
+        }
 
+        }
 
 
     private fun setUpLogout() {
@@ -152,6 +173,7 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
         finish()
     }
 
+
     companion object {
         fun newInstance(context: Context) = Intent(context, DashboardActivity::class.java)
     }
@@ -160,6 +182,7 @@ class DashboardActivity : BaseActivityVB<ActivityDashboardBinding>() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == REQUEST_CHANGE_STATE) {
             getDashBoardData()
+
         }
     }
 }
