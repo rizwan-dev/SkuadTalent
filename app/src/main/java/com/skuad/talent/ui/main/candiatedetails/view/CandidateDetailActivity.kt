@@ -45,6 +45,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
     lateinit var viewModel: CandidateDetailsViewModel
     var adapter: PDFPagerAdapter? = null
     var remotePDFViewPager: RemotePDFViewPager? = null
+    var resume: String? = null
     override fun attachBinding(
         list: MutableList<NewActivityCandidateDetailsBinding>,
         inflater: LayoutInflater
@@ -166,7 +167,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
 
 
         withBinding {
-            //var resume = candidateData.resumeUrl
+            resume = candidateData.resumeUrl
             Timber.e("Resume url --->>${candidateData.resume}")
             if (candidateData.resume.isNullOrEmpty()) {
                 tvNoResume.setVisibility(true)
@@ -193,17 +194,13 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                     downloadResume.setVisibility(true)
                     downloadResume.setSafeOnClickListener {
                         showLoading(true)
-                        //startDownloading(candidateData.resumeUrl!!)
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                                //permission denied , request it
-                                //show popup
                                 requestPermissions(
                                     arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
                                     STORAGE_PERMISSION_CODE
                                 )
                             } else {
-                                // permission alredy granted, perfom download
                                 openResume(candidateData.resumeUrl!!)
                             }
                         } else {
@@ -291,7 +288,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
     }
 
     private fun openResume(resume: String) {
-        startDownloading(resume)
+        //startDownloading(resume)
         showLoading(false)
         val browserIntent = Intent(
             Intent.ACTION_VIEW,
@@ -306,7 +303,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             STORAGE_PERMISSION_CODE -> {
                 if (grantResults.isEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
@@ -315,6 +312,8 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                 } else {
                     Toast.makeText(this, "Permission Granted!", Toast.LENGTH_LONG).show()
                     showLoading(false)
+                    resume?.let { openResume(it) }
+
                 }
             }
         }
