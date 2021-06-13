@@ -22,7 +22,6 @@ import es.voghdev.pdfviewpager.library.RemotePDFViewPager
 import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter
 import es.voghdev.pdfviewpager.library.remote.DownloadFile
 import es.voghdev.pdfviewpager.library.util.FileUtil
-import kotlinx.android.synthetic.main.activity_candidate_details.*
 import timber.log.Timber
 import java.io.File
 import java.util.*
@@ -213,7 +212,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                     if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
                 tvDesignation.text = "$roleString | $experienceString"
                 val employerString =
-                    if (employer.isNullOrEmpty()) " NA" else employer
+                    if (employer.isNullOrEmpty()) "NA" else employer
                 tvCurrentEmployer.text = employerString
 
 

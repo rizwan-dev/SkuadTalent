@@ -9,7 +9,6 @@ import com.skuad.talent.databinding.ItemCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import timber.log.Timber
 import java.util.*
-import kotlin.random.Random as Random1
 
 
 class CandidateListViewHolder(
@@ -59,7 +58,7 @@ class CandidateListViewHolder(
                     if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
                 tvYearsOfExperience.text = "$roleString | $experienceString"
                 val employerString =
-                    if (employer.isNullOrEmpty()) " NA" else employer
+                    if (employer.isNullOrEmpty()) "NA" else employer
                 tvCurrentEmployer.text = employerString
 
             } else {
