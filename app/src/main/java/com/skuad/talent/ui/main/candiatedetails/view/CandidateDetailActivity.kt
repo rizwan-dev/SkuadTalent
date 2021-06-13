@@ -1,18 +1,14 @@
 package com.skuad.talent.ui.main.candiatedetails.view
 
 import android.app.Dialog
-import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
@@ -246,7 +242,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                     val resumeUrl = candidateData.resumeUrl ?: ""
                     viewModel.resumeUrl = resumeUrl
                     Timber.e("resumeurl to show in pdf $resumeUrl")
-                    //RESUME_BASE_URL + viewModel.userId
                     remotePDFViewPager = RemotePDFViewPager(
                         this@CandidateDetailActivity,
                         resumeUrl,
@@ -274,7 +269,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     }
 
     private fun openResume(resume: String) {
-        //startDownloading(resume)
         showLoading(false)
         val browserIntent = Intent(
             Intent.ACTION_VIEW,
@@ -283,49 +277,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
         startActivity(browserIntent)
 
     }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        //super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            STORAGE_PERMISSION_CODE -> {
-                if (grantResults.isEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
-                    Toast.makeText(this, "Permission Denied!", Toast.LENGTH_LONG).show()
-                    showLoading(false)
-                } else {
-                    Toast.makeText(this, "Permission Granted!", Toast.LENGTH_LONG).show()
-                    showLoading(false)
-                    // resume?.let { openResume(it) }
-                    if (viewModel.resumeUrl.isNotEmpty()) {
-                        openResume(viewModel.resumeUrl)
-                    }
-
-                }
-            }
-        }
-    }
-
-    private fun startDownloading(resume: String) {
-        //request for download
-        showLoading(false)
-        val request = DownloadManager.Request(Uri.parse(resume))
-        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
-        request.setTitle("Download Resume")
-        request.allowScanningByMediaScanner()
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-        request.setDestinationInExternalPublicDir(
-            Environment.DIRECTORY_DOWNLOADS,
-            "${System.currentTimeMillis()}"
-        )
-        //get download service and enqueue file
-        val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        manager.enqueue(request)
-    }
-
-
     companion object {
         const val CANDIDATE_ID = "candidate_id"
         private const val STORAGE_PERMISSION_CODE: Int = 1000
