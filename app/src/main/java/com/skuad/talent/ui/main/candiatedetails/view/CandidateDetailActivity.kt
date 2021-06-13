@@ -1,15 +1,11 @@
 package com.skuad.talent.ui.main.candiatedetails.view
 
-import android.Manifest
 import android.app.Dialog
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -20,8 +16,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.skuad.talent.R
 import com.skuad.talent.base.entities.ResourceState
-import com.skuad.talent.databinding.ActivityCandidateDetailsBinding
-import com.skuad.talent.databinding.NewActivityCandidateDetailsBinding
+import com.skuad.talent.databinding.ActivityCandidateProfileBinding
 import com.skuad.talent.domain.entities.candidate.GetCandidateByAdmin
 import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.extension.setVisibility
@@ -38,7 +33,7 @@ import java.util.*
 import javax.inject.Inject
 
 
-class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBinding>(),
+class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(),
     DownloadFile.Listener {
 
     @Inject
@@ -47,10 +42,10 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
     var remotePDFViewPager: RemotePDFViewPager? = null
     var resume: String? = null
     override fun attachBinding(
-        list: MutableList<NewActivityCandidateDetailsBinding>,
+        list: MutableList<ActivityCandidateProfileBinding>,
         inflater: LayoutInflater
     ) {
-        list.add(NewActivityCandidateDetailsBinding.inflate(layoutInflater))
+        list.add(ActivityCandidateProfileBinding.inflate(layoutInflater))
     }
 
     override fun setup() {
@@ -164,7 +159,75 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
     }
 
     private fun setUpView(candidateData: GetCandidateByAdmin) {
+        setUpResume(candidateData)
+        setUpExperience(candidateData)
+        withBinding {
+            candidateData.contact_info?.let {
+                val fullName = candidateData.contact_info?.name
+                if (fullName.isNullOrEmpty()) {
+                    imgProfile.text = "NA"
+                } else {
+                    val first = fullName?.substring(0, 1)
+                    Timber.e("first letter is $first")
+                    imgProfile.text = first.capitalize()
 
+                }
+                tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
+                tvEmailAddress.text = if (it.email.isNullOrEmpty()) "Email : NA" else it.email
+                tvAddress.text = if (it.address.isNullOrEmpty()) "Address : NA" else it.address
+            }
+
+
+            if (!candidateData.experience.isNullOrEmpty()
+                && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
+                && !candidateData.experience[0].salary?.amount?.toString().isNullOrEmpty()
+            ) {
+
+                val currency = candidateData.experience[0].salary?.currency
+                val amount = candidateData.experience[0].salary?.amount?.toInt()
+                val s: String = amount.toString()
+                val d = java.lang.Double.valueOf(s)
+                val amountWithComma = String.format("%,.0f", d)
+                tvSalary.text = "₹ $amountWithComma"
+            } else {
+                tvSalary.text = getString(R.string.salary_not_available)
+            }
+            //
+            if (!candidateData.preferences?.notice_period?.toString().isNullOrEmpty()) {
+                tvNoticePeriod.text =
+                    candidateData.preferences?.notice_period?.toInt().toString() + " days"
+            } else {
+                tvNoticePeriod.text = getString(R.string.notice_period_not_available)
+            }
+
+
+        }
+    }
+
+    private fun setUpExperience(candidateData: GetCandidateByAdmin) {
+        withBinding {
+            if (!candidateData.experience.isNullOrEmpty()) {
+                //val role = candidateData.role_id?.name
+                val role = candidateData.experience[0].role
+                val experience = candidateData.experience[0].experience
+                val employer = candidateData.experience[0].company_id
+                val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
+
+                val experienceString =
+                    if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
+                tvDesignation.text = "$roleString | $experienceString"
+                val employerString =
+                    if (employer.isNullOrEmpty()) " NA" else employer
+                tvCurrentEmployer.text = employerString
+
+
+            } else {
+                tvDesignation.text = getString(R.string.designation_exp_not_available)
+            }
+        }
+    }
+
+    private fun setUpResume(candidateData: GetCandidateByAdmin) {
         withBinding {
             resume = candidateData.resumeUrl
             Timber.e("Resume url --->>${candidateData.resume}")
@@ -191,70 +254,14 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                     )
                     updateLayout()
                 } else {
+                    tvNoResume.setVisibility(true)
+                    tvNoResume.text = getString(R.string.click_download)
                     downloadResume.setVisibility(true)
                     downloadResume.setSafeOnClickListener {
                         openResume(candidateData.resumeUrl!!)
                     }
                 }
             }
-            //--------------------------------------------
-            candidateData.contact_info?.let {
-                val fullName = candidateData.contact_info?.name
-                if (fullName.isNullOrEmpty()) {
-                    imgProfile.text = "NA"
-                } else {
-                    val first = fullName?.substring(0, 1)
-                    Timber.e("first letter is $first")
-                    imgProfile.text = first.capitalize()
-
-                }
-                tvCandidateName.text = if (it.name.isNullOrEmpty()) "Name : NA" else it.name
-                tvEmailAddress.text = if (it.email.isNullOrEmpty()) "Email : NA" else it.email
-                tvAddress.text = if (it.address.isNullOrEmpty()) "Address : NA" else it.address
-            }
-
-            if (!candidateData.experience.isNullOrEmpty()) {
-                //val role = candidateData.role_id?.name
-                val role = candidateData.experience[0].role
-                val experience = candidateData.experience[0].experience
-                val employer = candidateData.experience[0].company_id
-                val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
-
-                val experienceString =
-                    if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
-                tvDesignation.text = "$roleString | $experienceString"
-                val employerString =
-                    if (employer.isNullOrEmpty()) " NA" else employer
-                tvCurrentEmployer.text = employerString
-
-
-            } else {
-                tvDesignation.text = getString(R.string.designation_exp_not_available)
-            }
-
-            if (!candidateData.experience.isNullOrEmpty()
-                && !candidateData.experience[0].salary?.currency.isNullOrEmpty()
-                && !candidateData.experience[0].salary?.amount?.toString().isNullOrEmpty()
-            ) {
-
-                val currency = candidateData.experience[0].salary?.currency
-                val amount = candidateData.experience[0].salary?.amount?.toInt()
-                val s: String = amount.toString()
-                val d = java.lang.Double.valueOf(s)
-                val amountWithComma = String.format("%,.0f", d)
-                tvSalary.text = "₹ $amountWithComma"
-            } else {
-                tvSalary.text = getString(R.string.salary_not_available)
-            }
-            //
-            if (!candidateData.preferences?.notice_period?.toString().isNullOrEmpty()) {
-                tvNoticePeriod.text =
-                    candidateData.preferences?.notice_period?.toInt().toString() + " days"
-            } else {
-                tvNoticePeriod.text = getString(R.string.notice_period_not_available)
-            }
-
-
         }
     }
 
@@ -291,7 +298,10 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
                 } else {
                     Toast.makeText(this, "Permission Granted!", Toast.LENGTH_LONG).show()
                     showLoading(false)
-                    resume?.let { openResume(it) }
+                    // resume?.let { openResume(it) }
+                    if (viewModel.resumeUrl.isNotEmpty()) {
+                        openResume(viewModel.resumeUrl)
+                    }
 
                 }
             }
@@ -341,7 +351,7 @@ class CandidateDetailActivity : BaseActivityVB<NewActivityCandidateDetailsBindin
     override fun onFailure(e: Exception?) {
         Timber.e("Download Error is ${e!!.message}")
         showLoading(false)
-        if(viewModel.resumeUrl.isNotEmpty()){
+        if (viewModel.resumeUrl.isNotEmpty()) {
             openResume(viewModel.resumeUrl)
         }
     }

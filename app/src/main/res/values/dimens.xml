@@ -58,4 +58,5 @@
     <dimen name="font_40">40sp</dimen>
     <dimen name="dimen_135">135dp</dimen>
     <dimen name="dimen_142">142dp</dimen>
+    <dimen name="dimen_38">38dp</dimen>
 </resources>

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.data.model.Candidate
 import com.skuad.talent.databinding.ItemCandidateListBinding
-import com.skuad.talent.databinding.NewItemCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import com.skuad.talent.ui.main.candidatelist.vh.CandidateListViewHolder
 
@@ -22,7 +21,7 @@ class CandidateListAdapter(
         viewType: Int
     ): CandidateListViewHolder {
         val inflater = LayoutInflater.from(context)
-        val binding = NewItemCandidateListBinding.inflate(inflater, parent, false)
+        val binding = ItemCandidateListBinding.inflate(inflater, parent, false)
         return CandidateListViewHolder(context,binding, onItemClick)
     }
 

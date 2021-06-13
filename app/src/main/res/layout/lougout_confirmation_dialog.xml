@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingVertical="@dimen/dimen_5"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:paddingVertical="@dimen/dimen_5">
 
     <TextView
         android:id="@+id/tvAlertTitle"
+        style="@style/OpenSansTextViewStyleBlack_16_600"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/logout_from_skuad"
-        android:textSize="@dimen/font_17"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="500"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_description"
-        android:paddingHorizontal="@dimen/dimen_20"
+        style="@style/OpenSansTextViewStyleGrey_dark_12_400"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_15"
         android:gravity="center"
-        android:textSize="@dimen/font_15"
-        android:textColor="@color/grey"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="400"
+        android:paddingHorizontal="@dimen/dimen_20"
         android:text="@string/sure_you_want_to_logout_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -38,34 +32,29 @@
 
     <TextView
         android:id="@+id/btn_ok_dialog"
-        android:gravity="center"
-        android:background="@drawable/bg_red_filled"
+        style="@style/OpenSansSemiboldTextViewStyleWhite_14_600"
         android:layout_width="@dimen/dimen_100"
         android:layout_height="@dimen/dimen_40"
         android:layout_marginTop="20dp"
+        android:background="@drawable/bg_red_filled"
+        android:gravity="center"
         android:text="@string/ok"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="@dimen/font_15"
-        android:textFontWeight="400"
-        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/btn_cancel_dialog"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
     <TextView
         android:id="@+id/btn_cancel_dialog"
-        android:gravity="center"
-        android:background="@drawable/bg_white_filled"
+        style="@style/OpenSansSemiboldTextViewStyleRed_14_600"
         android:layout_width="@dimen/dimen_100"
         android:layout_height="@dimen/dimen_40"
-        android:layout_marginRight="@dimen/dimen_20"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/dimen_20"
+        android:background="@drawable/bg_white_filled"
+        android:gravity="center"
         android:text="@string/cancel"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="@dimen/font_15"
-        android:textFontWeight="400"
-        android:textColor="@color/red"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_ok_dialog"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 </androidx.constraintlayout.widget.ConstraintLayout>

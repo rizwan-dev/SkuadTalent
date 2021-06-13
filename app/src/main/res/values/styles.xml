@@ -28,13 +28,16 @@
     <style name="OpenSans_LightTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/opensans_light</item>
     </style>
-    <style name="OpenSans_SemiboldTextViewStyle" parent="android:Widget.TextView">
+    <style name="OpenSansSemiboldTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/opensans_semibold</item>
     </style>
     <style name="OpenSansTextViewStyle600" parent="OpenSansTextViewStyle">
         <item name="fontWeight">600</item>
     </style>
-    <style name="OpenSansTextViewStyle800" parent="OpenSans_SemiboldTextViewStyle">
+    <style name="OpenSansSemiboldTextViewStyle600" parent="OpenSansSemiboldTextViewStyle">
+        <item name="fontWeight">600</item>
+    </style>
+    <style name="OpenSansTextViewStyle800" parent="OpenSansSemiboldTextViewStyle">
         <item name="fontWeight">800</item>
     </style>
 
@@ -43,6 +46,9 @@
     </style>
 
     <style name="OpenSansTextViewStyle14_600" parent="OpenSansTextViewStyle600">
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+    <style name="OpenSansSemiboldTextViewStyle14_600" parent="OpenSansSemiboldTextViewStyle600">
         <item name="android:textSize">@dimen/font_14</item>
     </style>
     <style name="OpenSansTextViewStyle15_600" parent="OpenSansTextViewStyle600">
@@ -69,7 +75,9 @@
     <style name="OpenSansTextViewStyle400" parent="OpenSansTextViewStyle">
         <item name="fontWeight">400</item>
     </style>
-
+    <style name="OpenSansSemiboldTextViewStyle400" parent="OpenSansSemiboldTextViewStyle">
+        <item name="fontWeight">400</item>
+    </style>
     <style name="OpenSansTextViewStyle20_400" parent="OpenSansTextViewStyle400">
         <item name="android:textSize">@dimen/font_20</item>
     </style>
@@ -104,6 +112,9 @@
     <style name="OpenSansTextViewStyle14_400" parent="OpenSansTextViewStyle400">
         <item name="android:textSize">@dimen/font_14</item>
     </style>
+    <style name="OpenSansSemiboldTextViewStyle14_400" parent="OpenSansSemiboldTextViewStyle400">
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
     <style name="OpenSansTextViewStyle15_400" parent="OpenSansTextViewStyle400">
         <item name="android:textSize">@dimen/font_15</item>
     </style>
@@ -113,6 +124,9 @@
     <style name="OpenSansTextViewStyleGrey_dark_12_400" parent="OpenSansTextViewStyle12_400">
         <item name="android:textColor">@color/grey_dark</item>
     </style>
+    <style name="OpenSansTextViewStyleGrey_dark_14_400" parent="OpenSansTextViewStyle14_400">
+        <item name="android:textColor">@color/grey_dark</item>
+    </style>
     <style name="OpenSansTextViewStyleGrey_dark_16_400" parent="OpenSansTextViewStyle16_400">
         <item name="android:textColor">@color/grey_dark</item>
     </style>
@@ -120,6 +134,12 @@
         <item name="android:textColor">@color/grey_light</item>
     </style>
     <style name="OpenSansTextViewStyleGrey_light_14_400" parent="OpenSansTextViewStyle14_400">
+        <item name="android:textColor">@color/grey_light</item>
+    </style>
+    <style name="OpenSansTextViewStyleGrey_light_14_600" parent="OpenSansTextViewStyle14_600">
+        <item name="android:textColor">@color/grey_light</item>
+    </style>
+    <style name="OpenSansSemiboldTextViewStyleGrey_light_14_400" parent="OpenSansTextViewStyle14_400">
         <item name="android:textColor">@color/grey_light</item>
     </style>
     <style name="OpenSansTextViewStyleGrey_light_15_400" parent="OpenSansTextViewStyle15_400">
@@ -133,6 +153,12 @@
     </style>
     <style name="OpenSansTextViewStyleWhite_14_600" parent="OpenSansTextViewStyle14_600">
         <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="OpenSansSemiboldTextViewStyleWhite_14_600" parent="OpenSansSemiboldTextViewStyle14_600">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="OpenSansSemiboldTextViewStyleRed_14_600" parent="OpenSansSemiboldTextViewStyle14_600">
+        <item name="android:textColor">@color/red</item>
     </style>
     <style name="OpenSansTextViewStyleWhite_15_600" parent="OpenSansTextViewStyle15_600">
         <item name="android:textColor">@color/white</item>

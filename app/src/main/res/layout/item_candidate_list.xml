@@ -1,171 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/dimen_5"
-    android:layout_marginVertical="@dimen/dimen_5"
+    android:layout_height="@dimen/dimen_135"
+    android:layout_marginVertical="@dimen/dimen_10"
+   android:layout_marginHorizontal="@dimen/dimen_4"
     android:background="@drawable/row_item_bg"
-    android:elevation="@dimen/dimen_8"
-    android:padding="@dimen/dimen_10">
+    android:elevation="@dimen/dimen_5">
 
-    <ImageView
+    <TextView
         android:id="@+id/ivAvatar"
-        android:layout_width="@dimen/dimen_60"
-        android:layout_height="@dimen/dimen_60"
-        android:layout_margin="@dimen/dimen_5"
-        android:src="@drawable/avtar"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/tvAddress"
+        style="@style/OpenSansTextViewStyleWhite_16_600"
+        android:layout_width="@dimen/dimen_48"
+        android:layout_height="@dimen/dimen_48"
+        android:layout_marginHorizontal="@dimen/dimen_15"
+        android:layout_marginVertical="@dimen/dimen_15"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:text="S"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvCandidateName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCandidateName"
+        style="@style/OpenSansTextViewStyleBlack_16_600"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="@string/candidate_name"
-        android:textSize="@dimen/font_17"
-        android:textColor="@color/purple_7B1FA1"
-        android:fontFamily="@font/roboto_medium"
-        android:textFontWeight="500"
-        app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
-        app:layout_constraintStart_toEndOf="@id/ivAvatar"
-        app:layout_constraintTop_toTopOf="@id/ivAvatar" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_Experience"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginRight="@dimen/dimen_10"
-        android:src="@drawable/mental_health"
-        app:layout_constraintBottom_toBottomOf="@id/tvYearsOfExperience"
-        app:layout_constraintEnd_toStartOf="@id/tvYearsOfExperience"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvYearsOfExperience" />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvYearsOfExperience"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_5"
-        android:gravity="center_vertical"
-        android:text="@string/years_of_experience"
-        android:textSize="@dimen/font_15"
-        android:textColor="@color/grey"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="400"
-        app:layout_constraintEnd_toStartOf="@id/ivArrow"
-        app:layout_constraintStart_toEndOf="@id/iv_Experience"
-        app:layout_constraintTop_toBottomOf="@id/tvCandidateName" />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_Location"
-        android:src="@drawable/location_icon"
-        android:layout_marginRight="@dimen/dimen_10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvAddress"
-        app:layout_constraintTop_toTopOf="@id/tvAddress"
-        app:layout_constraintBottom_toBottomOf="@id/tvAddress"
-        android:layout_width="16dp"
-        android:layout_height="16dp"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvAddress"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_15"
+        android:layout_marginVertical="@dimen/dimen_18"
         android:ellipsize="end"
         android:ems="3"
         android:gravity="center_vertical"
+        android:lines="1"
+        android:text="@string/candidate_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvYearsOfExperience"
+        style="@style/OpenSansTextViewStyleGrey_dark_12_400"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_15"
+        android:layout_marginVertical="@dimen/dimen_4"
+        android:ellipsize="end"
+        android:ems="3"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:text="@string/years_of_experience"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        app:layout_constraintTop_toBottomOf="@id/tvCandidateName" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAddress"
+        style="@style/OpenSansTextViewStyleGrey_light_12_400"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_15"
+        android:layout_marginVertical="@dimen/dimen_8"
+        android:ellipsize="end"
+        android:ems="3"
+        android:gravity="center_vertical"
+        android:lines="1"
         android:maxLines="2"
         android:text="@string/address"
-        android:textSize="@dimen/font_15"
-        android:textColor="@color/grey"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_Location"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
         app:layout_constraintTop_toBottomOf="@id/tvYearsOfExperience" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_Office"
-        android:src="@drawable/office_icon"
-        android:layout_marginRight="@dimen/dimen_10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvCurrentEmployer"
-        app:layout_constraintTop_toTopOf="@id/tvCurrentEmployer"
+        android:layout_width="@dimen/dimen_12"
+        android:layout_height="@dimen/dimen_12"
+        android:src="@drawable/ic_building"
         app:layout_constraintBottom_toBottomOf="@id/tvCurrentEmployer"
-        android:layout_width="16dp"
-        android:layout_height="16dp"/>
+        app:layout_constraintEnd_toStartOf="@id/tvCurrentEmployer"
+        app:layout_constraintStart_toStartOf="@id/ivAvatar"
+        app:layout_constraintTop_toTopOf="@id/tvCurrentEmployer" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCurrentEmployer"
+        style="@style/OpenSansTextViewStyleGrey_light_12_600"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_5"
+        android:layout_marginTop="@dimen/dimen_16"
         android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:text="@string/current_employer"
-        android:textSize="@dimen/font_15"
-        android:textColor="@color/grey"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="400"
-        app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
+        android:ems="2"
+        android:gravity="center"
+        android:lines="1"
+        app:layout_constraintEnd_toStartOf="@id/guideline1"
         app:layout_constraintStart_toEndOf="@id/iv_Office"
-        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_Salary"
-        android:src="@drawable/salary_icon"
-        android:layout_marginRight="@dimen/dimen_10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvSalary"
-        app:layout_constraintTop_toTopOf="@id/tvSalary"
-        app:layout_constraintBottom_toBottomOf="@id/tvSalary"
-        android:layout_width="16dp"
-        android:layout_height="16dp"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvSalary"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:text="@string/current_salary"
-        android:textSize="@dimen/font_15"
-        android:textColor="@color/grey"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="400"
-        app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
-        app:layout_constraintStart_toEndOf="@id/iv_Salary"
-        app:layout_constraintTop_toBottomOf="@id/tvCurrentEmployer" />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_NoticePeriod"
-        android:src="@drawable/notice_period_icon"
-        android:layout_marginRight="@dimen/dimen_10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvNoticePeriod"
-        app:layout_constraintTop_toTopOf="@id/tvNoticePeriod"
-        app:layout_constraintBottom_toBottomOf="@id/tvNoticePeriod"
-        android:layout_width="16dp"
-        android:layout_height="16dp"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvNoticePeriod"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:text="@string/notice_period"
-        android:textSize="@dimen/font_15"
-        android:textColor="@color/grey"
-        android:fontFamily="@font/roboto_regular"
-        android:textFontWeight="400"
-        app:layout_constraintEnd_toEndOf="@id/tvYearsOfExperience"
-        app:layout_constraintStart_toEndOf="@id/iv_NoticePeriod"
-        app:layout_constraintTop_toBottomOf="@id/tvSalary" />
+        app:layout_constraintTop_toBottomOf="@id/tvAddress"
+        tool:text="@string/current_employer" />
 
-    <ImageView
-        android:id="@+id/ivArrow"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_10"
-        android:src="@drawable/chevron_right"
-        app:layout_constraintBottom_toBottomOf="@id/tvAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvAddress" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="@dimen/dimen_20"
+        android:layout_marginLeft="@dimen/dimen_5"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@id/iv_Office"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="@id/iv_Office" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Salary"
+        android:layout_width="@dimen/dimen_12"
+        android:layout_height="@dimen/dimen_12"
+        android:layout_marginLeft="@dimen/dimen_5"
+        android:src="@drawable/ic_rupee"
+        app:layout_constraintBottom_toBottomOf="@id/tvSalary"
+        app:layout_constraintEnd_toStartOf="@id/tvSalary"
+        app:layout_constraintStart_toEndOf="@id/divider"
+        app:layout_constraintTop_toTopOf="@id/tvSalary" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSalary"
+        style="@style/OpenSansTextViewStyleGrey_light_12_600"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_5"
+        android:ellipsize="end"
+        android:ems="2"
+        android:gravity="center"
+        android:lines="1"
+        android:text="@string/current_salary"
+        app:layout_constraintBottom_toBottomOf="@id/iv_Office"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toEndOf="@id/iv_Salary"
+        app:layout_constraintTop_toTopOf="@id/iv_Office" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="1dp"
+        android:layout_height="@dimen/dimen_20"
+        android:layout_marginLeft="@dimen/dimen_5"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@id/iv_Office"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/iv_Office" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_NoticePeriod"
+        android:layout_width="@dimen/dimen_12"
+        android:layout_height="@dimen/dimen_12"
+        android:layout_marginLeft="@dimen/dimen_5"
+        android:src="@drawable/ic_timer"
+        app:layout_constraintBottom_toBottomOf="@id/tvNoticePeriod"
+        app:layout_constraintEnd_toStartOf="@id/tvNoticePeriod"
+        app:layout_constraintStart_toEndOf="@id/divider2"
+        app:layout_constraintTop_toTopOf="@id/tvNoticePeriod" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvNoticePeriod"
+        style="@style/OpenSansTextViewStyleGrey_light_12_600"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_5"
+        android:ellipsize="end"
+        android:ems="2"
+        android:gravity="center"
+        android:lines="1"
+        android:text="@string/notice_period"
+        app:layout_constraintBottom_toBottomOf="@id/iv_Office"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_NoticePeriod"
+        app:layout_constraintTop_toTopOf="@id/iv_Office" />
 </androidx.constraintlayout.widget.ConstraintLayout>

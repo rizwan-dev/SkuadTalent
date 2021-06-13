@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.R
-import com.skuad.talent.databinding.NewItemCandidateListBinding
+import com.skuad.talent.databinding.ItemCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
 import timber.log.Timber
 import java.util.*
@@ -15,7 +15,7 @@ import kotlin.random.Random as Random1
 class CandidateListViewHolder(
     private val context: Context,
     //private val binding: ItemCandidateListBinding,
-    private val binding: NewItemCandidateListBinding,
+    private val binding: ItemCandidateListBinding,
     private val onItemClick: (CandidateInfo) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     lateinit var candidate: CandidateInfo
