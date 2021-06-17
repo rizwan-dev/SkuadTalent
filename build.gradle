@@ -29,7 +29,7 @@ buildscript {
         // Base URLs
         baseUrlDev = "\"https://gql-dev.skuad.in/graphql\""
         baseURlStaging = "\"https://gql-stg.skuad.in/graphql\""
-        baseURlProd = "\"https://gql-stg.skuad.in/graphql\""
+        baseURlProd = "\"https://gql.skuad.io/graphql\""
 
         // Base URLs REST
         baseRestUrlDev = "\"https://id-service-skd.herokuapp.com/\""

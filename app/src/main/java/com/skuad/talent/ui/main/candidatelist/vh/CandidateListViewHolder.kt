@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skuad.talent.R
 import com.skuad.talent.databinding.ItemCandidateListBinding
 import com.skuad.talent.domain.entities.candidatelist.CandidateInfo
+import com.skuad.talent.utils.AppUtils
 import timber.log.Timber
 import java.util.*
 
@@ -48,14 +49,15 @@ class CandidateListViewHolder(
             val addressString = candidate.contact_info?.address
             tvAddress.text = if (addressString.isNullOrEmpty()) "Address : NA" else addressString
             if (!candidate.experience.isNullOrEmpty()) {
-                val role = candidate.experience[0].role
+                val experienceData = candidate.experience[0]
+                val role = experienceData.role
                 //val role = candidate.role_id?.name
-                val experience = candidate.experience[0].experience
-                val employer = candidate.experience[0].company_id
+                val experience = experienceData.experience
+                val employer = experienceData.company_id
                 val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
 
                 val experienceString =
-                    if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
+                    if (experience.isNullOrEmpty()) "Experience : NA" else if(AppUtils.isExperienceInYears(experience)) "$experience years" else experience
                 tvYearsOfExperience.text = "$roleString | $experienceString"
                 val employerString =
                     if (employer.isNullOrEmpty()) "NA" else employer

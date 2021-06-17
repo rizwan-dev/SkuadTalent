@@ -18,6 +18,7 @@ import com.skuad.talent.extension.setSafeOnClickListener
 import com.skuad.talent.extension.setVisibility
 import com.skuad.talent.ui.base.BaseActivityVB
 import com.skuad.talent.ui.main.candiatedetails.viewmodel.CandidateDetailsViewModel
+import com.skuad.talent.utils.AppUtils
 import es.voghdev.pdfviewpager.library.RemotePDFViewPager
 import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter
 import es.voghdev.pdfviewpager.library.remote.DownloadFile
@@ -202,14 +203,14 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
     private fun setUpExperience(candidateData: GetCandidateByAdmin) {
         withBinding {
             if (!candidateData.experience.isNullOrEmpty()) {
-                //val role = candidateData.role_id?.name
-                val role = candidateData.experience[0].role
-                val experience = candidateData.experience[0].experience
-                val employer = candidateData.experience[0].company_id
+                val experienceData = candidateData.experience[0]
+                val role = experienceData.role
+                val experience = experienceData.experience
+                val employer = experienceData.company_id
                 val roleString = if (role.isNullOrEmpty()) "Designation : NA" else role
 
                 val experienceString =
-                    if (experience.isNullOrEmpty()) "Experience : NA" else "$experience years"
+                    if (experience.isNullOrEmpty()) "Experience : NA" else if(AppUtils.isExperienceInYears(experience)) "$experience years" else experience
                 tvDesignation.text = "$roleString | $experienceString"
                 val employerString =
                     if (employer.isNullOrEmpty()) "NA" else employer
