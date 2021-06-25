@@ -1,42 +1,71 @@
 {
   "project_info": {
-    "project_number": "1090609532096",
-    "firebase_url": "https://skuad-core-dev.firebaseio.com",
-    "project_id": "skuad-core-dev",
-    "storage_bucket": "skuad-core-dev.appspot.com"
+    "project_number": "1030940734572",
+    "firebase_url": "https://skuad-core-prod.firebaseio.com",
+    "project_id": "skuad-core-prod",
+    "storage_bucket": "skuad-core-prod.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1090609532096:android:c169f8752a6b3127d63125",
+        "mobilesdk_app_id": "1:1030940734572:android:06896fe273bbca19445449",
         "android_client_info": {
-          "package_name": "com.skuad.talent"
+          "package_name": "com.skuad.allremote"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1090609532096-d3p7ihmvut8r87thbrk0sa76ndrlbvf7.apps.googleusercontent.com",
+          "client_id": "1030940734572-mm3huv8h8h3k53sdb1sfevd17aijsq2u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.skuad.talent",
+            "package_name": "com.skuad.allremote",
             "certificate_hash": "4938f6b0e6b7a72e2c43d42adadbb9d33fc253f1"
           }
         },
         {
-          "client_id": "1090609532096-lf45nd2vlkk1pjbf1qfa7vjj5nek8u7t.apps.googleusercontent.com",
+          "client_id": "1030940734572-cr29l7sffto0ujceg8hmi2os5okanrt8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA9XpLuNIK7qQCbmIv8itbBluevrQZA-1c"
+          "current_key": "AIzaSyCiV4ZcD8XYg815o6SF3tNfoNjLqOfivwk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1090609532096-lf45nd2vlkk1pjbf1qfa7vjj5nek8u7t.apps.googleusercontent.com",
+              "client_id": "1030940734572-cr29l7sffto0ujceg8hmi2os5okanrt8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030940734572:android:f483c6a5364fe52b445449",
+        "android_client_info": {
+          "package_name": "com.skuad.talent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030940734572-cr29l7sffto0ujceg8hmi2os5okanrt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiV4ZcD8XYg815o6SF3tNfoNjLqOfivwk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030940734572-cr29l7sffto0ujceg8hmi2os5okanrt8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

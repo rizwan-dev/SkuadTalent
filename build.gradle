@@ -22,7 +22,12 @@ buildscript {
         // Oauth Ids
         googleWebIdDev = "\"1080157401680-2d6sjlu406ath2gatkjh74p7f19sgfp1.apps.googleusercontent.com\""
         googleWebIdStaging = "\"1080157401680-2d6sjlu406ath2gatkjh74p7f19sgfp1.apps.googleusercontent.com\""
-        googleWebIdProd = "\"1090609532096-lf45nd2vlkk1pjbf1qfa7vjj5nek8u7t.apps.googleusercontent.com\""
+        googleWebIdProd = "\"1030940734572-cr29l7sffto0ujceg8hmi2os5okanrt8.apps.googleusercontent.com\""
+
+        // Basic Auths
+        basicAuthDev = "\"Basic aGlyZTpzdXBlcnNlY3JldA==\""
+        basicAuthStaging = "\"Basic aGlyZTpzdXBlcnNlY3JldA==\""
+        basicAuthProd = "\"Basic aGlyZTpycjlHUDZZdllnSHk5NVBr\""
 
 
 
@@ -33,8 +38,9 @@ buildscript {
 
         // Base URLs REST
         baseRestUrlDev = "\"https://id-service-skd.herokuapp.com/\""
-        baseRestURlStaging = "\"https://id-web-dot-skuad-core-dev.el.r.appspot.com/\""
-        baseRestURlProd = "\"https://id-web-dot-skuad-core-dev.el.r.appspot.com/\""
+        baseRestURlStaging = "\"https://id-service-skd.herokuapp.com/\""
+//        baseRestURlStaging = "\"https://id-web-dot-skuad-core-dev.el.r.appspot.com/\""
+        baseRestURlProd = "\"https://id-core-dot-skuad-core-prod.el.r.appspot.com/\""
     }
     repositories {
         google()

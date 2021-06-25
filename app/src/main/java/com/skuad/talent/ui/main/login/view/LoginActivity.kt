@@ -62,7 +62,7 @@ class LoginActivity : BaseActivityVB<ActivityLoginBinding>() {
             when(it){
                 is ResourceState.Success -> {
                     Timber.d("Login Response -> ${it.body}")
-                    sharedPref.setAccessToken(it.body.token)
+//                    sharedPref.setAccessToken(it.body.token?:"")
                     gotoDashboard()
                 }
 

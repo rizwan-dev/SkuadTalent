@@ -21,16 +21,19 @@ fun <F, T> Call<F>.mapToEntity(
         when {
             response.isSuccessful -> {
                 val body = response.body()
+                val headers = response.headers()
+                val token = headers["skuad-token"]
 
                 if (body == null || (body is ResponseDto<*> && (body as? ResponseDto<*>)?.success == false)) {
                     val responseBody = (body as? ResponseDto<*>)
 
                     if (responseBody?.errorMessage.isNullOrBlank())
                         ResourceState.Failure(java.lang.Exception("something went wrong"))
-                    else ResourceState.Failure(
+                    else {
+                        ResourceState.Failure(
                             Exception(responseBody?.errorMessage),
-                            code = responseBody?.code ?: AppErrorCodes.FAILURE.code
-                    )
+                            code = responseBody?.code ?: AppErrorCodes.FAILURE.code)
+                    }
                 } else {
                     @Suppress("UNCHECKED_CAST")
                     ResourceState.Success(mapper(body as F), response.code())

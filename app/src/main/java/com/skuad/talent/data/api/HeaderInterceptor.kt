@@ -16,7 +16,20 @@ class HeaderInterceptor (
                     .header("Cookie", "skuad-token=${prefs.getAccessToken()}")
 //                    .header("Cookie", COOKIE)
             }
-            chain.proceed(requestBuilder.build())
+            val response =  chain.proceed(requestBuilder.build())
+
+            if (!originalRequest.header(HEADER_AUTH).isNullOrEmpty()) {
+                val headers = response.headers
+                headers.forEach {
+                    if(it.first == "skuad-token"){
+                        val token = it.second
+                        prefs.setAccessToken(token)
+                    }
+                }
+            }
+
+
+            response
         }
     }
 

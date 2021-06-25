@@ -232,7 +232,7 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                 downloadResume.setVisibility(false)
             } else {
                 tvNoResume.setVisibility(false)
-                Timber.e("resumelink ${candidateData.resumeUrl}")
+                Timber.e("resume link ${candidateData.resumeUrl}")
                 val f = File(candidateData.resume)
                 val ext = f.extension
                 Timber.e("file extension is == $ext")
@@ -241,7 +241,6 @@ class CandidateDetailActivity : BaseActivityVB<ActivityCandidateProfileBinding>(
                     downloadResume.setVisibility(false)
                     val resumeUrl = candidateData.resumeUrl ?: ""
                     viewModel.resumeUrl = resumeUrl
-                    Timber.e("resumeurl to show in pdf $resumeUrl")
                     remotePDFViewPager = RemotePDFViewPager(
                         this@CandidateDetailActivity,
                         resumeUrl,

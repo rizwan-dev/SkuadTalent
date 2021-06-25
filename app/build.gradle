@@ -13,6 +13,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+
         applicationId "com.skuad.talent"
         minSdkVersion 21
         targetSdkVersion 30
@@ -25,27 +26,30 @@ android {
     flavorDimensions "buildType"
     productFlavors {
         dev {
-            applicationIdSuffix ".test"
+            applicationId "com.skuad.talent.test"
             buildConfigField "String", "googleWebId", "$googleWebIdDev"
+            buildConfigField "String", "basicAuth", "$basicAuthDev"
             buildConfigField "String", "baseUrl", "$baseUrlDev"
             buildConfigField "String", "baseRestUrl", "$baseRestUrlDev"
             manifestPlaceholders = [appAuthRedirectScheme: "com.skuad.talent.dev", applicationName: "SkuadTalent-Dev"]
         }
 
         staging {
-            applicationIdSuffix ".test"
+            applicationId "com.skuad.talent.test"
             buildConfigField "String", "googleWebId", "$googleWebIdStaging"
             buildConfigField "String", "baseUrl", "$baseURlStaging"
             buildConfigField "String", "baseRestUrl", "$baseRestURlStaging"
+            buildConfigField "String", "basicAuth", "$basicAuthStaging"
             manifestPlaceholders = [appAuthRedirectScheme: "com.skuad.talent", applicationName: "SkuadTalent-Staging"]
         }
 
         prod {
-            applicationIdSuffix ""
+            applicationId "com.skuad.allremote"
             buildConfigField "String", "googleWebId", "$googleWebIdProd"
+            buildConfigField "String", "basicAuth", "$basicAuthProd"
             buildConfigField "String", "baseUrl", "$baseURlProd"
             buildConfigField "String", "baseRestUrl", "$baseRestURlProd"
-            manifestPlaceholders = [appAuthRedirectScheme: "com.skuad.talent", applicationName: "SkuadTalent-Staging"]
+            manifestPlaceholders = [appAuthRedirectScheme: "com.skuad.talent", applicationName: "All Remote"]
         }
     }
 
